@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-96na^be%v$ewlxkd^!u6=!7gn!_k9l#rt@bc6v@)2gfq=z*3-w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [".herokuapp.com",]
+ALLOWED_HOSTS = ["http://0.0.0.0:8000/", "127.0.0.1", ".herokuapp.com"]
 
 
 # Application definition
@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "cloudinary_storage",
+    "cloudinary",
+    "taggit",
     "recipes",
+    "about"
 ]
 
 MIDDLEWARE = [
@@ -88,6 +92,11 @@ WSGI_APPLICATION = "the_pancake_palace.wsgi.application"
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeanyapp.com",
+    "https://*.herokuapp.com"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
