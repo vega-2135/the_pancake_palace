@@ -14,7 +14,7 @@ CATEGORY = (
 )
 
 
-
+# Recipe Model
 class Recipe(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -25,8 +25,8 @@ class Recipe(models.Model):
     )
     cooking_duration = models.IntegerField(
         help_text = 'Please enter how many minutes is required for the preparation of your recipe')
-    ingredients = models.JSONField(null=False)
-    preparation = models.JSONField(null=False)
+    ingredients = models.JSONField()
+    preparation = models.JSONField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -45,4 +45,23 @@ class Recipe(models.Model):
     
     def number_of_likes(self):
         return self.likes.count()
-    
+
+
+# Comment Model
+class Comment(models.Model):
+    recipe_post = models.ForeignKey(
+        Recipe, on_delete=models.CASCADE, related_name='comments'
+    )
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='commenter')
+    content = models.TextField()
+    likes = models.ManyToManyField(
+        User, related_name='comment_likes', blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return f'Comment {self.content} by {self.author}'
