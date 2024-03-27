@@ -10,7 +10,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 CATEGORY = (
     (0, "Popular Pancakes"),
     (1, "Healthy Pancakes for Kids"),
-    (3, "Vegan Pancakes")
+    (2, "Vegan Pancakes")
 )
 
 
