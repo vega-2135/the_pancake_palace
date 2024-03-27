@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Recipe
 
-def main_page(request):
-    return HttpResponse("Hello, There!")
 
+class RecipeList(generic.ListView):
+    model = Recipe
