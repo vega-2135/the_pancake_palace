@@ -36,31 +36,59 @@
     <!-- Navigation Menu -->
     <nav class="navbar navbar-expand-md navbar-light bg-white">
         <div class="container-fluid">
+
             <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'images/site_logo.webp' %}" alt="Site Logo" width="65" height="65"
                     class="d-inline-block align-text-middle">
                 The Pancake Palace
             </a>
-            <!-- Search box-->
-            <div class="input-group rounded">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                <i class="fas fa-search"></i>
-                </span>
-            </div>
-
+                
+        <!-- Button for toggling collapsed menu on smaller screens -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+        
+        <!-- Search box-->
+            <div class="input-group justify-content-center" style="margin-right: 200px;margin-left: 200px;">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+                <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init="">search</button>
+            </div>
 
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="#">Home</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Recipes
+                        </a>
+                        <ul class="dropdown-menu text-end">
+                            <li><a class="dropdown-item" href="">Saved Recipes</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="">Submited Recipes</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="">Share a Recipe</a></li>
+                        </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == pancakes_for_kids_url %}active{% endif %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == vegan_pancakes_url %}active{% endif %}">Sign-up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-md navbar-light bg-white">
+        <div class="container-fluid">
+            <!-- Categories -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav me-2 text-end">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular Pancakes</a>
                     </li>
@@ -73,8 +101,8 @@
                 </ul>
             </div>
         </div>
-            
     </nav>
+
     <main class="container mt-3">
 
         {% block content %}
