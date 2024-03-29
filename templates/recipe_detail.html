@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<div class="">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-6">
+                <!-- Recipe title  -->
+                <h1 class="recipe-title">{{ recipe.title }}</h1>
+                <!-- Recipe author  -->
+                <p class="recipe-subtitle">{{ recipe.author }} | {{ recipe.created_on }}</p>
+            </div>
+            <div class="d-none d-md-block col-md-6 masthead-image">
+                <img src="{% static 'images/classic_pancakes.webp' %}" class="recipe-img" alt="Blue-Barry Pancakes">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mb-4">
+    <div class="card-header text-bg-light"><h2>Ingredients</h2>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-10">
+                    <ul>
+                        {% for ingredient in ingredients %}
+                            <div>{{ ingredient }}</div> 
+                        {% endfor %}
+                    </ul> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mb-4">
+    <div class="card-header text-bg-light"><h2>Preparation</h2>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-10">
+                    <ul>
+                        {% for step in preparation %}
+                            <div>{{ step }}</div> 
+                        {% endfor %}
+                    </ul> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
