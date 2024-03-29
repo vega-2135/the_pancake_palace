@@ -25,8 +25,8 @@ class Recipe(models.Model):
     )
     cooking_duration = models.IntegerField(
         help_text = 'Please enter how many minutes is required for the preparation of your recipe')
-    ingredients = models.JSONField()
-    preparation = models.JSONField()
+    ingredients = models.TextField()
+    preparation = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
