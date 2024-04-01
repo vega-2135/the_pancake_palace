@@ -1,5 +1,6 @@
 {% url 'home' as home_url %}
 {% load static%}
+{% url 'about' as about_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,6 +100,15 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == vegan_pancakes_url %}active{% endif %}">Vegan Pancakes</a>
                     </li>
+                    <li class="nav-item">
+                        <a
+                          class="nav-link
+                          {% if request.path == about_url %}active{%endif%}"
+                          aria-current="page"
+                          href="{% url 'about' %}"
+                          >About</a
+                        >
+                      </li>
                 </ul>
             </div>
         </div>
