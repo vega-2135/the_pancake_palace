@@ -20,23 +20,6 @@ Sign In / {{site.name}}
 
     {% get_providers as socialaccount_providers %}
 
-    {% if socialaccount_providers %}
-
-    <div class="socialaccount_ballot">
-
-        <!-- list of oauth login providers -->
-        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-
-    <hr>      
-    </div>
-
-    {% include "socialaccount/snippets/login_extra.html" %}
-
-    {% else %}
-    <p>{% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-    {% endif %}
-
     <div class="form-container">
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
@@ -47,7 +30,18 @@ Sign In / {{site.name}}
         <a class="btn btn-outline-dark" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
         <button class="btn btn-success" type="submit">{% trans "Log In" %}</button>
       </form>
-
+      <hr class="mt-4">
+      <div class="container-fluid mt-4">
+        <div class="row">
+          <div class="col">
+            <p>Or</p>
+          </div>
+          <div class="col">
+            <a class = google-icon href="{% provider_login_url 'google' %}"><i class="fa-brands fa-google"></i> Log in with Google</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
