@@ -28,7 +28,7 @@ def recipe_detail(request, slug):
     queryset = Recipe.objects.filter(status=1)
 
     # Return recipe with the correct slug
-    recipe = get_object_or_404(queryset, slug=slug)
+    recipe = get_objec_or_404(queryset, slug=slug)
   
     recipe_title = recipe.title
 
