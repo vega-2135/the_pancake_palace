@@ -29,8 +29,8 @@ def recipe_detail(request, slug):
 
     # Return recipe with the correct slug
     recipe = get_object_or_404(queryset, slug=slug)
-  
     recipe_title = recipe.title
+    
 
     # Split ingredients and preparation steps into several strings 
     ingredients = recipe.ingredients.split('<br>')
@@ -40,11 +40,15 @@ def recipe_detail(request, slug):
     preparation = [re.sub('<[^<]+?>', '', step) for step in preparation]
 
     
-    # set liked to false by default
+    # Set liked to false by default
     recipe_liked = False
     
     if recipe.likes.filter(id=request.user.id).exists():
         recipe_liked = True
+    
+    # Display only approved comments
+    comments = recipe.comments.all().order_by("-created_on")
+    comment_count = recipe.comments.filter(approved=True).count()
     
 
     return render(
@@ -54,5 +58,8 @@ def recipe_detail(request, slug):
         "recipe_title": recipe_title,
         "ingredients": ingredients,
         "preparation": preparation,
-        "recipe_liked": recipe_liked },
+        "recipe_liked": recipe_liked,
+        "comments": comments,
+        "comment_count": comment_count,
+        },
     )
