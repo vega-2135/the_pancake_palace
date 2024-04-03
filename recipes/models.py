@@ -49,7 +49,7 @@ class Recipe(models.Model):
 
 # Comment Model
 class Comment(models.Model):
-    recipe_post = models.ForeignKey(
+    recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name='comments'
     )
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='commenter')

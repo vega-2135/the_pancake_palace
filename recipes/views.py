@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.contrib import messages
 from .models import Recipe
 import re
+from .forms import CommentForm
 
 
 class RecipeList(generic.ListView):
@@ -32,7 +34,7 @@ def recipe_detail(request, slug):
     recipe_title = recipe.title
     
 
-    # Split ingredients and preparation steps into several strings 
+    # Split ingredients and preparation steps into se#veral strings 
     ingredients = recipe.ingredients.split('<br>')
     preparation = recipe.preparation.split('<br>')
     # Remove any HTML tags 
@@ -49,6 +51,24 @@ def recipe_detail(request, slug):
     # Display only approved comments
     comments = recipe.comments.all().order_by("-created_on")
     comment_count = recipe.comments.filter(approved=True).count()
+
+    # Display a form to users, so they can add comments to a recipe post
+    # Make form functinal by adding POST method
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.recipe = recipe
+            print(comment_form)
+            print(recipe)
+            comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Your comment will be submitted once approved.'
+            )
+
+    comment_form = CommentForm()
     
 
     return render(
@@ -61,5 +81,6 @@ def recipe_detail(request, slug):
         "recipe_liked": recipe_liked,
         "comments": comments,
         "comment_count": comment_count,
+        "comment_form": comment_form,
         },
     )
