@@ -35,3 +35,8 @@ footer {
 a {
     text-decoration: none;
 }
+
+.logout {
+    font-size: large;
+    font-weight: bold;
+}
