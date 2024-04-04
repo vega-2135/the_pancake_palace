@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib import messages
 from .models import Recipe
 import re
 from .forms import CommentForm
+from .forms import RatingForm
 
 
 class RecipeList(generic.ListView):
@@ -84,3 +85,21 @@ def recipe_detail(request, slug):
         "comment_form": comment_form,
         },
     )
+
+def rate_recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    
+    if form.is_valid():
+            rating = form.cleaned_data['rating']
+            # Calculate the new average rating
+            current_rating = recipe.rating if recipe.rating else 0
+            num_of_ratings = recipe.num_of_ratings if recipe.num_of_ratings else 0
+            new_average_rating = ((current_rating * num_of_ratings) + int(rating)) / (num_of_ratings + 1)
+            recipe.rating = round(new_average_rating, 2)
+            recipe.num_of_ratings = num_of_ratings + 1
+            recipe.save()
+            return redirect('recipe_detail', recipe_id=recipe.id)
+    else:
+        form = RatingForm()
+    
+    return render(request, 'rate_recipe.html', {'form': form})

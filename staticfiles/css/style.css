@@ -10,7 +10,7 @@
 }
 
 
-.login-box {
+.authentication-box {
     border: 2px solid rgb(0, 0, 0);
     box-shadow: 6px 5px 0px 0px rgba(0, 0, 0, 0.75);
     border-radius: 25px;
@@ -40,3 +40,42 @@ a {
     font-size: large;
     font-weight: bold;
 }
+
+.message {
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: yellow;
+    font-size: 25px;
+}
+
+.hide {
+    display: none; /* Hide the alert */
+  }
+
+
+  /* Rating stars */
+  .rating {
+    display: inline-block;
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin: 0 2px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+  
+  .rating label:hover,
+  .rating label:hover ~ label,
+  .rating input:checked ~ label {
+    color: #ffca08; 
+  }
+  
+  

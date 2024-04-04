@@ -34,6 +34,8 @@ class Recipe(models.Model):
     recipe_image = CloudinaryField('image', default='placeholder')
     likes = models.ManyToManyField(
         User, related_name='recipe_likes', blank=True)
+    rating = models.IntegerField(null=True, blank=True)
+    number_of_ratings = models.IntegerField(null=True, blank=True)
 
 
     class Meta:

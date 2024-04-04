@@ -7,5 +7,9 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('content',)
         labels = {
-            'content': 'Your comment'
+            'content': 'Your comment:'
         }
+
+class RatingForm(forms.Form):
+    RATING_STARS = [(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')]
+    rating = forms.ChoiceField(choices=RATING_STARS, widget=forms.RadioSelect)
