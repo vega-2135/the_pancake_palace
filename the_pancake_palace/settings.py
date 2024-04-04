@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "taggit",
     "recipes",
     "about",
+    "contact",
     "crispy_forms",
     "crispy_bootstrap5"
 ]

@@ -3,6 +3,11 @@
 .recipe-img {
     width: 500px;
     height: auto;
+    margin-bottom: 100px;
+}
+
+.card-header {
+  margin-bottom: 150px;
 }
 
 .about-text {
@@ -20,7 +25,6 @@
 }
 
 footer {
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -53,29 +57,46 @@ a {
   }
 
 
+/* Comments section */
+.faded {
+  color: rgb(172, 175, 175);
+}
+
   /* Rating stars */
-  .rating {
-    display: inline-block;
-  }
-  
-  .rating input {
-    display: none;
-  }
-  
-  .rating label {
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    margin: 0 2px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-  }
-  
-  .rating label:hover,
-  .rating label:hover ~ label,
-  .rating input:checked ~ label {
-    color: #ffca08; 
-  }
-  
-  
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 30px;
+    font-weight: 300;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
