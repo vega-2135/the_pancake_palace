@@ -11,9 +11,21 @@
                 <h1 class="recipe-title">{{ recipe.title }}</h1>
                 <!-- Recipe author  -->
                 <p class="recipe-subtitle">{{ recipe.author }} | {{ recipe.created_on }}</p>
+                {% if request.user.is_authenticated %}
+                {% if saved_recipe %}
+                <div>
+                  <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
+                </div>
+                {% else %}
                 <div>
                   <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary">Save</a>
-                </div>              
+                </div> 
+                {% endif %}
+                {% else %}
+                <div>
+                  <a href="{% url 'account_login' %}" class="btn btn-outline-primary">Save</a>
+                </div>
+                {% endif %}            
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <img src="{% static 'images/classic_pancakes.webp' %}" class="recipe-img" alt="Blue-Barry Pancakes">

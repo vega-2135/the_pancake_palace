@@ -24,7 +24,7 @@
                             <hr>
                             <p class="card-text text-muted h6">{{ recipe.created_on }}</p>
                             <div>
-                                <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
+                                <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
                             </div>
                         </div>
                     </div>

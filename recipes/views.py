@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse_lazy
 from .models import Recipe, Comment
 import re
 from .forms import CommentForm
@@ -16,7 +17,7 @@ LOGGER = logging.getLogger('django')
 
 class RecipeList(generic.ListView):
     model = Recipe
-    #queryset = Recipe.objects.filter(status=1)
+    queryset = Recipe.objects.filter(status=1)
     template_name = "index.html"
     paginate_by = 6
 
@@ -35,11 +36,16 @@ def recipe_detail(request, slug):
     :template:`recipes/recipe_detail.html`
     """
     # Return all objects of the class Recipe
-    #queryset = Recipe.objects.filter(status=1)
+    queryset = Recipe.objects.filter(status=1)
 
     # Return recipe with the correct slug
-    recipe = get_object_or_404(Recipe, slug=slug, status='1')
+    recipe = get_object_or_404(queryset, slug=slug, status='1')
     recipe_title = recipe.title
+
+    saved_recipe = bool
+
+    if recipe.saved.filter(id=request.user.id).exists():
+        saved_recipe = True
     
 
     # Split ingredients and preparation steps into se#veral strings 
@@ -84,6 +90,7 @@ def recipe_detail(request, slug):
         "recipe_detail.html",
         {"recipe": recipe,
         "recipe_title": recipe_title,
+        "saved_recipe": saved_recipe,
         "ingredients": ingredients,
         "preparation": preparation,
         "recipe_liked": recipe_liked,
@@ -154,12 +161,10 @@ def comment_delete(request, slug, comment_id):
 
 @login_required
 def saved_recipes(request):
-    new_added_recipe = Recipe.newmanager.filter(saved=request.user)
-    return render (request, 
-                   "saved_recipes.html",
-                   {
-                       "new_added_recipe": new_added_recipe}
-                   )
+    queryset = Recipe.objects.filter(status=1)
+    new_added_recipe = queryset.filter(saved=request.user)
+    return render(request, "saved_recipes.html", {"new_added_recipe": new_added_recipe})
+
 
 @login_required
 def save_recipe(request, slug):
@@ -170,3 +175,14 @@ def save_recipe(request, slug):
         recipe.saved.add(request.user)
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
+
+@login_required
+def remove_recipe(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
+    if recipe.saved.filter(id=request.user.id).exists():
+        recipe.saved.remove(request.user)
+    # Redirect the user back to the referring page, or to a default page if the 
+    # referring page is not available
+    redirect_url = request.META.get('HTTP_REFERER', reverse('saved_recipes'))
+    return HttpResponseRedirect(redirect_url)
