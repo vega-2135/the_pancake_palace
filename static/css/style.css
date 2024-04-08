@@ -102,3 +102,21 @@ a {
 .rating:hover>input:checked~label:before {
     opacity: 0.4
 }
+
+/* Buttons */
+
+btn-saved {
+    margin-right: 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+btn-shadow {
+    box-shadow: 6px 5px 0px 0px black;
+}
+
+/* Saved recipe page */
+.save {
+    font-weight: bolder;
+}
+

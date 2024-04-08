@@ -5,6 +5,7 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
+{% url 'saved_recipes' as saved_recipes_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,11 +76,11 @@
                     {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            My Recipes
+                            aria-expanded="false"><i class="fa-regular fa-user"></i>
+                            {{ user.username }}
                         </a>
                         <ul class="dropdown-menu text-end">
-                            <li><a class="dropdown-item" href="">Saved Recipes</a></li>
+                            <li><a href="{% url 'saved_recipes' %}" class="dropdown-item" href="">Saved Recipes</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

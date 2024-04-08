@@ -5,7 +5,7 @@ from taggit.managers import TaggableManager
 
 
 # Recipe post status for admin users
-STATUS = ((0, "Draft"), (1, "Published"))
+#STATUS = ((0, "Draft"), (1, "Published"))
 
 CATEGORY = (
     (0, "Popular Pancakes"),
@@ -16,6 +16,11 @@ CATEGORY = (
 
 # Recipe Model
 class Recipe(models.Model):
+        
+    class NewManager(models.Manager):
+        def get_queryset(self):
+            return super().get_queryset() .filter(status='1')
+        
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -29,13 +34,16 @@ class Recipe(models.Model):
     preparation = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(default=0)
     category = models.IntegerField(choices=CATEGORY, default=0)
     recipe_image = CloudinaryField('image', default='placeholder')
+    saved = models.ManyToManyField(
+        User, related_name="saved_recipes", default=None, blank=True)
     likes = models.ManyToManyField(
         User, related_name='recipe_likes', blank=True)
     rating = models.IntegerField(null=True, blank=True)
     number_of_ratings = models.IntegerField(null=True, blank=True)
+    newmanager = NewManager() 
 
 
     class Meta:
@@ -67,3 +75,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Comment {self.content} by {self.author}'
+    
+
+

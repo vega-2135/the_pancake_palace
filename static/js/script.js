@@ -1,5 +1,5 @@
 // Get the alert element
-const alertElement = document.getElementById('msg');
+const alertElement = document.getElementById("msg");
 
 // Automatically dismiss the alert after 2 seconds
 setTimeout(function() {

@@ -1,16 +1,22 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Recipe, Comment
 import re
 from .forms import CommentForm
 from .forms import RatingForm
 
+import logging
+
+
+LOGGER = logging.getLogger('django')
+
 
 class RecipeList(generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.filter(status=1)
+    #queryset = Recipe.objects.filter(status=1)
     template_name = "index.html"
     paginate_by = 6
 
@@ -29,10 +35,10 @@ def recipe_detail(request, slug):
     :template:`recipes/recipe_detail.html`
     """
     # Return all objects of the class Recipe
-    queryset = Recipe.objects.filter(status=1)
+    #queryset = Recipe.objects.filter(status=1)
 
     # Return recipe with the correct slug
-    recipe = get_object_or_404(queryset, slug=slug)
+    recipe = get_object_or_404(Recipe, slug=slug, status='1')
     recipe_title = recipe.title
     
 
@@ -142,5 +148,25 @@ def comment_delete(request, slug, comment_id):
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+
+    return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
+
+@login_required
+def saved_recipes(request):
+    new_added_recipe = Recipe.newmanager.filter(saved=request.user)
+    return render (request, 
+                   "saved_recipes.html",
+                   {
+                       "new_added_recipe": new_added_recipe}
+                   )
+
+@login_required
+def save_recipe(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
+    if recipe.saved.filter(id=request.user.id).exists():
+        recipe.saved.remove(request.user)
+    else:
+        recipe.saved.add(request.user)
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))

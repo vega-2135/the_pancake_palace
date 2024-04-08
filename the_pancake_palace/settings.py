@@ -187,3 +187,29 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters" : {
+        "debug_only" : {
+            "()" : "django.utils.log.RequireDebugTrue",
+        },
+    },
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+        "file": {
+            "filters": ["debug_only"],
+            "class": "logging.FileHandler",
+            "filename": "app.log",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "file"],
+            "level": "INFO",
+        },
+    }
+}
+
