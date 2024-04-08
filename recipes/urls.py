@@ -11,5 +11,6 @@ urlpatterns = [
          views.comment_delete, name='comment_delete'),
     path('save/<slug:slug>/', views.save_recipe, name='save_recipe'),
     path('saved-recipes/', views.saved_recipes, name='saved_recipes'),
-    path('remove/<slug:slug>/', views.remove_recipe, name='remove_recipe')
+    path('remove/<slug:slug>/', views.remove_recipe, name='remove_recipe'),
+    path('like/<slug:slug>/', views.like_recipe, name='like_recipe')
 ]

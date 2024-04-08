@@ -186,3 +186,12 @@ def remove_recipe(request, slug):
     # referring page is not available
     redirect_url = request.META.get('HTTP_REFERER', reverse('saved_recipes'))
     return HttpResponseRedirect(redirect_url)
+
+@login_required
+def like_recipe(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
+    if recipe.likes.filter(id=request.user.id).exists():
+        recipe.likes.remove(request.user)
+    else:
+        recipe.likes.add(request.user)
+    return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))

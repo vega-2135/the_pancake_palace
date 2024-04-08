@@ -52,7 +52,7 @@ class Recipe(models.Model):
     def __str__(self):
         return self.title
     
-    def number_of_likes(self):
+    def likes_count(self):
         return self.likes.count()
 
 

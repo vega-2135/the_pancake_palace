@@ -120,3 +120,7 @@ btn-shadow {
     font-weight: bolder;
 }
 
+/* Likes */
+#likes {
+    margin-left: -10px;
+}
