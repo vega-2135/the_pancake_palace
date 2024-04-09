@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recipe, Comment
 import re
+import json
 from .forms import CommentForm
 from .forms import (
     RecipeForm,
@@ -73,8 +74,8 @@ def recipe_detail(request, slug):
     comment_count = recipe.comments.filter(approved=True).count()
 
     # Display a form to users, so they can add comments to a recipe post
-    # Make form functinal by adding POST method
-    if request.method == "POST":
+    # Make form functinal by adding POST preparation
+    if request.preparation == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
@@ -129,7 +130,7 @@ def comment_edit(request, slug, comment_id):
     """
     Function to edit comments
     """
-    if request.method == "POST":
+    if request.preparation == "POST":
 
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
@@ -175,7 +176,7 @@ class ShareRecipe(LoginRequiredMixin, CreateView):
     #success_url = reverse_lazy('shared_recipes')
 
     def get_context_data(self, **kwargs):
-        # Add ingredients formset, method formset and page title to context.
+        # Add ingredients formset, preparation formset and page title to context.
         context = super().get_context_data(**kwargs)
         if self.request.POST:
             context['ingredients_formset'] = IngredientsFormset(
@@ -194,6 +195,50 @@ class ShareRecipe(LoginRequiredMixin, CreateView):
             context['preparation_formset'] = PreparationFormset(prefix='preparation')
             context['page_title'] = 'Create Recipe'
         return context
+    
+    def form_valid(self, form):
+        # Validate submitted form.
+        context = self.get_context_data()
+        ingredients_formset = context['ingredients_formset']
+        preparation_formset = context['preparation_formset']
+
+        if ingredients_formset.is_valid() and preparation_formset.is_valid():
+            # get cleaned data from ingredients formset
+            ingredients_input = ingredients_formset.cleaned_data
+            # convert ingredients input data into json string
+            ingredients_json = json.dumps(ingredients_input)
+            preparation_input = preparation_formset.cleaned_data
+            preparation_json = json.dumps(preparation_input)
+            # set author as current user
+            form.instance.author = self.request.user
+            # set ingredients as ingredients json string
+            form.instance.ingredients = ingredients_json
+            form.instance.preparation = preparation_json
+            # if publish request check box is checked
+            if form.instance.publish:
+                # if recipe does not include ingredients or preparation,
+                # save but don't submit for publication
+                if (form.instance.ingredients == "[]" or
+                        form.instance.preparation == "[]"):
+                    form.instance.publish = False
+                    # display message informing user recipe requires
+                    # ingredients and preparation for publication
+                    messages.warning(
+                        self.request,
+                        ('Recipe saved but requires ingredients and '
+                            'preparation for publication')
+                    )
+                else:
+                    # set approval status to 'pending approval'
+                    form.instance.approved = False
+                    messages.success(
+                        self.request,
+                        'Recipe successfully created and awaiting approval'
+                    )
+            else:
+                # approval status will be set to 'unpublished' by default
+                messages.success(self.request, 'Recipe saved in your recipes')
+            return super().form_valid(form)
 
 @login_required
 def saved_recipes(request):

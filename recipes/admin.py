@@ -10,9 +10,14 @@ class RecipeAdmin(SummernoteModelAdmin):
     """
     list_display = ('title', 'author', 'created_on', 'status')
     search_fields = ['title', 'author']
-    list_filter = ('status','created_on')
+    list_filter = ('status','created_on', 'approved')
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('ingredients', 'preparation',)
+    actions = ['approve_recipe']
+
+    # Define approve recipes action
+    def approve_recipe(self, request, queryset):
+        queryset.update(approved=True)
 
 
 
