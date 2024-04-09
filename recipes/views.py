@@ -49,10 +49,16 @@ def recipe_detail(request, slug):
     
 
     # Split ingredients and preparation steps into se#veral strings 
-    ingredients = recipe.ingredients.split('<br>')
+    ingredients = recipe.ingredients
     preparation = recipe.preparation.split('<br>')
+    LOGGER.info(type(ingredients))
     # Remove any HTML tags 
-    ingredients = [re.sub('<[^<]+?>', '', ingredient) for ingredient in ingredients]
+    ingredients_parts = []
+    for i in range(len(ingredients)):
+        ingredients_items = f"{ingredients[i]['name']}, {ingredients[i]['quantity']}"
+        ingredients_parts.append(ingredients_items)
+        LOGGER.info(ingredients_parts)
+
     preparation = [re.sub('<[^<]+?>', '', step) for step in preparation]
 
     
@@ -91,7 +97,7 @@ def recipe_detail(request, slug):
         {"recipe": recipe,
         "recipe_title": recipe_title,
         "saved_recipe": saved_recipe,
-        "ingredients": ingredients,
+        "ingredients": ingredients_parts,
         "preparation": preparation,
         "recipe_liked": recipe_liked,
         "comments": comments,
