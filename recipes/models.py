@@ -9,7 +9,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 CATEGORY = (
     (0, "Popular Pancakes"),
-    (1, "Healthy Pancakes for Kids"),
+    (1, "Pancakes for Kids"),
     (2, "Vegan Pancakes")
 )
 
@@ -43,6 +43,11 @@ class Recipe(models.Model):
         User, related_name='recipe_likes', blank=True)
     rating = models.IntegerField(null=True, blank=True)
     number_of_ratings = models.IntegerField(null=True, blank=True)
+    approved = models.BooleanField(default=False)
+    publish = models.BooleanField(
+        default=False,
+        help_text='Check this box to allow your recipe to be published online.'
+    )
 
 
     class Meta:

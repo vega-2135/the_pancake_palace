@@ -88,7 +88,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="">Share a Recipe</a></li>
+                            <li><a class="dropdown-item" href="{% url 'share_recipe' %}">Share a Recipe</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -193,6 +193,23 @@
 
     <!-- JavaScript-->
     <script src="{% static 'js/script.js' %}"></script>
+
+    <!-- Dynamic-formset javascript -->
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <!-- Inline javascript added following dynamic-formset docs -->
+
+    <script>
+        $(function() {
+            $('#ingredients-formset tbody tr').formset({
+                prefix: '{{ ingredients_formset.prefix }}',
+                formCssClass: 'dynamic-ingredients-formset'
+            });
+            $('#preparation-formset tbody tr').formset({
+                prefix: '{{ preparation_formset.prefix }}',
+                formCssClass: 'dynamic-preparation-formset'
+            });
+        })
+    </script>
 
     {% block extras %}
     {% endblock %}

@@ -4,11 +4,17 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recipe, Comment
 import re
 from .forms import CommentForm
+from .forms import (
+    RecipeForm,
+    IngredientsFormset,
+    PreparationFormset,
+    CommentForm)
 from .forms import RatingForm
-
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import logging
 
 
@@ -49,16 +55,10 @@ def recipe_detail(request, slug):
     
 
     # Split ingredients and preparation steps into se#veral strings 
-    ingredients = recipe.ingredients
+    ingredients = recipe.ingredients.split('<br>')
     preparation = recipe.preparation.split('<br>')
-    LOGGER.info(type(ingredients))
     # Remove any HTML tags 
-    ingredients_parts = []
-    for i in range(len(ingredients)):
-        ingredients_items = f"{ingredients[i]['name']}, {ingredients[i]['quantity']}"
-        ingredients_parts.append(ingredients_items)
-        LOGGER.info(ingredients_parts)
-
+    ingredients = [re.sub('<[^<]+?>', '', ingredient) for ingredient in ingredients]
     preparation = [re.sub('<[^<]+?>', '', step) for step in preparation]
 
     
@@ -97,7 +97,7 @@ def recipe_detail(request, slug):
         {"recipe": recipe,
         "recipe_title": recipe_title,
         "saved_recipe": saved_recipe,
-        "ingredients": ingredients_parts,
+        "ingredients": ingredients,
         "preparation": preparation,
         "recipe_liked": recipe_liked,
         "comments": comments,
@@ -164,6 +164,36 @@ def comment_delete(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
+# Share recipe views
+class ShareRecipe(LoginRequiredMixin, CreateView):
+    '''
+    Allow authenticated user to access create recipe form to submit recipes.
+    '''
+    model = Recipe
+    form_class = RecipeForm
+    template_name = 'share_recipe.html'
+    #success_url = reverse_lazy('shared_recipes')
+
+    def get_context_data(self, **kwargs):
+        # Add ingredients formset, method formset and page title to context.
+        context = super().get_context_data(**kwargs)
+        if self.request.POST:
+            context['ingredients_formset'] = IngredientsFormset(
+                self.request.POST,
+                prefix='ingredients'
+            )
+            context['preparation_formset'] = PreparationFormset(
+                self.request.POST,
+                prefix='preparation'
+            )
+            context['page_title'] = 'Share Recipe'
+        else:
+            context['ingredients_formset'] = IngredientsFormset(
+                prefix='ingredients'
+            )
+            context['preparation_formset'] = PreparationFormset(prefix='preparation')
+            context['page_title'] = 'Create Recipe'
+        return context
 
 @login_required
 def saved_recipes(request):
@@ -201,3 +231,4 @@ def like_recipe(request, slug):
     else:
         recipe.likes.add(request.user)
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+

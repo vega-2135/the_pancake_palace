@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<section id="recipe-form">
+    <div class="container-md">
+        <h1>{{ page_title }}</h1>
+        <!-- Create and edit recipe form -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row mt-3">
+                <div class="mb-2">
+                    {{ form.title | as_crispy_field }}
+                </div>
+                <div class="mb-2">
+                    {{ form.recipe_image | as_crispy_field }}
+                </div>
+                <div class="mb-2">
+                    {{ form.servings | as_crispy_field }}
+                </div>
+                <div class="mb-2">
+                    {{ form.cooking_duration | as_crispy_field }}
+                </div>
+                <div>
+                    {{ form.category | as_crispy_field }}
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-8">
+                    {{ ingredients_formset.management_form }}
+                    <label for="id_ingredients-0-ingredients_0">Ingredients</label>
+                    <table id="ingredients-formset">
+                        <tbody>
+                            {% for form in ingredients_formset %}
+                            <tr>
+                                <td>
+                                    {{ form | crispy }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    {{ preparation_formset.management_form }}
+                    <label for="id_method-0-method">Preparation</label>
+                    <table id="preparation-formset">
+                        <tbody>
+                            {% for form in preparation_formset %}
+                            <tr>
+                                <td>
+                                    {{ form | crispy }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row mt-3">
+                {{ form.publish | as_crispy_field }}
+            </div>
+            <div class="text-center">
+                <input class="recipe-submit btn btn-success btn-lg mt-3" type="submit" value="Submit">
+            </div>
+        </form>
+        <div class="text-center mt-3">
+            <a class="recipe-cancel btn btn-secondary" href="{% url 'home' %}" role="button">Cancel</a> 
+        </div>
+    </div>
+</section>
+{%endblock%}
