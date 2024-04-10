@@ -239,6 +239,96 @@ class ShareRecipe(LoginRequiredMixin, CreateView):
                 # approval status will be set to 'unpublished' by default
                 messages.success(self.request, 'Recipe saved in your recipes')
             return super().form_valid(form)
+        
+
+class RecipeOwnership(UserPassesTestMixin):
+    '''
+    If the user is the recipe author, they will have permission
+    to perform an action.
+    If the user does not match the recipe author the user will be
+    redirected to 403 error page.
+    '''
+    def test_func(self):
+        recipe = self.get_object()
+        return recipe.author == self.request.user
+    
+
+class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
+    '''
+    Allow authenticated user that passes RecipeOwnership to edit recipes.
+    Display create recipe form populated with values from the
+    recipe being edited.
+    '''
+    model = Recipe
+    form_class = RecipeForm
+    template_name = 'share_recipe.html'
+    success_url = reverse_lazy('share_recipe')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.POST:
+            context['ingredients_formset'] = IngredientsFormset(
+                self.request.POST,
+                initial=json.loads(self.object.ingredients),
+                prefix='ingredients'
+            )
+            context['preparation_formset'] = PreparationFormset(
+                self.request.POST,
+                initial=json.loads(self.object.preparation),
+                prefix='preparation'
+            )
+            context['page_title'] = 'Edit Recipe'
+        else:
+            context['ingredients_formset'] = IngredientsFormset(
+                initial=json.loads(self.object.ingredients),
+                prefix='ingredients'
+            )
+            context['preparation_formset'] = PreparationFormset(
+                initial=json.loads(self.object.preparation),
+                prefix='preparation'
+            )
+            context['page_title'] = 'Edit Recipe'
+        return context
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        ingredients_formset = context['ingredients_formset']
+        preparation_formset = context['preparation_formset']
+
+        if ingredients_formset.is_valid() and preparation_formset.is_valid():
+            ingredients_input = ingredients_formset.cleaned_data
+            ingredients_json = json.dumps(ingredients_input)
+            preparation_input = preparation_formset.cleaned_data
+            preparation_json = json.dumps(preparation_input)
+            form.instance.author = self.request.user
+            form.instance.ingredients = ingredients_json
+            form.instance.preparation = preparation_json
+            if form.instance.make_public:
+                # if recipe does not include ingredients or preparation,
+                # save but don't submit for publication
+                if (form.instance.ingredients == "[]" or
+                        form.instance.preparation == "[]"):
+                    form.instance.make_public = False
+                    form.instance.status = 0
+                    # display message informing user recipe requires
+                    # ingredients and preparation for publication
+                    messages.warning(
+                        self.request,
+                        ('Recipe saved but requires ingredients and '
+                            'preparation for publication')
+                    )
+                else:
+                    # set approval status to 'pending approval'
+                    form.instance.status = 1
+                    messages.success(
+                        self.request,
+                        'Recipe successfully created and awaiting approval'
+                    )
+            else:
+                form.instance.status = 0
+                messages.success(self.request, 'Recipe successfully edited')
+            return super().form_valid(form)    
+    
 
 @login_required
 def saved_recipes(request):
