@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Confirm delete form -->
+<section id="confirm-delete">
+    <div class="text-center">
+        <form method="post">
+            {% csrf_token %}
+            <h1>Delete {{ object }}</h1>
+            <p>Are you sure you want to delete your recipe?</p>
+            <input type="submit" value="Confirm" class="delete-confirm btn btn-success">
+        </form>
+        <a class="delete-cancel btn btn-secondary mt-3" href="{% url 'recipe_detail' object.slug %}" role="button">Cancel</a>
+    </div>
+</section>
+
+{%endblock%}

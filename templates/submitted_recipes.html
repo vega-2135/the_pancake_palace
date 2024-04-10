@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<div class="container-fluid">
+    <h1 class="save">Submitted Recipes</h1>
+    <hr>
+    <div class="row">
+
+        <!-- Recipes Column -->
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% if recipe_list %}
+                    {% for recipe in recipe_list %}
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="image-container">
+                                        <div class="image-flash">
+                                            <p class="author">Author: {{ recipe.author }}</p>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'recipe_detail' recipe.slug %}">
+                                        <h2 class="card-title">{{ recipe.title }}</h2>
+                                    </a>
+                                    <hr>
+                                    <p class="card-text text-muted h6">{{ recipe.created_on }}</p>
+                                    <div>
+                                        <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:3 %}
+                            </div><div class="row">
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <p>You haven't submitted any recipe yet</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li>
+                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+                    </li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+</div>
+
+
+{% endblock %}

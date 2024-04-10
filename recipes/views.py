@@ -4,6 +4,7 @@ from django.views import generic, View
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recipe, Comment
 import re
@@ -173,7 +174,7 @@ class ShareRecipe(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'share_recipe.html'
-    #success_url = reverse_lazy('shared_recipes')
+    #success_url = reverse_lazy('submitted_recipes')
 
     def get_context_data(self, **kwargs):
         # Add ingredients formset, preparation formset and page title to context.
@@ -262,7 +263,7 @@ class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'share_recipe.html'
-    success_url = reverse_lazy('share_recipe')
+    success_url = reverse_lazy('submitted_recipes')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -327,9 +328,49 @@ class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
             else:
                 form.instance.status = 0
                 messages.success(self.request, 'Recipe successfully edited')
-            return super().form_valid(form)    
-    
+            return super().form_valid(form) 
 
+
+class DeleteRecipe(LoginRequiredMixin, RecipeOwnership, DeleteView):
+    '''
+    Allow authenticated user that passes RecipeOwnership to delete recipes.
+    '''
+    model = Recipe
+    template_name = 'confirm_deletion_recipe.html'
+    success_url = reverse_lazy('submitted_recipes')
+    success_message = "Recipe successfully deleted"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Delete Recipe'
+        return context
+
+    # Display success message
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super().delete(request, *args, **kwargs)   
+
+
+class SubmittedRecipes(LoginRequiredMixin, ListView):
+    '''
+    Display recipes that the user has shared.
+    '''
+    template_name = 'submitted_recipes.html'
+    paginate_by = 6
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'My Submitted Recipes'
+        return context
+
+    def get_queryset(self):
+        # Return all recipes that user has written,
+        # in reverse order of created date.
+        shared_recipes = Recipe.objects.filter(
+            author=self.request.user
+        ).order_by('-created_on')
+        return shared_recipes
+    
 @login_required
 def saved_recipes(request):
     queryset = Recipe.objects.filter(status=1)
