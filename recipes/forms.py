@@ -36,10 +36,10 @@ class RecipeForm(ModelForm):
             'category',
             'cooking_duration',
             'servings',
-            'publish'
+            'make_public'
         ]
         labels = {
-            'publish': 'Make Public',
+            'make_public': 'Make Public',
             'cooking_duration': 'Cooking duration (minutes)'
         }
         widgets = {

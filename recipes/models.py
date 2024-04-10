@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from taggit.managers import TaggableManager
+from autoslug import AutoSlugField
 
 
 # Recipe post status for admin users
@@ -22,7 +23,7 @@ class Recipe(models.Model):
     #         return super().get_queryset() .filter(status='1')
         
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title', unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="resources_added")
     servings = models.IntegerField(
@@ -44,7 +45,7 @@ class Recipe(models.Model):
     rating = models.IntegerField(null=True, blank=True)
     number_of_ratings = models.IntegerField(null=True, blank=True)
     approved = models.BooleanField(default=False)
-    publish = models.BooleanField(
+    make_public = models.BooleanField(
         default=False,
         help_text='Check this box to allow your recipe to be published online.'
     )

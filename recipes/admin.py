@@ -8,16 +8,17 @@ class RecipeAdmin(SummernoteModelAdmin):
     """
     Register recipe model.
     """
-    list_display = ('title', 'author', 'created_on', 'status')
+    list_display = ('title', 'author', 'created_on', 'status', 'approved')
     search_fields = ['title', 'author']
     list_filter = ('status','created_on', 'approved')
-    prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('ingredients', 'preparation',)
     actions = ['approve_recipe']
 
-    # Define approve recipes action
+    # Define approve recipes action, once the admin approves a recipe
+    # the status of that recipe changes from Draft to Publish
     def approve_recipe(self, request, queryset):
-        queryset.update(approved=True)
+        queryset.update(approved=True, status= '1')
+
 
 
 

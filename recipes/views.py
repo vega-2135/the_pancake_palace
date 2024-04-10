@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
-from django.views import generic
+from django.views import generic, View
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -215,12 +215,12 @@ class ShareRecipe(LoginRequiredMixin, CreateView):
             form.instance.ingredients = ingredients_json
             form.instance.preparation = preparation_json
             # if publish request check box is checked
-            if form.instance.publish:
+            if form.instance.make_public:
                 # if recipe does not include ingredients or preparation,
                 # save but don't submit for publication
                 if (form.instance.ingredients == "[]" or
                         form.instance.preparation == "[]"):
-                    form.instance.publish = False
+                    form.instance.make_public = False
                     # display message informing user recipe requires
                     # ingredients and preparation for publication
                     messages.warning(
