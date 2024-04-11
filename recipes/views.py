@@ -57,10 +57,10 @@ def recipe_detail(request, slug):
     
 
     # Split ingredients and preparation steps into se#veral strings 
-    ingredients = recipe.ingredients.split('<br>')
+  
     preparation = recipe.preparation.split('<br>')
     # Remove any HTML tags 
-    ingredients = [re.sub('<[^<]+?>', '', ingredient) for ingredient in ingredients]
+    # ingredients = [re.sub('<[^<]+?>', '', ingredient) for ingredient in ingredients]
     preparation = [re.sub('<[^<]+?>', '', step) for step in preparation]
 
     
@@ -76,7 +76,7 @@ def recipe_detail(request, slug):
 
     # Display a form to users, so they can add comments to a recipe post
     # Make form functinal by adding POST preparation
-    if request.preparation == "POST":
+    if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
@@ -99,7 +99,6 @@ def recipe_detail(request, slug):
         {"recipe": recipe,
         "recipe_title": recipe_title,
         "saved_recipe": saved_recipe,
-        "ingredients": ingredients,
         "preparation": preparation,
         "recipe_liked": recipe_liked,
         "comments": comments,

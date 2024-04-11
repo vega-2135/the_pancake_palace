@@ -58,6 +58,18 @@ a {
     display: none; /* Hide the alert */
   }
 
+ul {
+    list-style-type: none; /* Remove default list style */
+}
+
+ul li::before {
+    content: "• "; /* Add your custom marker */
+    color: black; /* Example styling */
+}
+
+.ingredients{
+margin-bottom: 10px;
+}
 
 /* Comments section */
 .faded {
