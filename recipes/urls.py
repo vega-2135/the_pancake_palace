@@ -14,7 +14,8 @@ urlpatterns = [
     path('remove/<slug:slug>/', views.remove_recipe, name='remove_recipe'),
     path('like/<slug:slug>/', views.like_recipe, name='like_recipe'),
     path('share/', views.ShareRecipe.as_view(), name='share_recipe'),
-    path('edit/<slug:slug>', views.EditRecipe.as_view(),name='edit_recipe'),
-    path('delete/<slug:slug>', views.DeleteRecipe.as_view(),name='delete_recipe'),
+    path('edit/<slug:slug>/', views.EditRecipe.as_view(), name='edit_recipe'),
     path('submitted-recipes/', views.SubmittedRecipes.as_view(), name='submitted_recipes'),
+    path('delete_submitted/<slug:slug>/', views.delete_submitted_recipe, name='delete_submitted_recipe'),
+    
 ]

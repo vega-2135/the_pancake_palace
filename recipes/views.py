@@ -174,7 +174,7 @@ class ShareRecipe(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'share_recipe.html'
-    #success_url = reverse_lazy('submitted_recipes')
+    success_url = reverse_lazy('submitted_recipes')
 
     def get_context_data(self, **kwargs):
         # Add ingredients formset, preparation formset and page title to context.
@@ -329,26 +329,29 @@ class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
                 form.instance.status = 0
                 messages.success(self.request, 'Recipe successfully edited')
             return super().form_valid(form) 
+        
 
+def delete_submitted_recipe(request, slug):
+    """
+    view to delete submitted recipe
+    """
+    queryset = Recipe.objects.all()
+    recipe = get_object_or_404(queryset, slug=slug)
 
-class DeleteRecipe(LoginRequiredMixin, RecipeOwnership, DeleteView):
-    '''
-    Allow authenticated user that passes RecipeOwnership to delete recipes.
-    '''
-    model = Recipe
-    template_name = 'confirm_deletion_recipe.html'
-    success_url = reverse_lazy('submitted_recipes')
-    success_message = "Recipe successfully deleted"
+    if recipe.status == 1:
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Delete Recipe'
-        return context
+        if recipe.author == request.user:
+            recipe.delete()
+            messages.add_message(request, messages.SUCCESS, 'Recipe deleted!')
+        else:
+            messages.add_message(request, messages.ERROR, "You can only" 
+                                 "delete your own recipes!")
 
-    # Display success message
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, self.success_message)
-        return super().delete(request, *args, **kwargs)   
+    else:
+        messages.add_message(request, messages.ERROR, "You can only delete " 
+                "published recipes, wait for approval to delete the recipe")
+    
+    return HttpResponseRedirect(reverse('submitted_recipes'))
 
 
 class SubmittedRecipes(LoginRequiredMixin, ListView):
