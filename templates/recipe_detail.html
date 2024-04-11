@@ -45,26 +45,30 @@
 
 <div class="mb-4">
   <div class="card-header text-bg-light ingredients"><h2 class="mb-4">Ingredients</h2>
-    <table class="table">
-      {% for ingredient in recipe.ingredients %}
-      <ul>
-        <li>{{ ingredient.quantity }} {{ ingredient.name|lower }}</li>
-      </ul>
-      {% endfor %}
-  </table>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-10">
+          {% for ingredient in recipe.ingredients %}
+          <ul>
+            <li>{{ ingredient.quantity }} {{ ingredient.name|lower }}</li>
+          </ul>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="mb-4">
-    <div class="card-header text-bg-light"><h2>Preparation</h2>
+    <div class="card-header text-bg-light"><h2 class="mb-4">Preparation</h2>
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-10">
+                  {% for step in recipe.preparation %}
                     <ul>
-                        {% for step in preparation %}
-                            <li>{{ step }}</li> 
-                        {% endfor %}
-                    </ul> 
+                        <li>{{ step }}</li> 
+                    </ul>
+                  {% endfor %} 
                 </div>
             </div>
         </div>

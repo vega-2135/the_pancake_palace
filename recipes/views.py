@@ -54,16 +54,7 @@ def recipe_detail(request, slug):
 
     if recipe.saved.filter(id=request.user.id).exists():
         saved_recipe = True
-    
-
-    # Split ingredients and preparation steps into se#veral strings 
   
-    preparation = recipe.preparation.split('<br>')
-    # Remove any HTML tags 
-    # ingredients = [re.sub('<[^<]+?>', '', ingredient) for ingredient in ingredients]
-    preparation = [re.sub('<[^<]+?>', '', step) for step in preparation]
-
-    
     # Set liked to false by default
     recipe_liked = False
     
@@ -99,7 +90,6 @@ def recipe_detail(request, slug):
         {"recipe": recipe,
         "recipe_title": recipe_title,
         "saved_recipe": saved_recipe,
-        "preparation": preparation,
         "recipe_liked": recipe_liked,
         "comments": comments,
         "comment_count": comment_count,
