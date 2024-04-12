@@ -400,3 +400,15 @@ def like_recipe(request, slug):
         recipe.likes.add(request.user)
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
+# Recipes categorys
+def popular_pancakes(request):
+    recipe_list = Recipe.objects.filter(category=0)
+    return render(request, 'popular_pancakes.html', {'recipe_list': recipe_list})
+
+def pancakes_kids(request):
+    recipe_list = Recipe.objects.filter(category=1)
+    return render(request, 'pancakes_kids.html', {'recipe_list': recipe_list})
+
+def vegan_pancakes(request):
+    recipe_list = Recipe.objects.filter(category=2)
+    return render(request, 'vegan_pancakes.html', {'recipe_list': recipe_list})

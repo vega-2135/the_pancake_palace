@@ -1,0 +1,41 @@
+{% load static %}
+
+<div class="col-md-4">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="image-container">
+                <div class="image-flash">
+                    <p class="author">Author: {{ recipe.author }}</p>
+                </div>
+            </div>
+            <a href="{% url 'recipe_detail' recipe.slug %}">
+                <h2 class="card-title">{{ recipe.title }}</h2>
+            </a>
+            <hr>
+            <p class="card-text text-muted h6">{{ recipe.created_on }}</p>
+            <div>
+                {% if request.user.is_authenticated %}
+                    {% if saved_recipe %}
+                        <div class="button-group">
+                            <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
+                            <a href="{% url 'like_recipe' recipe.slug %}" class="btn like-btn"><i class="fa-solid fa-heart"></i></a>
+                            <span id="likes">{{ recipe.likes_count }}</span>
+                        </div>
+                    {% else %}
+                        <div class="button-group">
+                            <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary">Save</a>
+                            <a href="{% url 'like_recipe' recipe.slug %}" class="btn like-btn"><i class="fa-solid fa-heart"></i></a>
+                            <span id="likes">{{ recipe.likes_count }}</span>
+                        </div> 
+                    {% endif %}
+                {% else %}
+                    <div>
+                        <a href="{% url 'account_login' %}" class="btn btn-outline-primary">Save</a>
+                        <span><i class="fa-solid fa-heart"></i></span>
+                        <span id="likes">{{ recipe.likes_count }}</span>
+                    </div>
+                {% endif %}   
+              </div>
+        </div>
+    </div>
+</div>

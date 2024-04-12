@@ -7,6 +7,9 @@
 {% url 'account_logout' as logout_url %}
 {% url 'saved_recipes' as saved_recipes_url %}
 {% url 'submitted_recipes' as submitted_recipes_url %}
+{% url 'popular_pancakes' as popular_pancakes_url %}
+{% url 'pancakes_kids' as pancakes_kids_url %}
+{% url 'vegan_pancakes' as vegan_pancakes_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -116,15 +119,15 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav me-2 text-end">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular
+                        <a href="{% url 'popular_pancakes' %}" class="nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular
                             Pancakes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == pancakes_for_kids_url %}active{% endif %}">Pancakes for
+                        <a href="{% url 'pancakes_kids' %}" class="nav-link {% if request.path == pancakes_for_kids_url %}active{% endif %}">Pancakes for
                             Kids</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == vegan_pancakes_url %}active{% endif %}">Vegan
+                        <a href="{% url 'vegan_pancakes' %}" class="nav-link {% if request.path == vegan_pancakes_url %}active{% endif %}">Vegan
                             Pancakes</a>
                     </li>
                     <li class="nav-item">
