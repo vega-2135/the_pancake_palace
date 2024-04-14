@@ -65,23 +65,34 @@ def recipe_detail(request, slug):
     comments = recipe.comments.all().order_by("-created_on")
     comment_count = recipe.comments.filter(approved=True).count()
 
-    # Display a form to users, so they can add comments to a recipe post
-    # Make form functinal by adding POST preparation
+    # Display a form to users, so they can add comments and rate a recipe post
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
+        rating_form = RatingForm(data=request.POST)
+        if comment_form.is_valid() and rating_form.is_valid():
+            # Process comment
             comment = comment_form.save(commit=False)
             comment.author = request.user
             comment.recipe = recipe
-            print(comment_form)
-            print(recipe)
             comment.save()
+
+            # Process rating
+            rating = rating_form.cleaned_data['rating']
+            current_rating = recipe.rating if recipe.rating else 0
+            num_of_ratings = recipe.number_of_ratings if recipe.number_of_ratings else 0
+            new_average_rating = ((current_rating * num_of_ratings) + int(rating)) / (num_of_ratings + 1)
+            recipe.rating = round(new_average_rating, 2)
+            recipe.number_of_ratings = num_of_ratings + 1
+            recipe.save()
             messages.add_message(
                 request, messages.SUCCESS,
-                'Your comment will be submitted once approved.'
+                'Your comment and rating will be submitted once approved.'
             )
+            return redirect('recipe_detail', slug=slug)
 
-    comment_form = CommentForm()
+    else:
+        comment_form = CommentForm()
+        rating_form = RatingForm()
     
 
     return render(
@@ -94,26 +105,32 @@ def recipe_detail(request, slug):
         "comments": comments,
         "comment_count": comment_count,
         "comment_form": comment_form,
+        "rating_form": rating_form, 
         },
     )
 
-def rate_recipe(request, recipe_id):
-    recipe = get_object_or_404(Recipe, pk=recipe_id)
+
+# def rate_recipe(request, slug):
+#     recipe = get_object_or_404(Recipe, slug=slug)
     
-    if form.is_valid():
-            rating = form.cleaned_data['rating']
-            # Calculate the new average rating
-            current_rating = recipe.rating if recipe.rating else 0
-            num_of_ratings = recipe.num_of_ratings if recipe.num_of_ratings else 0
-            new_average_rating = ((current_rating * num_of_ratings) + int(rating)) / (num_of_ratings + 1)
-            recipe.rating = round(new_average_rating, 2)
-            recipe.num_of_ratings = num_of_ratings + 1
-            recipe.save()
-            return redirect('recipe_detail', recipe_id=recipe.id)
-    else:
-        form = RatingForm()
-    
-    return render(request, 'rate_recipe.html', {'form': form})
+#     if request.method == 'POST':
+#         form = RatingForm(request.POST)
+#         if form.is_valid():
+#                 print("yeii")
+#                 rating = form.cleaned_data['rating']
+#                 # Calculate the new average rating
+#                 current_rating = recipe.rating if recipe.rating else 0
+#                 num_of_ratings = recipe.number_of_ratings if recipe.number_of_ratings else 0
+#                 new_average_rating = ((current_rating * num_of_ratings) + int(rating)) / (num_of_ratings + 1)
+#                 recipe.rating = round(new_average_rating, 2)
+#                 recipe.num_of_ratings = num_of_ratings + 1
+#                 recipe.save()
+#                 return redirect('recipe_detail', slug=slug)
+#         else:
+#             form = RatingForm()
+        
+#     LOGGER.info("hello")
+#     return render(request, 'rate_recipe.html', {'form': form})
 
 
 def comment_edit(request, slug, comment_id):
