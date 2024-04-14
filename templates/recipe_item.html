@@ -97,6 +97,10 @@
                         <div class="button-group">
                             <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary save-btn">Save</a>
                         </div>
+                        {% else %}
+                        <div class="button-group">
+                            <a href="{% url 'account_login' %}" class="btn btn-outline-primary save-btn">Save</a>
+                        </div>
                         {% endif %}
                     </div>
                 </div>
