@@ -136,3 +136,18 @@ btn-shadow {
 #likes {
     margin-left: -10px;
 }
+
+.item-title {
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+}
+
+.num-ratings {
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.save-btn {
+    margin-left: -20px;
+}
