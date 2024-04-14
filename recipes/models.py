@@ -81,5 +81,14 @@ class Comment(models.Model):
     def __str__(self):
         return f'Comment {self.content} by {self.author}'
     
+    def recipe_title(self):
+        return self.recipe.title
+    
+    def recipe_rating(self):
+        return self.recipe.rating
+
+    def recipe_number_of_ratings(self):
+        return self.recipe.number_of_ratings
+    
 
 
