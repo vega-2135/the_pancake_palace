@@ -137,6 +137,7 @@ btn-shadow {
     margin-left: -10px;
 }
 
+/* Recipe item */
 .item-title {
     font-size: 25px;
     font-weight: 400;
@@ -150,4 +151,9 @@ btn-shadow {
 
 .save-btn {
     margin-left: -20px;
+}
+
+/* Recioe detail page */
+.recipe-title {
+    font-size: 30px;
 }
