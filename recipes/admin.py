@@ -27,10 +27,22 @@ class CommentAdmin(admin.ModelAdmin):
     '''
     Register comment model.
     '''
-    list_display = ('author', 'created_on', 'approved')
+    list_display = ('author', 'recipe_title', 'recipe_rating', 'created_on', 'approved')
     search_fields = ['author', 'content']
     list_filter = ('created_on', 'approved')
     actions = ['approve_comments']
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
+    
+    def recipe_title(self, obj):
+        return obj.recipe_title()
+
+    def recipe_rating(self, obj):
+        return obj.recipe_rating()
+
+    def recipe_number_of_ratings(self, obj):
+        return obj.recipe_number_of_ratings()
+    
+    recipe_rating.short_description = 'Recipe Rating'
+    recipe_number_of_ratings.short_description = 'Number of Ratings'
