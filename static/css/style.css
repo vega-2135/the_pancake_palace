@@ -3,13 +3,9 @@ body {
 }
 
 .recipe-img {
-    width: 500px;
+    width: 700px;
     height: auto;
     margin-bottom: 100px;
-}
-
-.card-header {
-  margin-bottom: 150px;
 }
 
 .about-text {
@@ -59,17 +55,14 @@ a {
   }
 
 ul {
-    list-style-type: none; /* Remove default list style */
+    list-style-type: none; 
 }
 
 ul li::before {
-    content: "• "; /* Add your custom marker */
-    color: black; /* Example styling */
+    content: "• "; 
+    color: black; 
 }
 
-.ingredients{
-margin-bottom: 10px;
-}
 
 /* Comments section */
 .faded {
@@ -155,5 +148,5 @@ btn-shadow {
 
 /* Recioe detail page */
 .recipe-title {
-    font-size: 30px;
+    font-size: 35px;
 }
