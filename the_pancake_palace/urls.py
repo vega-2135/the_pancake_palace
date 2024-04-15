@@ -28,3 +28,9 @@ urlpatterns = [
     path("summernote/", include('django_summernote.urls')),
     path("", include("recipes.urls"), name="recipes-urls"),
 ]
+
+
+handler400 = 'the_pancake_palace.views.error_400'
+handler403 = 'the_pancake_palace.views.error_403'
+handler404 = 'the_pancake_palace.views.error_404'
+handler500 = 'the_pancake_palace.views.error_500'
