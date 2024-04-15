@@ -11,6 +11,8 @@
             <div class="row">
                 {% for recipe in recipe_list %}
                 {% include 'recipe_item.html' %}
+                {% empty %}
+                    <p>There is no recipe at the moment</p>
                 {% if forloop.counter|divisibleby:3 %}
                 {% endif %}
                 {% endfor %}

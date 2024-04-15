@@ -195,6 +195,8 @@
             <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
             {% endif %}
           </div>
+          {% empty %}
+            <p>No comments yet, be the first to leave a comment.</p>
           {% endfor %}
         </div>
       </div>
