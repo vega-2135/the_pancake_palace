@@ -109,30 +109,7 @@ def recipe_detail(request, slug):
         },
     )
 
-
-# def rate_recipe(request, slug):
-#     recipe = get_object_or_404(Recipe, slug=slug)
-    
-#     if request.method == 'POST':
-#         form = RatingForm(request.POST)
-#         if form.is_valid():
-#                 print("yeii")
-#                 rating = form.cleaned_data['rating']
-#                 # Calculate the new average rating
-#                 current_rating = recipe.rating if recipe.rating else 0
-#                 num_of_ratings = recipe.number_of_ratings if recipe.number_of_ratings else 0
-#                 new_average_rating = ((current_rating * num_of_ratings) + int(rating)) / (num_of_ratings + 1)
-#                 recipe.rating = round(new_average_rating, 2)
-#                 recipe.num_of_ratings = num_of_ratings + 1
-#                 recipe.save()
-#                 return redirect('recipe_detail', slug=slug)
-#         else:
-#             form = RatingForm()
-        
-#     LOGGER.info("hello")
-#     return render(request, 'rate_recipe.html', {'form': form})
-
-
+@login_required
 def comment_edit(request, slug, comment_id):
     """
     Function to edit comments
@@ -155,7 +132,7 @@ def comment_edit(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
-
+@login_required
 def comment_delete(request, slug, comment_id):
     """
     view to delete comment
@@ -336,7 +313,7 @@ class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
                 messages.success(self.request, 'Recipe successfully edited')
             return super().form_valid(form) 
         
-
+@login_required
 def delete_submitted_recipe(request, slug):
     """
     view to delete submitted recipe
@@ -417,7 +394,7 @@ def like_recipe(request, slug):
         recipe.likes.add(request.user)
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
-# Recipes categorys
+# Recipes categories
 def popular_pancakes(request):
     recipe_list = Recipe.objects.filter(category=0)
     return render(request, 'popular_pancakes.html', {'recipe_list': recipe_list})
