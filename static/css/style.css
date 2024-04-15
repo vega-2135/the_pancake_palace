@@ -146,7 +146,23 @@ btn-shadow {
     margin-left: -20px;
 }
 
-/* Recioe detail page */
+/* Recipe detail page */
 .recipe-title {
     font-size: 35px;
+}
+
+/* Comments */
+.comment-login {
+    font-size: 20px;
+    color: white;
+}
+
+.btn-com-log {
+    height: 45px;
+}
+
+.leave-comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

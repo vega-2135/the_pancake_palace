@@ -137,29 +137,35 @@
           <hr>
       </div>
       <!-- Creating new comments and rating recipe-->
+      {% if user.is_authenticated %}
       <div class="card mb-4 mt-3">
-        <div class="card-body">
-          {% if user.is_authenticated %}
-          <form id="commentForm" method="POST" style="margin-top: 1.3em;">
-            <h3 style="display: flex; align-items: center;">Rate and comment
-              <div class="rating" style="margin-left: auto;">
-                <input type="radio" name="rating" value="5" id="5"><label for="5">&#x2606;</label>
-                <input type="radio" name="rating" value="4" id="4"><label for="4">&#x2606;</label>
-                <input type="radio" name="rating" value="3" id="3"><label for="3">&#x2606;</label>
-                <input type="radio" name="rating" value="2" id="2"><label for="2">&#x2606;</label>
-                <input type="radio" name="rating" value="1" id="1"><label for="1">&#x2606;</label>
-              </div>
-            </h3>
-            <p>Posting as: {{ user.username }}</p>
-            {{ comment_form | crispy }}
-            {% csrf_token %}
-            <button id="submitButton" type="submit" class="btn btn-success">Submit</button>
-          </form>
-          {% else %}
-          <p>Log in to leave a comment</p>
-          {% endif %}
-        </div>
+          <div class="card-body">
+            <form id="commentForm" method="POST" style="margin-top: 1.3em;">
+              <h3 style="display: flex; align-items: center;">Rate and comment
+                <div class="rating" style="margin-left: auto;">
+                  <input type="radio" name="rating" value="5" id="5"><label for="5">&#x2606;</label>
+                  <input type="radio" name="rating" value="4" id="4"><label for="4">&#x2606;</label>
+                  <input type="radio" name="rating" value="3" id="3"><label for="3">&#x2606;</label>
+                  <input type="radio" name="rating" value="2" id="2"><label for="2">&#x2606;</label>
+                  <input type="radio" name="rating" value="1" id="1"><label for="1">&#x2606;</label>
+                </div>
+              </h3>
+              <p>Posting as: {{ user.username }}</p>
+              {{ comment_form | crispy }}
+              {% csrf_token %}
+              <button id="submitButton" type="submit" class="btn btn-success">Submit</button>
+            </form>
+          </div>
       </div>
+      {% else %}
+      <div class="leave-comment">
+        <button class="btn btn-success btn-com-log">
+          <a class="comment-login" href="{% url 'account_login' %}">
+            <p>Log in to leave a comment</p>
+          </a>
+        </button>
+      </div>
+      {% endif %}
       <!-- Displaying Comments -->
       <div class="card mb-4  mt-3">
         <div class="card-header text-bg-light">
