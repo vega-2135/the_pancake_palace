@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.core.exceptions import SuspiciousOperation
 from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseServerError
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.contrib import messages
@@ -24,6 +25,10 @@ import logging
 
 LOGGER = logging.getLogger('django')
 
+# def trigger_500_error(request):
+#     # This view will deliberately raise an exception
+#     # You can customize the exception according to your needs
+#     raise Exception("This is a deliberate exception to trigger a 500 error")
 
 class RecipeList(generic.ListView):
     model = Recipe
@@ -94,12 +99,13 @@ def recipe_detail(request, slug):
             return redirect('recipe_detail', slug=slug)
 
     else:
-        comment_form = CommentForm()
-        rating_form = RatingForm()
+        # comment_form = CommentForm()
+        # rating_form = RatingForm()
         # Uncomment next line to raise a 400 error
         # raise SuspiciousOperation("Title and ingredients are required.")
         # Uncomment next line to raise a 403 error
         # raise PermissionDenied
+        raise Exception("This is a deliberate exception to trigger a 500 error")
     
 
     return render(
