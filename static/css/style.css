@@ -200,3 +200,16 @@ btn-shadow {
     background-repeat: no-repeat;
     height: 80vh; /* Adjust as needed */
 }
+
+.page-403 {
+    background-image: url(../images/403.webp);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh; /* Adjust as needed */
+}
+
+.forbidden-font {
+    color: black;
+    font-size: 1.5rem;
+}
