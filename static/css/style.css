@@ -173,7 +173,7 @@ btn-shadow {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh; /* Adjust as needed */
+    height: 80vh; 
 }
 
 .color-back {
@@ -198,7 +198,7 @@ btn-shadow {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh; /* Adjust as needed */
+    height: 80vh; 
 }
 
 .page-403 {
@@ -206,7 +206,7 @@ btn-shadow {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh; /* Adjust as needed */
+    height: 80vh; 
 }
 
 .forbidden-font {
@@ -219,7 +219,7 @@ btn-shadow {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh; /* Adjust as needed */
+    height: 80vh; 
 }
 
 .internal-error {

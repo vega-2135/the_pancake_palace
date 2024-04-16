@@ -25,11 +25,6 @@ import logging
 
 LOGGER = logging.getLogger('django')
 
-# def trigger_500_error(request):
-#     # This view will deliberately raise an exception
-#     # You can customize the exception according to your needs
-#     raise Exception("This is a deliberate exception to trigger a 500 error")
-
 class RecipeList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1)
@@ -99,13 +94,14 @@ def recipe_detail(request, slug):
             return redirect('recipe_detail', slug=slug)
 
     else:
-        # comment_form = CommentForm()
-        # rating_form = RatingForm()
+        comment_form = CommentForm()
+        rating_form = RatingForm()
         # Uncomment next line to raise a 400 error
         # raise SuspiciousOperation("Title and ingredients are required.")
         # Uncomment next line to raise a 403 error
         # raise PermissionDenied
-        raise Exception("This is a deliberate exception to trigger a 500 error")
+        # Uncomment next line to raise a 500 error
+        #raise Exception("This is a deliberate exception to trigger a 500 error")
     
 
     return render(
