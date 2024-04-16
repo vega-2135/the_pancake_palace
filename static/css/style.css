@@ -167,7 +167,7 @@ btn-shadow {
     align-items: center;
 } 
 
-/* Page 404 */
+/* Error pages */
 .page-404 {
     background-image: url(../images/404_3.webp);
     background-size: contain;
@@ -191,4 +191,12 @@ btn-shadow {
     color: white;
     font-weight: bolder;
     font-size: 1rem;
+}
+
+.page-400 {
+    background-image: url(../images/400.webp);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh; /* Adjust as needed */
 }

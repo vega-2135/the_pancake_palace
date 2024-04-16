@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.core.exceptions import SuspiciousOperation
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.contrib import messages
@@ -69,6 +70,7 @@ def recipe_detail(request, slug):
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         rating_form = RatingForm(data=request.POST)
+        
         if comment_form.is_valid() and rating_form.is_valid():
             # Process comment
             comment = comment_form.save(commit=False)
@@ -93,6 +95,8 @@ def recipe_detail(request, slug):
     else:
         comment_form = CommentForm()
         rating_form = RatingForm()
+        # Raise a 400 error
+        #raise SuspiciousOperation("Title and ingredients are required.")
     
 
     return render(

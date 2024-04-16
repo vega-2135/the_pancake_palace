@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseBadRequest
 
 
 def error_400(request, exception):
@@ -15,3 +16,4 @@ def error_404(request, exception):
 
 def error_500(request):
     return render(request, 'errors/404.html', status=500)
+
