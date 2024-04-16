@@ -1,13 +1,11 @@
-
-
-.recipe-img {
-    width: 500px;
-    height: auto;
-    margin-bottom: 100px;
+body {
+    min-height: 100vh;
 }
 
-.card-header {
-  margin-bottom: 150px;
+.recipe-img {
+    width: 700px;
+    height: auto;
+    margin-bottom: 100px;
 }
 
 .about-text {
@@ -56,6 +54,15 @@ a {
     display: none; /* Hide the alert */
   }
 
+ul {
+    list-style-type: none; 
+}
+
+ul li::before {
+    content: "• "; 
+    color: black; 
+}
+
 
 /* Comments section */
 .faded {
@@ -100,3 +107,68 @@ a {
 .rating:hover>input:checked~label:before {
     opacity: 0.4
 }
+
+/* Buttons */
+
+btn-saved {
+    margin-right: 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+btn-shadow {
+    box-shadow: 6px 5px 0px 0px black;
+}
+
+/* Saved recipe page */
+.save {
+    font-weight: bolder;
+}
+
+/* Likes */
+#likes {
+    margin-left: -10px;
+}
+
+/* Recipe item */
+.item-title {
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+}
+
+.num-ratings {
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.save-btn {
+    margin-left: -20px;
+}
+
+/* Recipe detail page */
+.recipe-title {
+    font-size: 35px;
+}
+
+/* Comments */
+.comment-login {
+    font-size: 20px;
+    color: white;
+}
+
+.btn-com-log {
+    height: 45px;
+}
+
+.leave-comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+/* Page 404 */
+.page-404 {
+    background-image: url(../images/raspberry_passionfruit.webp);
+}
+

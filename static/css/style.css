@@ -165,4 +165,30 @@ btn-shadow {
     display: flex;
     justify-content: center;
     align-items: center;
+} 
+
+/* Page 404 */
+.page-404 {
+    background-image: url(../images/404_3.webp);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh; /* Adjust as needed */
+}
+
+.color-back {
+    background-color: rgb(175, 216, 255);
+}
+
+.footer-font{
+    color: yellow;
+    font-weight: bolder;
+    font-size: 2rem;
+    margin-top: -50px;
+}
+
+.home-link {
+    color: white;
+    font-weight: bolder;
+    font-size: 1rem;
 }
