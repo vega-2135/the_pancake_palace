@@ -16,10 +16,16 @@
             <hr>
             {% if request.user.is_authenticated %}
             {% if saved_recipe %}
-            <div class="container-fluid">
+            <div class="container-fluid d-flex">
                 <div class="row">
+                    <!-- Save Button -->
+                    <div class="col-md-2">
+                        <div class="button-group">
+                            <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
+                        </div>
+                    </div>
                     <!-- Rating and Rating Number -->
-                    <div class="col-md-10 d-flex align-items-center">
+                    <div class="col-md-10 d-flex align-items-center justify-content-end">
                         <div class="rating-stars">
                             {% for i in "xxxxx" %}
                             {% if forloop.counter <= recipe.rating %}
@@ -32,14 +38,6 @@
                         <div>
                             <p class="num-ratings">{{ recipe.number_of_ratings|default_if_none:"0" }}</p>
                         </div>
-                    </div>
-                    <!-- Save Button -->
-                    <div class="col-md-2 text-right">
-                        {% if request.user.is_authenticated %}
-                        <div class="button-group">
-                            <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary save-btn">Save</a>
-                        </div>
-                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -47,8 +45,14 @@
             <!-- Display stars for rating -->
             <div class="container-fluid">
                 <div class="row">
+                     <!-- Save Button -->
+                     <div class="col-md-2">
+                        <div class="button-group">
+                            <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary save-btn">Save</a>
+                        </div>
+                    </div>
                     <!-- Rating and Rating Number -->
-                    <div class="col-md-10 d-flex align-items-center">
+                    <div class="col-md-10 d-flex align-items-center justify-content-end">
                         <div class="rating-stars">
                             {% for i in "xxxxx" %}
                             {% if forloop.counter <= recipe.rating %}
@@ -61,14 +65,6 @@
                         <div>
                             <p class="num-ratings">{{ recipe.number_of_ratings|default_if_none:"0" }}</p>
                         </div>
-                    </div>
-                    <!-- Save Button -->
-                    <div class="col-md-2 text-right">
-                        {% if request.user.is_authenticated %}
-                        <div class="button-group">
-                            <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary save-btn">Save</a>
-                        </div>
-                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -76,8 +72,14 @@
             {% else %}
             <div class="container-fluid">
                 <div class="row">
+                    <!-- Save Button -->
+                    <div class="col-md-2">
+                        <div class="button-group">
+                            <a href="{% url 'account_login' %}" class="btn btn-outline-primary save-btn">Save</a>
+                        </div>
+                    </div>
                     <!-- Rating and Rating Number -->
-                    <div class="col-md-10 d-flex align-items-center">
+                    <div class="col-md-10 d-flex align-items-center justify-content-end">
                         <div class="rating-stars">
                             {% for i in "xxxxx" %}
                             {% if forloop.counter <= recipe.rating %}
@@ -90,18 +92,6 @@
                         <div>
                             <p class="num-ratings">{{ recipe.number_of_ratings|default_if_none:"0" }}</p>
                         </div>
-                    </div>
-                    <!-- Save Button -->
-                    <div class="col-md-2 text-right">
-                        {% if request.user.is_authenticated %}
-                        <div class="button-group">
-                            <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary save-btn">Save</a>
-                        </div>
-                        {% else %}
-                        <div class="button-group">
-                            <a href="{% url 'account_login' %}" class="btn btn-outline-primary save-btn">Save</a>
-                        </div>
-                        {% endif %}
                     </div>
                 </div>
             </div>

@@ -381,7 +381,8 @@ def save_recipe(request, slug):
     else:
         recipe.saved.add(request.user)
 
-    return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+    redirect_url = request.META.get('HTTP_REFERER', reverse('saved_recipes'))
+    return HttpResponseRedirect(redirect_url)
 
 
 @login_required
