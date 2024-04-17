@@ -52,7 +52,7 @@ def recipe_detail(request, slug):
     recipe = get_object_or_404(queryset, slug=slug, status='1')
     recipe_title = recipe.title
 
-    saved_recipe = bool
+    saved_recipe = False
 
     if recipe.saved.filter(id=request.user.id).exists():
         saved_recipe = True
@@ -376,11 +376,10 @@ def saved_recipes(request):
 @login_required
 def save_recipe(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
-    if recipe.saved.filter(id=request.user.id).exists():
-        recipe.saved.remove(request.user)
-    else:
+    if not recipe.saved.filter(id=request.user.id).exists():
         recipe.saved.add(request.user)
-
+    recipe.saved_boolean = True
+    recipe.save()
     redirect_url = request.META.get('HTTP_REFERER', reverse('saved_recipes'))
     return HttpResponseRedirect(redirect_url)
 
@@ -390,6 +389,8 @@ def remove_recipe(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
     if recipe.saved.filter(id=request.user.id).exists():
         recipe.saved.remove(request.user)
+    recipe.saved_boolean = False
+    recipe.save()
     # Redirect the user back to the referring page, or to a default page if the 
     # referring page is not available
     redirect_url = request.META.get('HTTP_REFERER', reverse('saved_recipes'))

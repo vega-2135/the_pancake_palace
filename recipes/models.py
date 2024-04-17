@@ -18,10 +18,6 @@ CATEGORY = (
 # Recipe Model
 class Recipe(models.Model):
         
-    # class NewManager(models.Manager):
-    #     def get_queryset(self):
-    #         return super().get_queryset() .filter(status='1')
-        
     title = models.CharField(max_length=200, unique=True)
     slug = AutoSlugField(populate_from='title', unique=True)
     author = models.ForeignKey(
@@ -42,6 +38,7 @@ class Recipe(models.Model):
         User, related_name="saved_recipes", default=None, blank=True)
     likes = models.ManyToManyField(
         User, related_name='recipe_likes', blank=True)
+    saved_boolean = models.BooleanField(default=False)
     rating = models.IntegerField(null=True, blank=True)
     number_of_ratings = models.IntegerField(null=True, blank=True)
     approved = models.BooleanField(default=False)
