@@ -54,15 +54,6 @@ a {
     display: none; /* Hide the alert */
   }
 
-ul {
-    list-style-type: none; 
-}
-
-ul li::before {
-    content: "• "; 
-    color: black; 
-}
-
 
 /* Comments section */
 .faded {
