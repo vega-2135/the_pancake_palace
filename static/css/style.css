@@ -122,10 +122,16 @@ btn-shadow {
 }
 
 /* Recipe item */
+.card-style {
+    height: 650px;
+}
+
 .item-title {
     font-size: 25px;
     font-weight: 400;
     color: black;
+    height: 60px;
+    text-align: center;
 }
 
 .num-ratings {

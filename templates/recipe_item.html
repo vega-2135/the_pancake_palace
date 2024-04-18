@@ -2,11 +2,11 @@
 
 <div class="col-md-4">
     <div class="card mb-4">
-        <div class="card-body">
+        <div class="card-body card-style">
             <div class="image-container">
                 <div class="image-flash">
                     <a href="{% url 'recipe_detail' recipe.slug %}"><img class="card-img"
-                            src="{% static 'images/rasperry_passionfruit.webp' %}"
+                            src="{% static 'images/raspberry_passionfruit.webp' %}"
                             alt="Raspberry-Passion fruit pancakes"></a>
                 </div>
             </div>
@@ -16,7 +16,7 @@
             <hr>
             {% if request.user.is_authenticated %}
             <div class="container-fluid">
-                <div class="row">
+                <div class="row mb-3">
                     <!-- Save Button -->
                     <div class="col-md-2">
                         <div class="button-group">
