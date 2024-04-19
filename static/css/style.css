@@ -2,6 +2,46 @@ body {
     min-height: 100vh;
 }
 
+.page-title {
+    font-size: 25px;
+} 
+
+/* Nav bar */
+nav {
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-nav-group {
+    display: flex;
+}
+
+.navbar-nav-group:first-child {
+    margin-left: -10px; /* Adjust this value to shift the first group to the left */
+}
+
+.navbar-nav-group:last-child {
+    margin-right: -10px; /* Adjust this value to shift the second group to the right */
+}
+
+.popular {
+    margin-left: 155px;
+}
+
+.marg {
+    margin-right: 50px;
+}
+
+.contact-me {
+    margin-right: 145px;
+}
+
 .recipe-img {
     width: 700px;
     height: auto;

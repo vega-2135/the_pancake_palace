@@ -43,7 +43,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="{% url 'home' %}">
+            <a class="page-title navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'images/site_logo.webp' %}" alt="Site Logo" width="65" height="65"
                     class="d-inline-block align-text-middle">
                 The Pancake Palace
@@ -105,34 +105,36 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white">
         <div class="container-fluid">
             <!-- Categories -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-                <ul class="navbar-nav me-2 text-end">
-                    <li class="nav-item">
-                        <a href="{% url 'popular_pancakes' %}" class="nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular
-                            Pancakes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'pancakes_kids' %}" class="nav-link {% if request.path == pancakes_for_kids_url %}active{% endif %}">Pancakes for
-                            Kids</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'vegan_pancakes' %}" class="nav-link {% if request.path == vegan_pancakes_url %}active{% endif %}">Vegan
-                            Pancakes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link
-                          {% if request.path == about_url %}active{%endif%}" aria-current="page"
-                            href="{% url 'about' %}">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link
-                          {% if request.path == contact_url %}active{%endif%}" aria-current="page"
-                            href="{% url 'contact' %}">Contact Me</a>
-                    </li>
-                </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav-group">
+                    <ul class="navbar-nav me-2 text-end">
+                        <!-- First Group: Popular Pancakes, Pancakes for Kids, Vegan Pancakes -->
+                        <li class="nav-item">
+                            <a href="{% url 'popular_pancakes' %}" class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular Pancakes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'pancakes_kids' %}" class="marg  nav-link {% if request.path == pancakes_for_kids_url %}active{% endif %}">Pancakes for Kids</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'vegan_pancakes' %}" class="marg  nav-link {% if request.path == vegan_pancakes_url %}active{% endif %}">Vegan Pancakes</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-nav-group">
+                    <ul class="navbar-nav me-2 text-end">
+                        <!-- Second Group: About, Contact Me -->
+                        <li class="nav-item">
+                            <a class="marg nav-link {% if request.path == about_url %}active{%endif%}" aria-current="page" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="contact-me nav-link {% if request.path == contact_url %}active{%endif%}" aria-current="page" href="{% url 'contact' %}">Contact Me</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
+    
 
      <!-- Notifications -->
     <div class="container">
