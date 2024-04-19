@@ -11,7 +11,7 @@
                 </div>
             </div>
             <a href="{% url 'recipe_detail' recipe.slug %}">
-                <h2 class="card-title item-title">{{ recipe.title }}</h2>
+                <h2 class="card-title item-title mt-3">{{ recipe.title }}</h2>
             </a>
             <hr>
             {% if request.user.is_authenticated %}
