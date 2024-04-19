@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView
+from django.core.paginator import Paginator
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recipe, Comment
 import re
@@ -158,7 +159,7 @@ def comment_delete(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
-# Share recipe views
+#### Share recipe view ####
 class ShareRecipe(LoginRequiredMixin, CreateView):
     '''
     Allow authenticated user to access create recipe form to submit recipes.
@@ -405,7 +406,28 @@ def like_recipe(request, slug):
         recipe.likes.add(request.user)
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
-# Recipes categories
+#### Search recipes ####
+class RecipeSearch(ListView):
+    model = Recipe
+    context_object_name = 'recipes'
+    template_name = 'search.html'
+    paginate_by = 6
+
+    def get_queryset(self):
+        if self.request.method == 'GET':
+            search_query = self.request.GET.get('search_query')
+            recipes = Recipe.objects.filter(title__icontains=search_query)
+            return recipes
+        else:
+            return Recipe.objects.none()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('search_query')
+        return context
+
+
+#### Recipes categories ####
 def popular_pancakes(request):
     recipe_list = Recipe.objects.filter(category=0)
     return render(request, 'popular_pancakes.html', {'recipe_list': recipe_list})

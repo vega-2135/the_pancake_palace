@@ -9,7 +9,7 @@ body {
 /* Nav bar */
 nav {
     margin-top: 10px;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -23,11 +23,11 @@ nav {
 }
 
 .navbar-nav-group:first-child {
-    margin-left: -10px; /* Adjust this value to shift the first group to the left */
+    margin-left: -10px; 
 }
 
 .navbar-nav-group:last-child {
-    margin-right: -10px; /* Adjust this value to shift the second group to the right */
+    margin-right: -10px;
 }
 
 .popular {
@@ -86,7 +86,7 @@ a {
 .message {
     border: 1px solid gray;
     border-radius: 10px;
-    background-color: yellow;
+    background-color: lightblue;
     font-size: 25px;
 }
 
