@@ -166,6 +166,11 @@ btn-shadow {
     height: 650px;
 }
 
+.card, .separator {
+    width: 700px;
+}
+
+
 .item-title {
     font-size: 25px;
     font-weight: 400;
@@ -181,6 +186,10 @@ btn-shadow {
 
 .save-btn {
     margin-left: -20px;
+}
+
+.sav-btn {
+    margin-left: -15px;
 }
 
 /* Recipe detail page */

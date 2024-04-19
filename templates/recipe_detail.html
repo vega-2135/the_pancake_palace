@@ -16,7 +16,7 @@
           {% if saved_recipe %}
           <div class="col-md-4">
             <div class="button-group">
-              <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
+              <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary sav-btn">Remove</a>
             </div>
           </div>
           <div class="col-md-4">
@@ -43,7 +43,7 @@
           {% else %}
           <div class="col-md-4">
             <div class="button-group">
-              <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary">Save</a>
+              <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary sav-btn">Save</a>
             </div>
           </div>
           <div class="col-md-4">
@@ -70,7 +70,7 @@
           {% endif %}
           {% else %}
           <div class="col-md-4">
-            <a href="{% url 'account_login' %}" class="btn btn-outline-primary">Save</a>
+            <a href="{% url 'account_login' %}" class="btn btn-outline-primary sav-btn">Save</a>
           </div>
           <div class="col col-md-4">
             <a href="{% url 'like_recipe' recipe.slug %}" class="btn like-btn"><i class="fa-solid fa-heart"></i></a>
@@ -134,7 +134,7 @@
         <strong class="text-secondary">
           <i class="fa-regular fa-comments"></i> {{ comment_count }}
         </strong>
-          <hr>
+          <hr class="separator">
       </div>
       <!-- Creating new comments and rating recipe-->
       {% if user.is_authenticated %}
@@ -225,6 +225,11 @@
     </div>
     <div class="col-lg-4">
       <!-- Insert three recipes of same category here -->
+      {% for i in "xxx" %}
+        {% for recipe in recipe_list %}
+            <p>{{recipe.title}}</p>
+        {% endfor %}
+      {% endfor %}
     </div>
   </div>
 </div>
