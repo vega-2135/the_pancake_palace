@@ -8,9 +8,6 @@ def reach_out(request):
     """
     Renders the Contact page
     """
-    contact = ReachOut.objects.all()
-    reachout_form = ReachOutForm()
-
     if request.method == "POST":
         reachout_form = ReachOutForm(data=request.POST)
         if reachout_form.is_valid():
@@ -18,6 +15,9 @@ def reach_out(request):
             messages.add_message(request, messages.SUCCESS, 
                 "Thank you for reaching out, I endeavour to respond within"
                 "2-3 working days.")
+            
+    contact = ReachOut.objects.all()
+    reachout_form = ReachOutForm()
 
     return render(
         request,
