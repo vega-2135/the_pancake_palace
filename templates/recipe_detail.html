@@ -100,7 +100,7 @@
         <img src="{% static 'images/classic_pancakes.webp' %}" class="recipe-img" alt="Blue-Barry Pancakes">
       </div>
       <!-- Ingredients -->
-      <div class="card mb-5">
+      <div class="card card-width mb-5">
         <div class="card-header text-bg-light">
           <h2 class="mb-4">Ingredients</h2>
           <div class="card-body">
@@ -113,7 +113,7 @@
         </div>
       </div>
       <!-- Preparation steps -->
-      <div class="card">
+      <div class="card card-width">
         <div class="card-header text-bg-light">
           <h2 class="mb-4">Preparation</h2>
           <div class="card-body">
@@ -134,7 +134,7 @@
         <strong class="text-secondary">
           <i class="fa-regular fa-comments"></i> {{ comment_count }}
         </strong>
-          <hr class="separator">
+          <hr class="card-width">
       </div>
       <!-- Creating new comments and rating recipe-->
       {% if user.is_authenticated %}

@@ -166,7 +166,7 @@ btn-shadow {
     height: 650px;
 }
 
-.card, .separator {
+.card-width {
     width: 700px;
 }
 
@@ -188,9 +188,6 @@ btn-shadow {
     margin-left: -20px;
 }
 
-.sav-btn {
-    margin-left: -15px;
-}
 
 /* Recipe detail page */
 .recipe-title {
