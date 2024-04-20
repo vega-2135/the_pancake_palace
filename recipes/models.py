@@ -65,7 +65,7 @@ class Comment(models.Model):
         Recipe, on_delete=models.CASCADE, related_name='comments'
     )
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='commenter')
-    content = models.TextField()
+    content = models.TextField(help_text="Remember to also rate the recipe before submitting a comment.")
     likes = models.ManyToManyField(
         User, related_name='comment_likes', blank=True)
     created_on = models.DateTimeField(auto_now_add=True)

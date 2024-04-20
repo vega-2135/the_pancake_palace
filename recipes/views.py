@@ -93,6 +93,11 @@ def recipe_detail(request, slug):
                 'Your comment and rating will be submitted once approved.'
             )
             return redirect('recipe_detail', slug=slug)
+        else:
+            messages.warning(
+                        request,
+                        ('You must rate the recipe if you want to leave a comment')
+                    )
 
     else:
         comment_form = CommentForm()

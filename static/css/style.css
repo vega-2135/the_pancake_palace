@@ -86,8 +86,19 @@ a {
 .message {
     border: 1px solid gray;
     border-radius: 10px;
-    background-color: lightblue;
     font-size: 25px;
+}
+
+.success {
+    background-color: green;
+}
+
+.warning {
+    background-color: #ffec99;
+}
+
+.error {
+    background-color: red;
 }
 
 .hide {
