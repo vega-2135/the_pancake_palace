@@ -209,7 +209,8 @@ li::marker {
 
 /* Recipe detail page */
 .recipe-title {
-    font-size: 35px;
+    font-size: 3.5rem;
+    font-weight: bold;
 }
 
 /* Comments */
