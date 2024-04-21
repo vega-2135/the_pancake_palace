@@ -236,6 +236,12 @@ li::marker {
     background-color: rgb(175, 216, 255);
 }
 
+/* Pagination section */
+.pagination {
+    background-color: white;
+}
+
+/* Footer */
 footer {
     background-color: rgb(171, 196, 255);
     bottom: 0;
@@ -245,7 +251,6 @@ footer {
 
 .footer-font{
     font-size: 20px;
-    font-weight: bold;
     margin-left: 15px;
 }
 
