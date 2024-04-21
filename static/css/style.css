@@ -62,12 +62,6 @@ nav {
     margin-top: 50px;
 }
 
-footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-
 .google-icon {
     border: 2px solid rgb(177, 169, 169);
     border-radius: 10px;
@@ -242,11 +236,21 @@ li::marker {
     background-color: rgb(175, 216, 255);
 }
 
+footer {
+    background-color: rgb(171, 196, 255);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
 .footer-font{
-    color: yellow;
-    font-weight: bolder;
-    font-size: 2rem;
-    margin-top: -50px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+i {
+    font-size: 20px;
 }
 
 .home-link {
