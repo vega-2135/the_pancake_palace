@@ -217,3 +217,12 @@ LOGGING = {
 MESSAGE_TAGS = {
    messages.WARNING: 'alert-warning',
 }
+
+
+SUMMERNOTE_CONFIG = {
+    # You can put custom Summernote settings
+    'summernote': {
+        'fontNames': ['Roboto', 'Comic Neue', 'Noto San', 'Open Sans'],
+        'fontNamesIgnoreCheck': ['Roboto', 'Comic Neue', 'Noto San', 'Open Sans'],
+    },
+}
