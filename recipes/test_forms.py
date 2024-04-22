@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .forms import CommentForm
 from .forms import RecipeForm
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 
 class TestCommentForm(TestCase):
@@ -16,16 +17,16 @@ class TestCommentForm(TestCase):
 
 class TestRecipeForm(TestCase):
 
-    # def test_form_is_valid(self):
-    #     recipe_form = RecipeForm({
-    #         'title': 'test',
-    #         'recipe_image': 'image.jpeg',
-    #         'category': 'Popular',
-    #         'cooking_duration': '20',
-    #         'servings': '2',
-    #         'make_public':'True'
-    #     })
-    #     self.assertTrue(recipe_form.is_valid(), msg='Form is not valid')
+    def test_form_is_valid(self):
+        recipe_form = RecipeForm({
+            'title': 'test',
+            'category': '1',
+            'cooking_duration': '20',
+            'servings': '2',
+            'make_public': 'True',
+            'recipe_image': ''
+        })
+        self.assertTrue(recipe_form.is_valid(), msg='Form is not valid')
 
     def test_title_is_required(self):
         recipe_form = RecipeForm({
@@ -56,6 +57,8 @@ class TestRecipeForm(TestCase):
             'make_public':''
         })
         self.assertFalse(recipe_form.is_valid(), msg='Form is not valid')
+
+
 
 
   
