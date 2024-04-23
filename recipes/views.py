@@ -57,7 +57,12 @@ def recipe_detail(request, slug):
     # Find all 'p' tags and extract their text
     ingredients = [p.text for p in soup.find_all('p')]
 
-    print(ingredients)
+    preparation = recipe.preparation
+    soup2 = BeautifulSoup(preparation, 'html.parser')
+    preparation = [p.text for p in soup2.find_all('p')]
+    print(preparation)
+
+   
 
 
     saved_recipe = False
@@ -123,6 +128,7 @@ def recipe_detail(request, slug):
         {"recipe": recipe,
         "recipe_title": recipe_title,
         "ingredients": ingredients,
+        "preparation": preparation,
         "saved_recipe": saved_recipe,
         "recipe_liked": recipe_liked,
         "comments": comments,
