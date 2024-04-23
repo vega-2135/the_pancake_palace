@@ -33,6 +33,8 @@ class RecipeForm(ModelForm):
         fields = [
             'title',
             'recipe_image',
+            'ingredients',
+            'preparation',
             'category',
             'cooking_duration',
             'servings',
@@ -50,79 +52,3 @@ class RecipeForm(ModelForm):
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
-
-class IngredientsWidget(MultiWidget, TextInput):
-    '''
-    A widget that is composed of multiple widgets.
-    '''
-    def __init__(self):
-        widgets = [
-            forms.TextInput(attrs={
-                'placeholder': 'Enter Ingredient',
-                'required': True
-            }),
-            forms.TextInput(attrs={
-                'placeholder': 'Enter Amount',
-                'required': True
-            })
-        ]
-        super().__init__(widgets)
-
-    # define how to extract values from data to be displayed in the widget.
-    def decompress(self, value):
-        if value:
-            return [value['ingredient'], value['amount']]
-        return ['', '']
-
-
-class IngredientsField(MultiValueField):
-    '''
-    Define the ingredients field properties that uses the above multiwidget.
-    '''
-    widget = IngredientsWidget()
-
-    def __init__(self, **kwargs):
-        fields = [
-            forms.CharField(max_length=50),
-            forms.CharField(max_length=50),
-        ]
-        super().__init__(fields=fields, **kwargs)
-
-    # define how to process the values provided into a single piece of data.
-    def compress(self, data_list):
-        ingredients_dict = dict(
-            ingredient=data_list[1],
-            amount=data_list[0]
-        )
-        return ingredients_dict
-
-class IngredientsForm(Form):
-    '''
-    Form class for ingredients form.
-    '''
-    ingredients = IngredientsField(
-        label='',
-        help_text='Enter an ingredient and amount or remove empty fields.'
-    )
-
-
-class PreparationForm(Form):
-    '''
-    Form class for preparation steps form.
-    '''
-    preparation = forms.CharField(
-        label='',
-        help_text='Enter preparation step or remove empty fields.',
-        widget=Textarea(attrs={
-            'placeholder': 'Enter preparation step',
-            'rows': '3',
-            'required': True
-        })
-    )
-
-
-# Create formset class to add multiple of the same form
-IngredientsFormset = formset_factory(IngredientsForm)
-
-PreparationFormset = formset_factory(PreparationForm)
-

@@ -14,11 +14,7 @@ from .models import Recipe, Comment
 import re
 import json
 from .forms import CommentForm
-from .forms import (
-    RecipeForm,
-    IngredientsFormset,
-    PreparationFormset,
-    CommentForm)
+from .forms import (RecipeForm, CommentForm)
 from .forms import RatingForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import logging
@@ -174,71 +170,13 @@ class ShareRecipe(LoginRequiredMixin, CreateView):
     template_name = 'share_recipe.html'
     success_url = reverse_lazy('submitted_recipes')
 
-    def get_context_data(self, **kwargs):
-        # Add ingredients formset, preparation formset and page title to context.
-        context = super().get_context_data(**kwargs)
-        if self.request.POST:
-            context['ingredients_formset'] = IngredientsFormset(
-                self.request.POST,
-                prefix='ingredients'
-            )
-            context['preparation_formset'] = PreparationFormset(
-                self.request.POST,
-                prefix='preparation'
-            )
-            context['page_title'] = 'Share Recipe'
-        else:
-            context['ingredients_formset'] = IngredientsFormset(
-                prefix='ingredients'
-            )
-            context['preparation_formset'] = PreparationFormset(prefix='preparation')
-            context['page_title'] = 'Create Recipe'
-        return context
+    queryset = Recipe.objects.all()
     
-    def form_valid(self, form):
-        # Validate submitted form.
-        context = self.get_context_data()
-        ingredients_formset = context['ingredients_formset']
-        preparation_formset = context['preparation_formset']
+    
 
-        if ingredients_formset.is_valid() and preparation_formset.is_valid():
-            # get cleaned data from ingredients formset
-            ingredients_input = ingredients_formset.cleaned_data
-            # convert ingredients input data into json string
-            ingredients_json = json.dumps(ingredients_input)
-            preparation_input = preparation_formset.cleaned_data
-            preparation_json = json.dumps(preparation_input)
-            # set author as current user
-            form.instance.author = self.request.user
-            # set ingredients as ingredients json string
-            form.instance.ingredients = ingredients_json
-            form.instance.preparation = preparation_json
-            # if publish request check box is checked
-            if form.instance.make_public:
-                # if recipe does not include ingredients or preparation,
-                # save but don't submit for publication
-                if (form.instance.ingredients == "[]" or
-                        form.instance.preparation == "[]"):
-                    form.instance.make_public = False
-                    # display message informing user recipe requires
-                    # ingredients and preparation for publication
-                    messages.warning(
-                        self.request,
-                        ('Recipe saved but requires ingredients and '
-                            'preparation for publication')
-                    )
-                else:
-                    # set approval status to 'pending approval'
-                    form.instance.approved = False
-                    messages.success(
-                        self.request,
-                        'Recipe successfully created and awaiting approval'
-                    )
-            else:
-                # approval status will be set to 'unpublished' by default
-                messages.success(self.request, 'Recipe saved in your recipes')
-            return super().form_valid(form)
-        
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)   
 
 class RecipeOwnership(UserPassesTestMixin):
     '''

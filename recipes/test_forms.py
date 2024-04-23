@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .forms import CommentForm
 from .forms import RecipeForm
-from django.core.files.uploadedfile import SimpleUploadedFile
+from .forms import IngredientsForm
 
 
 class TestCommentForm(TestCase):
@@ -57,8 +57,15 @@ class TestRecipeForm(TestCase):
             'make_public':''
         })
         self.assertFalse(recipe_form.is_valid(), msg='Form is not valid')
+        
 
+class TestIngredientsForm(TestCase):
 
+    def test_ingredient_is_required(self):
+        ingredients_form = IngredientsForm({
+            'ingredients': ['flour', '1 cup']
+        })
+        self.assertTrue(ingredients_form.is_valid(), msg='Form is not valid')
 
 
   
