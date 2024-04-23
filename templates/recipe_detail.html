@@ -104,9 +104,9 @@
         <div class="card-header text-bg-light">
           <h2 class="mb-4">Ingredients</h2>
           <div class="card-body">
-            {% for ingredient in recipe.ingredients %}
+            {% for ingredient in ingredients %}
             <ul>
-              <li>{{ ingredient.quantity }} {{ ingredient.name|lower }}</li>
+              <li>{{ ingredient }}</li>
             </ul>
             {% endfor %} 
           </div>

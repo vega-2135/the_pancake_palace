@@ -1,5 +1,7 @@
 asgiref==3.8.1
+beautifulsoup4==4.12.3
 bleach==6.1.0
+bs4==0.0.2
 certifi==2024.2.2
 cffi==1.16.0
 charset-normalizer==3.3.2
@@ -25,6 +27,7 @@ python3-openid==3.2.0
 requests==2.31.0
 requests-oauthlib==2.0.0
 six==1.16.0
+soupsieve==2.5
 sqlparse==0.4.4
 urllib3==1.26.18
 webencodings==0.5.1

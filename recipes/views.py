@@ -18,6 +18,7 @@ from .forms import (RecipeForm, CommentForm)
 from .forms import RatingForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import logging
+from bs4 import BeautifulSoup
 
 
 LOGGER = logging.getLogger('django')
@@ -48,6 +49,16 @@ def recipe_detail(request, slug):
     # Return recipe with the correct slug
     recipe = get_object_or_404(queryset, slug=slug, status='1')
     recipe_title = recipe.title
+
+    ingredients = recipe.ingredients
+    # Parse the HTML string with BeautifulSoup
+    soup = BeautifulSoup(ingredients, 'html.parser')
+
+    # Find all 'p' tags and extract their text
+    ingredients = [p.text for p in soup.find_all('p')]
+
+    print(ingredients)
+
 
     saved_recipe = False
 
@@ -111,6 +122,7 @@ def recipe_detail(request, slug):
         "recipe_detail.html",
         {"recipe": recipe,
         "recipe_title": recipe_title,
+        "ingredients": ingredients,
         "saved_recipe": saved_recipe,
         "recipe_liked": recipe_liked,
         "comments": comments,
