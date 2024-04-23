@@ -2,14 +2,10 @@ from django import forms
 from django.forms import (
     Form,
     ModelForm,
-    MultiWidget,
-    MultiValueField,
-    TextInput,
-    Textarea,
-    SelectMultiple,
-    formset_factory
 )
 from .models import Recipe, Comment
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Field
 
 
 class CommentForm(forms.ModelForm):
@@ -42,13 +38,22 @@ class RecipeForm(ModelForm):
         ]
         labels = {
             'make_public': 'Make Public',
-            'cooking_duration': 'Cooking duration (minutes)'
+            'cooking_duration': 'Cooking duration (minutes)',
+            'ingredients': 'Ingredients (add as in the example below)',
+            'preparation': 'Preparation (add as in the example below)'
         }
         widgets = {
             'title': forms.TextInput(attrs={
                 'placeholder': 'Enter recipe title'
             }),
+            'ingredients': forms.Textarea(attrs={
+                'placeholder': '1 cup flour \n1 cup milk...',
+                'rows': 8,
+                'cols': 40
+            }),
+            'preparation': forms.Textarea(attrs={
+                'placeholder': 'Step 1: Add ingredients \nStep 2: Cook mixture...',
+                'rows': 8,
+                'cols': 40
+            })
         }
-
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
