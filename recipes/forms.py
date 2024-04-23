@@ -49,11 +49,11 @@ class RecipeForm(ModelForm):
             'ingredients': forms.Textarea(attrs={
                 'placeholder': '1 cup flour \n1 cup milk...',
                 'rows': 8,
-                'cols': 40
+                'cols': 10
             }),
             'preparation': forms.Textarea(attrs={
                 'placeholder': 'Step 1: Add ingredients \nStep 2: Cook mixture...',
                 'rows': 8,
-                'cols': 40
+                'cols': 10
             })
         }

@@ -237,6 +237,12 @@ li::marker {
     background-color: white;
 }
 
+.recipe-form {
+    width: 800px;
+    height: auto;
+}
+
+
 /* Footer */
 footer {
     background-color: rgb(171, 196, 255);
