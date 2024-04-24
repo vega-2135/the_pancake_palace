@@ -5,26 +5,48 @@
     <h1 class="save">Saved Recipes</h1>
     <hr>
     <div class="row">
-
         <!-- Recipes Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for recipe in new_added_recipe %}
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        <div class="card-body">
+                        <div class="card-body card-style">
                             <div class="image-container">
                                 <div class="image-flash">
-                                    <p class="author">Author: {{ recipe.author }}</p>
+                                    <a href="{% url 'recipe_detail' recipe.slug %}"><img class="card-img"
+                                            src="{% static 'images/raspberry_passionfruit.webp' %}"
+                                            alt="Raspberry-Passion fruit pancakes"></a>
                                 </div>
                             </div>
                             <a href="{% url 'recipe_detail' recipe.slug %}">
-                                <h2 class="card-title">{{ recipe.title }}</h2>
+                                <h2 class="card-title item-title mt-3">{{ recipe.title }}</h2>
                             </a>
                             <hr>
-                            <p class="card-text text-muted h6">{{ recipe.created_on }}</p>
-                            <div>
-                                <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
+                            <div class="container-fluid">
+                                <div class="row mb-3">
+                                    <!-- Save Button -->
+                                    <div class="col-md-2">
+                                        <div class="button-group">
+                                            <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
+                                        </div>
+                                    </div>
+                                    <!-- Rating and Rating Number -->
+                                    <div class="col-md-10 d-flex align-items-center justify-content-end">
+                                        <div class="rating-stars">
+                                            {% for i in "xxxxx" %}
+                                            {% if forloop.counter <= recipe.rating %}
+                                            <i class="fa-solid fa-star" style="color: gold;"></i>
+                                            {% else %}
+                                            <i class="fa-solid fa-star"></i>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        <div>
+                                            <p class="num-ratings">{{ recipe.number_of_ratings|default_if_none:"0" }}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
