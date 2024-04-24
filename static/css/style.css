@@ -43,10 +43,17 @@ nav {
     margin-right: 145px;
 }
 
+.subtitle {
+    width: 787px;
+}
+
 .recipe-img {
+    display: block;
     width: 790px;
     height: auto;
     margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
