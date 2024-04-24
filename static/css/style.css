@@ -246,6 +246,7 @@ li::marker {
 /* Footer */
 footer {
     background-color: rgb(171, 196, 255);
+    position:absolute;
     bottom: 0;
     left: 0;
     width: 100%;
