@@ -47,12 +47,12 @@ class RecipeForm(ModelForm):
                 'placeholder': 'Enter recipe title'
             }),
             'ingredients': forms.Textarea(attrs={
-                'placeholder': '1 cup flour \n1 cup milk...',
+                'placeholder': '1 cup flour, 1 cup milk...',
                 'rows': 8,
                 'cols': 10
             }),
             'preparation': forms.Textarea(attrs={
-                'placeholder': 'Step 1: Add ingredients \nStep 2: Cook mixture...',
+                'placeholder': 'Step 1: Add ingredients., Step 2: Cook mixture. ...',
                 'rows': 8,
                 'cols': 10
             })

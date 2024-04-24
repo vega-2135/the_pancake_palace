@@ -104,11 +104,11 @@
         <div class="card-header text-bg-light">
           <h2 class="mb-4">Ingredients</h2>
           <div class="card-body">
-            {% for ingredient in ingredients %}
             <ul>
-              <li>{{ ingredient }}</li>
-            </ul>
-            {% endfor %} 
+              {% for ingredient in ingredients %}
+                  <li>{{ ingredient }}</li>
+              {% endfor %}
+              </ul>
           </div>
         </div>
       </div>
