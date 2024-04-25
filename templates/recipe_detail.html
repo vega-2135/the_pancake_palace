@@ -4,7 +4,15 @@
 
 
 <!-- Recipe title  -->
-<h1 class="recipe-title text-center">{{ recipe.title }}</h1>
+<div class="recipe-header mt-5">
+  <h1 class="recipe-title text-center">{{ recipe.title }}</h1>
+  <div class="d-flex gap-3">
+     {% if user == recipe.author %}
+     <a class="btn btn-warning btn-edit" href="{% url 'edit_recipe' recipe.slug %}" role="button">Edit</a>
+     <a class="btn btn-danger btn-delete" href="{% url 'delete_submitted_recipe' recipe.slug %}" role="button">Delete</a>
+     {% endif %}
+  </div>
+ </div>
 <!-- Recipe author  -->
 <p class="recipe-subtitle text-center">{{ recipe.created_on|date:"F j, Y" }} by @{{ recipe.author }}</p>
 <div class="container-fluid subtitle mt-5">

@@ -227,9 +227,17 @@ li::marker {
 
 
 /* Recipe detail page */
+.recipe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1500px;
+   }
+
 .recipe-title {
     font-size: 3.5rem;
     font-weight: bold;
+    padding-left: 150px;
 }
 
 /* Comments */
@@ -240,6 +248,12 @@ li::marker {
 
 .btn-com-log {
     height: 45px;
+}
+
+.btn-edit, .btn-delete {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
 }
 
 .leave-comment {
