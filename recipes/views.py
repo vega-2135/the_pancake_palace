@@ -67,7 +67,7 @@ def recipe_detail(request, slug):
         soup2 = BeautifulSoup(preparation, 'html.parser')
         preparation = [p.text for p in soup2.find_all('p')]
     else:
-        preparation = preparation.split(',')
+        preparation = preparation.split('.,')
    
 
     saved_recipe = False
@@ -267,8 +267,8 @@ class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
 
         if form.is_valid():
             form.instance.author = self.request.user
-            form.instance.ingredients = self.ingredients
-            form.instance.preparation = self.preparation
+            form.instance.ingredients = form.cleaned_data.get('ingredients')
+            form.instance.preparation = form.cleaned_data.get('preparation')
             if form.instance.make_public:
                 # if recipe does not include ingredients or preparation,
                 # save but don't submit for publication
