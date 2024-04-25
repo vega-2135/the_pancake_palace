@@ -44,12 +44,19 @@ nav {
 }
 
 .subtitle {
-    width: 787px;
+    width: 1000px;
+}
+
+.rtn {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
 }
 
 .recipe-img {
     display: block;
-    width: 790px;
+    width: 1000px;
     height: auto;
     margin-bottom: 100px;
     margin-left: auto;
@@ -171,16 +178,30 @@ btn-shadow {
 }
 
 /* Recipe item */
+.card, .comments-count {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .card-style {
     height: 650px;
 }
 
 .card-width {
-    width: 790px;
+    width: 1000px;
 }
 
 .card-border {
     border: 2px solid rgb(171, 196, 255);
+}
+
+.comments-count {
+    width: 1000px;
+}
+
+.add-inf {
+    font-weight: bold;
 }
 
 li::marker {

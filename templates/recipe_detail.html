@@ -7,7 +7,7 @@
 <h1 class="recipe-title text-center">{{ recipe.title }}</h1>
 <!-- Recipe author  -->
 <p class="recipe-subtitle text-center">{{ recipe.created_on|date:"F j, Y" }} by @{{ recipe.author }}</p>
-<div class="container-fluid subtitle">
+<div class="container-fluid subtitle mt-5">
   <div class="row">
     {% if request.user.is_authenticated %}
     {% if saved_recipe %}
@@ -22,7 +22,7 @@
     </div>
     <div class="col-md-4">
       <!-- Rating and Rating Number -->
-      <div class="col-md-10 d-flex">
+      <div class="col-md-10 rtn">
         <div class="rating-stars">
           {% for i in "xxxxx" %}
           {% if forloop.counter <= recipe.rating %}
@@ -96,6 +96,17 @@
 <div class="mt-3">
   <img src="{% static 'images/classic_pancakes.webp' %}" class="recipe-img card-border" alt="Blue-Barry Pancakes">
 </div>
+<!-- Servings, coocking duration and category -->
+<div class="container-fluid card card-width card-border mb-5">
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <p class="mt-3"><strong>Cook Time:</strong> {{ recipe.cooking_duration}} mins</p>
+    </div>
+    <div class="col-md-6 text-center">
+      <p class="mt-3"><strong>Servings:</strong> {{ recipe.servings}}</p>
+    </div>
+  </div>
+</div>
 <!-- Ingredients -->
 <div class="card card-width card-border mb-5">
   <div class="card-header text-bg-light">
@@ -127,7 +138,7 @@
   </div>
 </div>
 <!-- Displaying count of comments -->
-<div class="mt-5">
+<div class="mt-5 comments-count">
   <strong class="text-secondary">
     <i class="fa-regular fa-comments"></i> {{ comment_count }}
   </strong>

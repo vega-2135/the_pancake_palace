@@ -69,10 +69,6 @@ def recipe_detail(request, slug):
     else:
         preparation = preparation.split(',')
    
-    
-
-   
-
 
     saved_recipe = False
 
@@ -263,43 +259,16 @@ class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.request.POST:
-            context['ingredients_formset'] = IngredientsFormset(
-                self.request.POST,
-                initial=json.loads(self.object.ingredients),
-                prefix='ingredients'
-            )
-            context['preparation_formset'] = PreparationFormset(
-                self.request.POST,
-                initial=json.loads(self.object.preparation),
-                prefix='preparation'
-            )
-            context['page_title'] = 'Edit Recipe'
-        else:
-            context['ingredients_formset'] = IngredientsFormset(
-                initial=json.loads(self.object.ingredients),
-                prefix='ingredients'
-            )
-            context['preparation_formset'] = PreparationFormset(
-                initial=json.loads(self.object.preparation),
-                prefix='preparation'
-            )
-            context['page_title'] = 'Edit Recipe'
+        context['page_title'] = 'Edit Recipe'
         return context
 
     def form_valid(self, form):
         context = self.get_context_data()
-        ingredients_formset = context['ingredients_formset']
-        preparation_formset = context['preparation_formset']
 
-        if ingredients_formset.is_valid() and preparation_formset.is_valid():
-            ingredients_input = ingredients_formset.cleaned_data
-            ingredients_json = json.dumps(ingredients_input)
-            preparation_input = preparation_formset.cleaned_data
-            preparation_json = json.dumps(preparation_input)
+        if form.is_valid():
             form.instance.author = self.request.user
-            form.instance.ingredients = ingredients_json
-            form.instance.preparation = preparation_json
+            form.instance.ingredients = self.ingredients
+            form.instance.preparation = self.preparation
             if form.instance.make_public:
                 # if recipe does not include ingredients or preparation,
                 # save but don't submit for publication
@@ -334,19 +303,13 @@ def delete_submitted_recipe(request, slug):
     queryset = Recipe.objects.all()
     recipe = get_object_or_404(queryset, slug=slug)
 
-    if recipe.status == 1:
-
-        if recipe.author == request.user:
-            recipe.delete()
-            messages.add_message(request, messages.SUCCESS, 'Recipe deleted!')
-        else:
-            messages.add_message(request, messages.ERROR, "You can only" 
-                                 "delete your own recipes!")
-
+    if recipe.author == request.user:
+        recipe.delete()
+        messages.add_message(request, messages.SUCCESS, 'Recipe deleted!')
     else:
-        messages.add_message(request, messages.ERROR, "You can only delete " 
-                "published recipes, wait for approval to delete the recipe")
-    
+        messages.add_message(request, messages.ERROR, "You can only" 
+                                "delete your own recipes!")
+
     return HttpResponseRedirect(reverse('submitted_recipes'))
 
 
