@@ -188,7 +188,7 @@ btn-shadow {
     height: 650px;
 }
 
-.card-width {
+.card-width, .comments-count {
     width: 1000px;
 }
 
@@ -196,12 +196,14 @@ btn-shadow {
     border: 2px solid rgb(171, 196, 255);
 }
 
-.comments-count {
-    width: 1000px;
+.likes_class {
+  justify-content: center;
+  display: flex;
 }
 
-.add-inf {
-    font-weight: bold;
+.rating_class {
+    justify-content: end;
+    width: 100%;
 }
 
 li::marker {
