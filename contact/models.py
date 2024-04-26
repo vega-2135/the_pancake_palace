@@ -6,7 +6,7 @@ class Contact(models.Model):
     content = models.TextField()
 
     def __str__(self):
-        return f"title: {self.title}\ncontent: {self.content}"
+        return self.title
 
 class ReachOut(models.Model):
     name = models.CharField(max_length=200)

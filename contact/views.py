@@ -1,10 +1,12 @@
-from django.shortcuts import render
 from django.contrib import messages
-from .models import ReachOut
+from django.shortcuts import get_object_or_404, render
+
+from contact.models import Contact
+
 from .forms import ReachOutForm
 
 
-def reach_out(request):
+def contact_me(request):
     """
     Renders the Contact page
     """
@@ -16,13 +18,17 @@ def reach_out(request):
                 "Thank you for reaching out, I endeavour to respond within"
                 "2-3 working days.")
             
-    contact = ReachOut.objects.all()
+    
+
+    queryset = Contact.objects.all()
+    contact = get_object_or_404(queryset)
     reachout_form = ReachOutForm()
 
     return render(
         request,
         "contact.html",
-        {"contact": contact,
-         "reachout_form": reachout_form
+        {
+            "contact": contact,
+            "reachout_form": reachout_form
         },
     )
