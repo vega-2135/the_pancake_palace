@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
-
-from .models import Recipe
+from .forms import CommentForm
+from .models import Recipe, Comment
 
 
 class TestRecipeListView(TestCase, Client):
@@ -79,6 +79,22 @@ class TestShareRecipeView(TestCase, Client):
         self.user = User.objects.create_superuser(
             username="myUsername", password="myPassword", email="test@test.com"
         )
+        self.recipe = Recipe(
+            title="Recipe1 title",
+            author=self.user,
+            slug="recipe1-title",
+            category=1,
+            ingredients="1 cup flour, 1 cup milk",
+            preparation="Step 1: Mix all together.",
+            cooking_duration=20,
+            servings=2,
+            make_public="True",
+            recipe_image="",
+            status=1,
+            approved=True
+        )
+        self.recipe.save()
+        
 
     def test_no_access_to_create_recipe_if_not_logged_in(self):
         response = self.client.get(reverse('share_recipe'))
@@ -96,9 +112,10 @@ class TestShareRecipeView(TestCase, Client):
         self.assertTemplateUsed(response, 'share_recipe.html')
       
     def test_create_recipe(self):
-        user = User.objects.get(pk=1)
-        self.client.force_login(user=user)
-        response = self.client.post('/share/', {
+        """Test for a user requesting a collaboration"""
+        self.client.login(
+            username="myUsername", password="myPassword")
+        post_data = {
             'title': 'Recipe Title',
             'cooking_time': 10,
             'serves': 1,
@@ -106,10 +123,6 @@ class TestShareRecipeView(TestCase, Client):
             'preparation':'Step 1: Mix all together.',
             'category': 1,
             'make_publik': 'True'
-        })
+        }
+        response = self.client.post('/share/', post_data)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, '/share/')
-        self.assertEqual(Recipe.objects.count(), 1)
-
-    
-

@@ -184,37 +184,7 @@ def comment_delete(request, slug, comment_id):
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
 
-#### Share recipe view ####
-
-class ShareRecipe(LoginRequiredMixin, CreateView):
-    model = Recipe
-    form_class = RecipeForm
-    template_name = 'share_recipe.html'
-    success_url = reverse_lazy('submitted_recipes')
-    success_message = "Recipe was submitted and awaiting approval"
-    
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        # Extract ingredients from the form
-        ingredients = form.cleaned_data['ingredients']
-        # Save the ingredients to the instance
-        form.instance.ingredients = ingredients
-        # Save the form instance
-        if form.is_valid():
-            form.save()
-            print(ingredients)
-        # Add a success message
-        messages.success(self.request, self.success_message)
-        # Redirect to the success URL
-        return super().form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
-        # Add the ingredients to the context
-        context['ingredients'] = self.object.ingredients if self.object else []
-        print(context)
-        return context
+# Share recipe view #
 
 class ShareRecipe(LoginRequiredMixin, CreateView):
     '''
@@ -224,10 +194,6 @@ class ShareRecipe(LoginRequiredMixin, CreateView):
     form_class = RecipeForm
     template_name = 'share_recipe.html'
     success_url = reverse_lazy('submitted_recipes')
-
-    queryset = Recipe.objects.all()
-    
-    
 
     def form_valid(self, form):
         form.instance.author = self.request.user
