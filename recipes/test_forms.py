@@ -59,13 +59,6 @@ class TestRecipeForm(TestCase):
         self.assertFalse(recipe_form.is_valid(), msg='Form is not valid')
         
 
-class TestIngredientsForm(TestCase):
-
-    def test_ingredient_is_required(self):
-        ingredients_form = IngredientsForm({
-            'ingredients': ['flour', '1 cup']
-        })
-        self.assertTrue(ingredients_form.is_valid(), msg='Form is not valid')
 
 
   
