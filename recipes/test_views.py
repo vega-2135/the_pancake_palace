@@ -2,9 +2,53 @@ from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
 from .forms import CommentForm
-from .models import Recipe, Comment
+from .models import Recipe
 
+class TestRecipeDetailView(TestCase):
 
+    def setUp(self):
+        self.user = User.objects.create_superuser(
+            username="myUsername",
+            password="myPassword",
+            email="test@test.com"
+        )
+        self.recipe = Recipe(
+            title="Recipe title",
+            author=self.user,
+            slug="recipe-title",
+            category=1,
+            ingredients="1 cup flour, 1 cup milk",
+            preparation="Step 1: Mix all together.",
+            cooking_duration=20,
+            servings=2,
+            make_public="True",
+            recipe_image="",
+            status=1,
+            approved=True
+        )
+        self.recipe.save()
+
+    def test_render_post_detail_page_with_comment_form(self):
+        response = self.client.get(reverse(
+            'recipe_detail', args=['recipe-title']))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"Recipe title", response.content)
+        self.assertIsInstance(
+            response.context['comment_form'], CommentForm)
+        
+
+    def test_successful_comment_submission(self):
+        """Test for posting a comment on a post"""
+        self.client.login(
+            username="myUsername", password="myPassword")
+        post_data = {
+            'content': 'This is a test comment.'
+        }
+        response = self.client.post(reverse(
+            'recipe_detail', args=['recipe-title']), post_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"This is a test comment.", response.content)
+        
 class TestRecipeListView(TestCase, Client):
 
     def setUp(self):
@@ -72,7 +116,6 @@ class TestRecipeListView(TestCase, Client):
         ).order_by('-created_on')
         self.assertQuerysetEqual(test_qs, expected_qs)
 
-
 class TestShareRecipeView(TestCase, Client):
 
     def setUp(self):
@@ -126,3 +169,6 @@ class TestShareRecipeView(TestCase, Client):
         }
         response = self.client.post('/share/', post_data)
         self.assertEqual(response.status_code, 200)
+
+
+        
