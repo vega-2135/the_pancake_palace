@@ -6,13 +6,11 @@
     <div class="row justify-content-center">
             <div class="col-12 col-md-6 my-5">
                 {% if request.user.is_authenticated %}
-                <h2 class="mb-3">Welcome, {{ request.user.username }}!</h2>
+                <h2 class="mb-3">{{contact.title}}, {{ request.user.username }}!</h2>
                 {% else %}
                 <h2>Welcome!</h2>
                 {% endif %}
-                <p>Feel free to reach out to me using the form below. Whether you have insights to enhance our recipes, 
-                    feedback to improve our content, or anything else you'd like to share, I'm all ears! Your input is highly 
-                    valued and appreciated. Looking forward to connecting with you.</p>
+                {{contact.content | safe}}
 
                 <form method="post">
                     {{ reachout_form | crispy }}
