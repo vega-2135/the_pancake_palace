@@ -229,8 +229,6 @@ class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
         return context
 
     def form_valid(self, form):
-        context = self.get_context_data()
-
         if form.is_valid():
             form.instance.author = self.request.user
             form.instance.ingredients = form.cleaned_data.get('ingredients')

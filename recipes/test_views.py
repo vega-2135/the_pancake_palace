@@ -1,8 +1,10 @@
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
+
 from .forms import CommentForm
 from .models import Recipe
+
 
 class TestRecipeDetailView(TestCase):
 
@@ -171,4 +173,55 @@ class TestShareRecipeView(TestCase, Client):
         self.assertEqual(response.status_code, 200)
 
 
+
         
+
+class TestEditRecipeView(TestCase, Client):
+
+    def setUp(self):
+        self.user = User.objects.create_superuser(
+            username="myUsername", password="myPassword", email="test@test.com"
+        )
+        self.user1 = User.objects.create_superuser(
+            username="myUsername2", password="myPassword2", email="test@test2.com"
+        )
+        self.recipe = Recipe(
+            title="Recipe title",
+            author_id=1,
+            category=1,
+            ingredients="1 cup flour, 1 cup milk",
+            preparation="Step 1: Mix all together.",
+            cooking_duration=20,
+            servings=2,
+            make_public="True",
+            recipe_image="",
+            status=1,
+            approved=True
+        )
+        self.recipe.save()
+
+    def test_no_access_to_edit_recipe_if_not_logged_in_(self):
+        response = self.client.get(reverse(
+            'edit_recipe',
+            kwargs={'slug': 'recipe-title'}
+        ))
+        self.assertRedirects(response, '/accounts/login/?next=/edit/recipe-title/')
+        
+    def test_user_is_not_author_redirect(self):
+        user = User.objects.get(pk=2)
+        self.client.force_login(user=user)
+        response = self.client.get(reverse(
+            'edit_recipe',
+            kwargs={'slug': 'recipe-title'}
+        ))
+        self.assertEqual(response.status_code, 403)
+
+    def test_authenticated_recipe_author_can_access_edit_recipe_page(self):
+        user = User.objects.get(pk=1)
+        self.client.force_login(user=user)
+        response = self.client.get(reverse(
+            'edit_recipe',
+            kwargs={'slug': 'recipe-title'}
+        ))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'share_recipe.html')
