@@ -17,3 +17,11 @@ Welcome to The Pancake Palace, your go-to destination for an array of mouthwater
 6. [Local Development and Deployment](#6-local-development-and-deployment)
 7. [Testing](#7-testing)
 8. [Credits](#8-credits)
+
+## 1. User Experience (UX)
+
+### User Stories
+
+User stories were generated through [GitHub Issues](https://github.com/vega-2135/the_pancake_palace/issues), with story points assigned based on estimated task completion times. Milestones and appropriate tags were also applied for organization.
+
+Explore the user stories below in the section labeled [User Story Testing(), and delve deeper into comprehensive details, including screenshots, story points, milestones, and tags, by visiting [GitHub Issues](https://github.com/vega-2135/the_pancake_palace/issues).
