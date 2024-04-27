@@ -41,13 +41,13 @@ Furthermore, GitHub milestones were employed to group related user stories, enha
 
 ![Kanban Board](docs_readme/images/project_kanban.png)
 
-- ### Design
+## 3. Design
 
-- #### Structure
+- ### Structure
 The Recipe Book app boasts a straightforward layout, prioritizing user-friendliness and seamless navigation. Its uniform page structure ensures users can effortlessly locate desired information. With a responsive design, the app adapts seamlessly across various devices, guaranteeing clear visibility. All pages show a navigation menu that offers users a consistent means to explore the site's content. Employing CSS and Bootstrap rows and columns, the app maintains a tidy and cohesive content arrangement throughout its pages.
 
 
-- #### Colour Scheme
+- ### Colour Scheme
 
 The color Light Purple (rgb(171, 196, 255)) was chosen as the background color for the website header and footer, as well as for the listing of ingredients, preparation steps, and borders of card containers.
 
@@ -55,14 +55,59 @@ The color white was chosen as the background color of the website.
 
 The color black was chosen as the font color for all text on the website, as it provides the best contrast with the white background of the website.
 
-- #### Typography
+- ### Typography
 
 In crafting the typography for our website, deliberate consideration was given to ensure optimal readability and aesthetic appeal. To achieve this balance, we've selected the versatile and modern Roboto font as the primary typeface throughout the entire site. Renowned for its clean lines, readability, and versatility across various screen sizes and resolutions, Roboto offers a seamless reading experience. Its uniformity and clarity elevate the presentation of content, ensuring that users can effortlessly engage with our platform's offerings. By employing Roboto consistently across all text elements, from headers to paragraphs, I aim to deliver a cohesive and visually pleasing browsing experience to users.
 
-- #### Wireframes
+- ### Wireframes
 - [Home Page](docs/wireframes/index.png)
 - [Category Pages](docs/wireframes/browse.png)
 - [Saved Recipes.html](docs/wireframes/my_recipe_book.png)
 - [Share Recipe](docs/wireframes/create_edit.png)
 - [About](docs/wireframes/recipe_detail.png)
 
+
+## 4. Database Design
+
+## 5. Features
+
+
+## 6. Technologies used
+### Languages
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
+### Frameworks, Libraries and Packages
+
+- [Django 3.2](https://docs.djangoproject.com/en/3.2/)
+- [Bootstrap 5](https://getbootstrap.com/)
+- [jQuery 3.7.1](https://releases.jquery.com/)
+- [Font Awesome 5.15.4](https://fontawesome.com/)
+- [Google Fonts](https://fonts.google.com/)
+- [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+- [cripsy-bootstrap5](https://github.com/django-crispy-forms/crispy-bootstrap5)
+- [django-allauth](https://django-allauth.readthedocs.io/en/latest/)
+- [django-dynamic-formset](https://github.com/elo80ka/django-dynamic-formset)
+- [django-autoslug](https://django-autoslug.readthedocs.io/en/stable/)
+- [django-taggit](https://django-taggit.readthedocs.io/en/stable/)
+- [coverage](https://coverage.readthedocs.io/en/7.2.7/)
+
+### Tools
+
+- [Git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- [Heroku](https://heroku.com/)
+- [ElephantSQL](https://www.elephantsql.com/)
+- [Cloudinary](https://cloudinary.com/)
+- [Balsamiq](https://balsamiq.com/)
+- [Lucidchart](https://www.lucidchart.com/pages)
+- [Bulkresizephotos](https://bulkresizephotos.com/en?format=webp&quality=93)
+- [favicon.io](https://favicon.io/)
+- [The W3C Markup Validation Service](https://validator.w3.org/)
+- [The W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+- [Code Institute Python Linter](https://pep8ci.herokuapp.com/)
+- [JSHint](https://jshint.com/)
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
