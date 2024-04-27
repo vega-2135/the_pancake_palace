@@ -1,41 +1,39 @@
 {% extends "base.html" %}
-
 {% load static %}
-
 {% block content %}
 
-<!-- index.html content starts here -->
-<div class="container-fluid">
-    <div class="row">
-
-        <!-- Recipes Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for recipe in recipe_list %}
-                {% include 'recipe_item.html' %}
-                {% empty %}
-                    <p>There is no recipe at the moment</p>
-                {% if forloop.counter|divisibleby:3 %}
-                {% endif %}
-                {% endfor %}
-            </div>
+<!-- Hero image and text -->
+<section id="hero" class="row mb-3 py-3 border rounded">
+    <div class="col-md-6 d-flex flex-column justify-content-evenly order-1 order-md-0">
+        <div class="py-4 py-md-0 w-100">
+            <h1 class="pb-0 pb-lg-1 text-center">Recipe Book</h1>
+            <p class="lead text-center">Welcome to The Pancake Palace your ultimate destination for all things pancakes!
+                Whether you're a seasoned pro or a beginner flipping your first flapjacks, our site is your go-to hub 
+                for pancake perfection. Explore a treasure trove of mouthwatering recipes ranging from classic buttermilk 
+                to exotic fruit-infused delights. Join our passionate community of pancake enthusiasts, share your culinary 
+                creations and connect with fellow flapjack aficionados. Get ready to elevate your pancake game to 
+                new heights with The Pancake Palace where every bite is a celebration of fluffy, golden goodness!</p>
+        </div>
+        <div class="py-4 py-md-0 w-100">
+            <p class="lead text-center">
+                Discover fresh flavors and culinary creativity by browsing through our Popular Kids and Vegan pancakes categories!
+            </p>
         </div>
     </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center pagination">
-            {% if page_obj.has_previous %}
-            <li>
-                <a href="?page={{ page_obj.previous_page_number }}"
-                class="page-link">&laquo; PREV</a>
-            </li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
-</div>
+    <div class="col-md-6 my-auto order-0 order-md-1">
+        <img class="img-fluid px-md-auto" src="{% static 'images/home/home_pancakes.webp' %}" alt="Cooking time apron and oven glove.">
+    </div>
+</section>
+
+<!-- Top 3 most liked recipes -->
+<section id="top-rated">
+    <h2>Top Rated Recipes</h2>
+    <div class="row g-3">
+        {% for recipe in recipe_list %}
+        {% include 'recipe_item.html' %}
+        {% endfor %}
+    </div>
+</section>
+
 
 {% endblock %}

@@ -1,34 +1,37 @@
-from django.shortcuts import render, redirect, get_object_or_404, reverse
-from django.core.exceptions import SuspiciousOperation
-from django.core.exceptions import PermissionDenied
-from django.http import HttpResponseServerError
-from django.contrib.auth.decorators import login_required
-from django.views import generic, View
+import logging
+
+from bs4 import BeautifulSoup
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.urls import reverse_lazy
 from django.views.generic import ListView
-from django.core.paginator import Paginator
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Recipe, Comment
-import re
-import json
-from .forms import CommentForm
-from .forms import (RecipeForm, CommentForm)
-from .forms import RatingForm
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.messages.views import SuccessMessageMixin
-import logging
-from bs4 import BeautifulSoup
+from django.views.generic.edit import CreateView, UpdateView
 
+from .forms import CommentForm, RatingForm, RecipeForm
+from .models import Comment, Recipe
 
 LOGGER = logging.getLogger('django')
 
-class RecipeList(generic.ListView):
+
+
+class Index(ListView):
+    '''
+    Return top three most liked recipes that are currently public on the site.
+    '''
     model = Recipe
-    queryset = Recipe.objects.filter(status=1)
-    template_name = "index.html"
-    paginate_by = 6
+    array = model.objects.filter(status=1)
+    queryset = array.order_by('-rating')[:3]
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        # Add extra context of page title.
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Home'
+        return context
+
 
 
 def recipe_detail(request, slug):
@@ -103,6 +106,7 @@ def recipe_detail(request, slug):
             num_of_ratings = recipe.number_of_ratings if recipe.number_of_ratings else 0
             new_average_rating = ((current_rating * num_of_ratings) + int(rating)) / (num_of_ratings + 1)
             recipe.rating = round(new_average_rating, 2)
+            print("HELLO")
             recipe.number_of_ratings = num_of_ratings + 1
             recipe.save()
             messages.add_message(

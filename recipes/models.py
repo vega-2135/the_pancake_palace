@@ -1,9 +1,7 @@
-from django.db import models
-from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
-from taggit.managers import TaggableManager
 from autoslug import AutoSlugField
-
+from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
+from django.db import models
 
 # Recipe post status for admin users
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -39,8 +37,8 @@ class Recipe(models.Model):
     likes = models.ManyToManyField(
         User, related_name='recipe_likes', blank=True)
     saved_boolean = models.BooleanField(default=False)
-    rating = models.IntegerField(null=True, blank=True)
-    number_of_ratings = models.IntegerField(null=True, blank=True)
+    rating = models.IntegerField(default=0)
+    number_of_ratings = models.IntegerField(default=0)
     approved = models.BooleanField(default=False)
     make_public = models.BooleanField(
         default=False,
@@ -53,7 +51,7 @@ class Recipe(models.Model):
 
     
     def __str__(self):
-        return self.title
+        return f"title: {self.title}, rating: {self.rating}, likes: {self.likes}, #ratings: {self.number_of_ratings}"
     
     def likes_count(self):
         return self.likes.count()
