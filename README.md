@@ -40,3 +40,29 @@ Furthermore, GitHub milestones were employed to group related user stories, enha
 ![Github Issues](docs_readme/images/issues_page.png)
 
 ![Kanban Board](docs_readme/images/project_kanban.png)
+
+- ### Design
+
+- #### Structure
+The Recipe Book app boasts a straightforward layout, prioritizing user-friendliness and seamless navigation. Its uniform page structure ensures users can effortlessly locate desired information. With a responsive design, the app adapts seamlessly across various devices, guaranteeing clear visibility. All pages show a navigation menu that offers users a consistent means to explore the site's content. Employing CSS and Bootstrap rows and columns, the app maintains a tidy and cohesive content arrangement throughout its pages.
+
+
+- #### Colour Scheme
+
+The color Light Purple (rgb(171, 196, 255)) was chosen as the background color for the website header and footer, as well as for the listing of ingredients, preparation steps, and borders of card containers.
+
+The color white was chosen as the background color of the website.
+
+The color black was chosen as the font color for all text on the website, as it provides the best contrast with the white background of the website.
+
+- #### Typography
+
+In crafting the typography for our website, deliberate consideration was given to ensure optimal readability and aesthetic appeal. To achieve this balance, we've selected the versatile and modern Roboto font as the primary typeface throughout the entire site. Renowned for its clean lines, readability, and versatility across various screen sizes and resolutions, Roboto offers a seamless reading experience. Its uniformity and clarity elevate the presentation of content, ensuring that users can effortlessly engage with our platform's offerings. By employing Roboto consistently across all text elements, from headers to paragraphs, I aim to deliver a cohesive and visually pleasing browsing experience to users.
+
+- #### Wireframes
+- [Home Page](docs/wireframes/index.png)
+- [Category Pages](docs/wireframes/browse.png)
+- [Saved Recipes.html](docs/wireframes/my_recipe_book.png)
+- [Share Recipe](docs/wireframes/create_edit.png)
+- [About](docs/wireframes/recipe_detail.png)
+
