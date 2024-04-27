@@ -110,6 +110,14 @@ a {
     display: none; /* Hide the alert */
   }
 
+/* Categories */
+.category-name{
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
 
 /* Comments section */
 .faded {
