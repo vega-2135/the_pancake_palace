@@ -52,7 +52,8 @@ class RecipeForm(ModelForm):
                 'cols': 10
             }),
             'preparation': forms.Textarea(attrs={
-                'placeholder': 'Step 1: Add ingredients., Step 2: Cook mixture. ...',
+                'placeholder': "Step 1: Add ingredients..,"
+                "Step 2: Cook mixture..,,",
                 'rows': 8,
                 'cols': 10
             })
