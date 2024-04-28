@@ -362,14 +362,31 @@ class RecipeSearch(ListView):
 
 
 #### Recipes categories ####
-def popular_pancakes(request):
-    recipe_list = Recipe.objects.filter(category=0)
-    return render(request, 'popular_pancakes.html', {'recipe_list': recipe_list})
+class PopularPancakes(ListView):
+    '''
+    Return recipes with the category: Popular Pancakes.
+    '''
+    model = Recipe
+    queryset = Recipe.objects.filter(status=1, category=0)
+    template_name = "popular_pancakes.html"
+    paginate_by = 6
 
-def pancakes_kids(request):
-    recipe_list = Recipe.objects.filter(category=1)
-    return render(request, 'pancakes_kids.html', {'recipe_list': recipe_list})
 
-def vegan_pancakes(request):
-    recipe_list = Recipe.objects.filter(category=2)
-    return render(request, 'vegan_pancakes.html', {'recipe_list': recipe_list})
+class PancakesKids(ListView):
+    '''
+    Return recipes with the category: Popular Pancakes.
+    '''
+    model = Recipe
+    queryset = Recipe.objects.filter(status=1, category=1)
+    template_name = "pancakes_kids.html"
+    paginate_by = 6
+
+
+class VeganPancakes(ListView):
+    '''
+    Return recipes with the category: Popular Pancakes.
+    '''
+    model = Recipe
+    queryset = Recipe.objects.filter(status=1, category=2)
+    template_name = "vegan_pancakes.html"
+    paginate_by = 6

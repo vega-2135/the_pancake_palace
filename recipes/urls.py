@@ -18,7 +18,7 @@ urlpatterns = [
     path('submitted-recipes/', views.SubmittedRecipes.as_view(), name='submitted_recipes'),
     path('delete_submitted/<slug:slug>/', views.delete_submitted_recipe, name='delete_submitted_recipe'),
     path('search/', views.RecipeSearch.as_view(), name='search_recipe'),
-    path('popular-pancakes/', views.popular_pancakes, name='popular_pancakes'),
-    path('pancakes-kids/', views.pancakes_kids, name='pancakes_kids'),
-    path('vegan-pancakes/', views.vegan_pancakes, name='vegan_pancakes'),
+    path('popular-pancakes/', views.PopularPancakes.as_view(), name='popular_pancakes'),
+    path('pancakes-kids/', views.PancakesKids.as_view(), name='pancakes_kids'),
+    path('vegan-pancakes/', views.VeganPancakes.as_view(), name='vegan_pancakes'),
 ]
