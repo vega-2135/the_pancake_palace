@@ -30,8 +30,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True if os.environ.get("DEBUG_DJANGO") else False
-DEBUG = False
+DEBUG = True if os.environ.get("DEBUG_DJANGO") else False
+#DEBUG = False
 
 ALLOWED_HOSTS = ["http://0.0.0.0:8000/", "127.0.0.1", ".herokuapp.com", "localhost"]
 
@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "allauth",
     "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
+    #"allauth.socialaccount",
+    #"allauth.socialaccount.providers.google",
     "django_summernote",
     "cloudinary_storage",
     "cloudinary",

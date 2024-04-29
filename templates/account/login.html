@@ -2,7 +2,6 @@
 {% load crispy_forms_tags %}
 
 {% load i18n %}
-{% load account socialaccount %}
 {% load static %}
 
 {% block title %}
@@ -18,8 +17,6 @@ Sign In / {{site.name}}
     <p class="lead">{% blocktrans with site.name as site_name %}
       Not yet registered? <a href="{{ signup_url }}">Sign up</a> for a {{ site_name }} account.{% endblocktrans %}</p>
 
-    {% get_providers as socialaccount_providers %}
-
     <div class="form-container">
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
@@ -31,16 +28,6 @@ Sign In / {{site.name}}
         <button class="btn btn-success" type="submit">{% trans "Log In" %}</button>
       </form>
       <hr class="mt-4">
-      <div class="container-fluid mt-4">
-        <div class="row">
-          <div class="col">
-            <p>Or</p>
-          </div>
-          <div class="col">
-            <a class = google-icon href="{% provider_login_url 'google' %}"><i class="fa-brands fa-google"></i> Log in with Google</a>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
