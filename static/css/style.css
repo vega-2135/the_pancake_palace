@@ -282,6 +282,11 @@ li::marker {
     align-items: center;
 } 
 
+/* About page */
+.about_img{
+    border: solid rgb(171, 196, 255);
+}
+
 /* Error pages */
 .page-404 {
     background-image: url(../images/404_3.webp);
