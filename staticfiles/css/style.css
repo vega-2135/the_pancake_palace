@@ -1,15 +1,70 @@
-body {
+main {
     min-height: 100vh;
 }
 
-.recipe-img {
-    width: 700px;
-    height: auto;
-    margin-bottom: 100px;
+.page-title {
+    font-size: 25px;
+} 
+
+/* Nav bar */
+
+nav {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(171, 196, 255);
 }
 
-.about-text {
-    font-family: 'Roboto', sans-serif;
+.navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-nav-group {
+    display: flex;
+}
+
+.navbar-nav-group:first-child {
+    margin-left: -10px; 
+}
+
+.navbar-nav-group:last-child {
+    margin-right: -10px;
+}
+
+.about-nav {
+    margin-top: -19px;
+    margin-right: 24px;
+}
+
+
+.subtitle {
+    width: 1000px;
+}
+
+#description {
+    border: solid rgb(171, 196, 255);
+    border-radius: 1%;
+    background-color: rgb(239, 243, 254);
+}
+
+.lead {
+    font-weight: 500;
+}
+
+.rtn {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+}
+
+.recipe-img {
+    display: block;
+    width: 1000px;
+    height: auto;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -20,12 +75,6 @@ body {
     background-color: rgb(214, 230, 245, 0.2);
     padding: 25px;
     margin-top: 50px;
-}
-
-footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
 }
 
 .google-icon {
@@ -46,23 +95,33 @@ a {
 .message {
     border: 1px solid gray;
     border-radius: 10px;
-    background-color: yellow;
     font-size: 25px;
+}
+
+.success {
+    background-color: green;
+}
+
+.warning {
+    background-color: #ffec99;
+}
+
+.error {
+    background-color: red;
 }
 
 .hide {
     display: none; /* Hide the alert */
   }
 
-ul {
-    list-style-type: none; 
-}
+/* Categories */
+.category-name{
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
-ul li::before {
-    content: "• "; 
-    color: black; 
 }
-
 
 /* Comments section */
 .faded {
@@ -131,10 +190,44 @@ btn-shadow {
 }
 
 /* Recipe item */
+.card, .comments-count {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.card-style {
+    height: 650px;
+}
+
+.card-width, .comments-count {
+    width: 1000px;
+}
+
+.card-border {
+    border: 2px solid rgb(171, 196, 255);
+}
+
+.likes_class {
+  justify-content: center;
+  display: flex;
+}
+
+.rating_class {
+    justify-content: end;
+    width: 100%;
+}
+
+li::marker {
+    color: rgb(171, 196, 255);
+  }
+
 .item-title {
     font-size: 25px;
     font-weight: 400;
     color: black;
+    height: 60px;
+    text-align: center;
 }
 
 .num-ratings {
@@ -146,9 +239,19 @@ btn-shadow {
     margin-left: -20px;
 }
 
+
 /* Recipe detail page */
+.recipe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1500px;
+   }
+
 .recipe-title {
-    font-size: 35px;
+    font-size: 3.5rem;
+    font-weight: bold;
+    padding-left: 150px;
 }
 
 /* Comments */
@@ -161,14 +264,123 @@ btn-shadow {
     height: 45px;
 }
 
+.btn-edit, .btn-delete {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+}
+
 .leave-comment {
     display: flex;
     justify-content: center;
     align-items: center;
 } 
 
-/* Page 404 */
-.page-404 {
-    background-image: url(../images/raspberry_passionfruit.webp);
+/* About page */
+.about_img{
+    border: solid rgb(171, 196, 255);
 }
 
+/* Error pages */
+.page-404 {
+    background-image: url(../images/404_3.webp);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh; 
+}
+
+.color-back {
+    background-color: rgb(175, 216, 255);
+}
+
+/* Pagination section */
+.pagination {
+    background-color: white;
+}
+
+.recipe-form {
+    width: 800px;
+    height: auto;
+}
+
+
+/* Footer */
+footer {
+    background-color: rgb(171, 196, 255);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-font{
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+i {
+    font-size: 20px;
+}
+
+.home-link {
+    color: white;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.page-400 {
+    background-image: url(../images/400.webp);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh; 
+}
+
+.page-403 {
+    background-image: url(../images/403.webp);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh; 
+}
+
+.forbidden-font {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.page-500 {
+    background-image: url(../images/500.webp);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh; 
+}
+
+.internal-error {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 992px) {
+    .popular {
+        margin-left: 155px;
+    }
+    
+    .marg {
+        margin-right: 50px;
+    }
+
+    .text-alignment {
+        text-align: right;
+    }
+
+    .contact-me {
+        margin-right: 145px;
+    }
+
+    .about-nav {
+        margin-top: 0;
+        margin-right: 0;
+    }
+}
