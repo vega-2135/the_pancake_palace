@@ -234,10 +234,10 @@ The footer contains the copyright information and the icons for facebook, twitte
 
 ### Frameworks, Libraries and Packages
 
-- [Django 3.2](https://docs.djangoproject.com/en/3.2/)
+- [Django 4.2.1](https://docs.djangoproject.com/en/3.2/)
 - [Bootstrap 5](https://getbootstrap.com/)
 - [jQuery 3.7.1](https://releases.jquery.com/)
-- [Font Awesome 5.15.4](https://fontawesome.com/)
+- [Font Awesome 6.5.2](https://fontawesome.com/)
 - [Google Fonts](https://fonts.google.com/)
 - [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/)
 - [cripsy-bootstrap5](https://github.com/django-crispy-forms/crispy-bootstrap5)
@@ -248,17 +248,417 @@ The footer contains the copyright information and the icons for facebook, twitte
 
 ### Tools
 
-- [Git](https://git-scm.com/)
-- [GitHub](https://github.com/)
-- [Heroku](https://heroku.com/)
-- [ElephantSQL](https://www.elephantsql.com/)
-- [Cloudinary](https://cloudinary.com/)
-- [Balsamiq](https://balsamiq.com/)
-- [Lucidchart](https://www.lucidchart.com/pages)
-- [Bulkresizephotos](https://bulkresizephotos.com/en?format=webp&quality=93)
-- [favicon.io](https://favicon.io/)
-- [The W3C Markup Validation Service](https://validator.w3.org/)
-- [The W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
-- [Code Institute Python Linter](https://pep8ci.herokuapp.com/)
-- [JSHint](https://jshint.com/)
-- [Firefox DevTools](https://developer.chrome.com/docs/devtools/)
+- [GitHub:](https://github.com/) used for version control, collaborative development and code management.
+
+- [Google Fonts:](https://fonts.google.com/) used to import and apply a variety of fonts to enhance the visual appeal of the website.
+
+- [VSCode (Visual Studio Code):](https://code.visualstudio.com/) used for writing, editing, and debugging the code for this webapp.
+
+- [Techsini:](https://techsini.com/multi-mockup/) used to create mockup images of home page in different devices (phone, ipad, laptop, desktop).
+
+- [Balsamiq:](https://balsamiq.com/) used to generate wireframes of the page.
+
+- [Heroku:](https://dashboard.heroku.com/) used for the deployment of the application.
+
+- [Lucid Chart:](https://www.lucidchart.com/) used for making a flow chart of the project models.
+
+- [ElephantSQL](https://www.elephantsql.com/) used for storing and managing the project database.
+
+- [Cloudinary](https://cloudinary.com/) used for storing images uploaded by users.
+
+- [Bulkresizephotos](https://bulkresizephotos.com/en?format=webp&quality=93) used for changing extension and size of the recipe's images.
+
+- [favicon.io](https://favicon.io/) used for the logo of the website.
+
+- [The W3C Markup Validation Service](https://validator.w3.org/) used to validate code in html files.
+
+- [The W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) used to validate css code.
+
+- [Code Institute Python Linter](https://pep8ci.herokuapp.com/) used to validate code in .py files.
+
+- [JSHint](https://jshint.com/) sed to validate javascript code.
+
+- [Firefox DevTools](https://developer.chrome.com/docs/devtools/) used for debugging of css code.
+
+## .7 Testing
+- ### Manual Testing
+I conducted ongoing manual testing throughout the development stages of the project to ensure its functionality and performance met the desired standards.
+
+Additionally, I enlisted the help of friends to rigorously test various features such as account registration, submitting, editing, and deleting comments and recipes. Their feedback was instrumental in identifying and addressing any potential issues or bugs within the system.
+
+- ### User Story Testing
+
+<details>
+<summary>As a first time visitor I want to encounter a concise description of the website upon arrival to understand its purpose.</summary>
+
+### Acceptance Criteria
+
+- Given a unregistered user, they are greeted at the home page with a message stating the purpose of the website.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a first time visitor to the site, I can review the Privacy Policy before registering, ensuring transparency regarding the handling of my data.</summary>
+
+### Acceptance Criteria
+
+- Given a unregistered user, they can access the Privacy Policy by clicking on a designated link.
+- The Privacy Policy is written in clear and understandable language.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a user, I can register for an account to enable interaction with the site.</summary>
+
+### Acceptance Criteria
+
+- Given a user, they can browse the site without logging in.
+- Given a user, they have the option to register for an account.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a first time visitor of the site I can register using my Google or Facebook accounts so that I can signup without completing any forms.</summary>
+
+### Acceptance Criteria
+
+- Given a unregistered user, they are provided with the choice to sign up using their Google or Facebook accounts.
+- Given an unregistered user, upon selecting the Google or Facebook sign-in options, an account is automatically created for them.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a first-time visitor, I want a clear explanation of the advantages of being a registered user so that I can decide if I want to create an account on the site.</summary>
+
+### Acceptance Criteria
+
+- Given a first time visitor, upon being redirected to the sign-in page after clicking the register button, an explanation appears below the 'Sign in' title stating the advantages of having an account.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a registered user, I can update my profile page so that I can provide links to my Facebook, Instagram, and Twitter accounts, enabling others to find and connect with me on these platforms.</summary>
+
+### Acceptance Criteria
+
+- Given a logged-in user, they can add Facebook, Instagram, and Twitter links to their profile.
+- Given a logged-in user, they can edit the contents of their profile.
+- Given a logged-in user, they can delete their account.
+
+
+**Result:** ✅ Pass
+</details>
+
+</details>
+
+<details>
+<summary>As a registered user, I want to have access to a comprehensive list of the recipes I've submitted so that I can review all my submissions on a single page.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in user, they can read in one page all the recipes they have submitted.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a registered user, I can access to a paginated list of recipes, facilitating easy navigation without the need for endless scrolling, thereby enabling efficient selection of desired recipes.</summary>
+
+### Acceptance Criteria
+
+- Given multiple posts in the database, all of them are displayed.
+- Upon opening the main page, the user should encounter a list of recipes.
+- The user should then see all recipe titles with pagination for convenient selection of what to read.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a user, I can click on a recipe post so that I can read the full recipe.</summary>
+
+### Acceptance Criteria
+
+- When a recipe post title is clicked on a detailed view of the recipe is seen. 
+
+
+**Result:** ✅ Pass
+</details>
+
+
+<details>
+<summary>As a registered user, I have the ability to rate recipes so that I can convey to the recipe owner my opinion on the quality of their recipe.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in user, they can click on a number of starts corresponding to their opinion of the recipe's quality.
+- Depending on the number of stars the users give to a recipe, that number of stars should change their color upon clicking on them, to provide visual feedback on the given rating. 
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a user, I want to receive feedback messages upon registering and each time I log in or out of the site, providing assurance that the registration or login process was successful.</summary>
+
+### Acceptance Criteria
+
+- Given a user, after they click the register button, a welcome message appears at the top of the website.
+- Given a user, after they log in and out of the website, a message pops up stating that they have logged in or out of the website.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a user, I want to receive a feedback message upon commenting on a recipe post, ensuring acknowledgment of my comment submission.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in user, after they click 'submit' in the comment section, a message should pop-outs, informing them that the comment has been received and that approval is pending.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a Site Admin, I can manage user accounts by adding and removing them, ensuring control over site access and user privileges.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in admin user, they can create a new user account.
+- Given a logged in admin user, they can remove an existent user account.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a Site Admin, I can manually review and either approve or reject user-submitted recipes and comments, allowing me to moderate the site and maintain a spam-free and respectful environment.</summary>
+
+### Acceptance Criteria
+
+- When a user submits a recipe or comment, it is presented in the admin panel for review.
+- The admin can approve or reject the recipe or comment for publication.
+
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a Site Admin, I have the capability to perform CRUD (Create, Read, Update, Delete) operations on recipes posts, allowing me to effectively manage website content.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in admin user, they can create a recipe post
+- Given a logged in admin user, they can read a recipe post
+- Given a logged in admin user, they can update a recipe post
+- Given a logged in admin  user, they can delete a recipe post
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a user, I have the ability to preview a thumbnail of the site, enabling me to preview its content before clicking.</summary>
+
+### Acceptance Criteria
+
+- Thumbnails of each recipe post are visible.
+- Clicking on a thumbnail redirects the user to the page containing the complete recipe.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a user, I can browse recipes by category, facilitating the discovery of content that aligns with my interests.</summary>
+
+### Acceptance Criteria
+
+- Given a user, they can view multiple categories of recipes.
+- Upon selecting a category, only recipes belonging to that category are displayed.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a Site User, I can register an account so that I can engage with recipe posts by commenting, liking, and submitting recipes.</summary>
+
+### Acceptance Criteria
+
+- A user can register an account by filling in the registration form.
+- The user is then able to log in.
+- Upon logging in, the user can interact with recipe posts by commenting, liking, and submitting recipes.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a registered user, I can submit new recipes so that other users can see them on the site.</summary>
+
+### Acceptance Criteria
+
+- Given a registered user, they can submit recipes to the site. These submissions should be approved by the site admin before becoming visible to other users on the website.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a registered user, I can indicate my preference for recipes by 'liking' them, enabling the website owner to identify the most popular recipes.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in user, they can click a button to indicate that they like a recipe.
+- The 'liked' icon changes colors when they click on it.
+
+**Result:** ✅ Pass
+</details>
+
+
+<details>
+<summary>As a registered user, I have the capability to bookmark recipes, allowing me to create a list of my favorite recipes for future reference.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in user, they can click a bookmark icon located next to each recipe.
+- The selected recipe are then added to their list of bookmarked recipes.
+- Given a logged in user, they can access a page where they can view all their bookmarked recipes.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a site admin, I want to securely log in to the admin panel, ensuring access to the site's administrative features.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in admin user, they can successfully log in to the admin panel.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a Site User, I can access the information about the site by clicking on the About link.</summary>
+
+### Acceptance Criteria
+
+- Given a user, when they click the About link, they are redirected to the About page.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a Site Admin, I can create or update the content of the about page, ensuring it is available on the site.</summary>
+
+### Acceptance Criteria
+
+- The About app is visible and accessible within the admin panel.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a registered user, I can view comments on an individual post so that I can see what other people think about the recipe.</summary>
+
+### Acceptance Criteria
+
+- Given one or more user comments any registered user can view them.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a Site Owner I can store shared recipes in the database so that I can review them at any time.</summary>
+
+### Acceptance Criteria
+
+- After the user fills in the 'share a recipe' form, the data is sent to the database for the site admin’s review and potential posting on the website.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a site admin, I can mark shared recipes as 'read' so that I can track the progress of their processing and addition to of the website.</summary>
+
+### Acceptance Criteria
+
+- Given a site admin, they can mark any shared recipe as read. 
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a registered user I can modify or delete my comment on a recipe post so that I can be involved in the conversation.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in user, they can modify their comment.
+- Given a logged in user, they can delete their comment.
+
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a Site Admin I can approve or disapprove comments so that I can filter out objectionable content.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in user, they can approve a comment.
+- Given a logged in user, they can reject a comment.
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a Site User, I want to be able to search for recipes by keywords, so that I can quickly find recipes that match my preferences.</summary>
+
+### Acceptance Criteria
+
+- The search functionality allows users to enter keywords related to recipes.
+- Upon entering keywords and initiating the search, relevant recipe posts matching the keywords are displayed.
+- The search results are presented in a clear and organized manner, facilitating easy navigation for users.
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a User I can fill in a contact form so that I can reach out the owner of the page for comments, insights or suggestions about the page.</summary>
+
+### Acceptance Criteria
+
+- Given a logged in user, upon filling out the contact form and clicking the submit button, their message will be sent to the owner of the website.
+- When the message is submitted a notification at the top of the page will appear informing the user that their message was received.
+**Result:** ✅ Pass
+</details>
+
+
+<details>
+<summary>As a Site Owner I can store contact messages in the database so that I can review them. </summary>
+
+### Acceptance Criteria
+
+- Given a logged-in admin user, once a user has sent a contact message, the admin user can review the message in the admin panel.
+**Result:** ✅ Pass
+</details>
+
+<details>
+<summary>As a Site Owner I can mark contact messages as "read" so that I can see how many I still need to review.  </summary>
+
+### Acceptance Criteria
+
+- Given a logged-in admin user, when a contact message appears in the admin panel, the admin user is able to review it and mark the message as read, indicating that it has been reviewed.
+**Result:** ✅ Pass
+</details>
+
+- ### Automated Testing
+Automates tests where performed using Django's built-in testing framework which use Python's unittest module. The tests can be found in each app directory.
+
+
