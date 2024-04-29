@@ -115,9 +115,114 @@ The pancake palace website employs the Django Allauth package to manage user aut
 ![](/docs_readme/features/login.png)
 ![](/docs_readme/features/logout.png)
 ![](/docs_readme/features/register.png)
+
 </details>
 
+- ### Upvoting
+Registered users can upvote the resources they like, other users will see the total number of likes a recipe has.
 
+<details>
+<summary>Upvoting Screenshots</summary>
+
+![](/docs_readme/features/save-like-rating.png)
+
+</details>
+
+- ### Save Recipes
+Registered users can save any recipe they like. Users can find the saved recipes in the page saved recipes. The users also have the possibility of removing any recipe they have previously saved.
+
+<details>
+<summary>Saved Recipes Screenshots</summary>
+
+![](/docs_readme/features/save-ratings.png)
+![](/docs_readme/features/saved_recipes.png)
+
+</details>
+
+- ### Rate recipes
+Registered users can also rate any recipe when leaving a comment in the comment section of a recipe page. All users can see the average rating and number of people that have rated a recipe at the top of the image in the recipe detail page and also in the bottom of a recipe image in the category pages.
+
+<details>
+<summary>Rating Recipes Screenshots</summary>
+
+![](/docs_readme/features/rating_1.png)
+![](/docs_readme/features/rating_2.png)
+![](/docs_readme/features/rating_3.png)
+
+</details>
+
+- ### Leaving comments
+Registered users on the website have the ability to leave comments. Upon submitting a comment, a message is displayed informing them that their comment will undergo review before being published. Prior to approval, the author of the comment can preview their submission, displayed in a light grey color. Additionally, users have the option to edit or delete their comments after posting. Of important note, users must rate a recipe before they can submit a comment.
+
+<details>
+<summary>Comment Recipes Screenshots</summary>
+
+![](/docs_readme/features/comments_1.png)
+![](/docs_readme/features/comments_2.png)
+
+</details>
+
+- ### Submitting recipes
+Users with an account on the website can submit recipes after logging in. They can do so by clicking 'Share Recipe' in the dropdown menu accessible under their username. The 'Share Recipe' page features a form with all necessary fields for a successful submission. Once a user submits a recipe, a message appears at the top of the page, informing them that the recipe will undergo review before publication.
+
+Upon opening the published recipe page (after approval and publication by the site admin), the submitting user can edit or delete the recipe. These options are exclusively available to the user who shared the recipe.
+
+All submitted recipes can be found on the 'Submitted Recipes' page.
+
+<details>
+<summary>Submitting Recipes Screenshots</summary>
+
+![](/docs_readme/features/share_recipe.png)
+![](/docs_readme/features/share_recipe_2.png)
+
+</details>
+
+- ### Contact
+All users can contact the owner of the website by clicking in the Contact option of the navbar. The can leave a message for comments, questions or suggestions about the site or recipes.
+
+<details>
+<summary>Contact Page Screenshot</summary>
+
+![](/docs_readme/features/contact.png)
+
+</details>
+
+- ### About
+The About page provides a detailed insight into the mission and purpose of The Pancake Palace website.
+
+<details>
+<summary>About Page Screenshot</summary>
+
+![](/docs_readme/features/about.png)
+
+</details>
+
+- ### Search recipes
+Users can effortlessly find recipes by entering keywords into the search box located at the top of the website. Any recipe containing the specified keyword will be promptly listed on a new page, ensuring quick and convenient access to the desired content.
+
+<details>
+<summary>Search Recipes Screenshot</summary>
+
+![](/docs_readme/features/search_recipe.png)
+
+</details>
+
+- ### Admin Panel
+The Django admin panel is accessible to 'superusers' and users granted the 'staff status' permission. This panel serves as a central hub for managing site content. Each data model is seamlessly integrated into the admin interface using the register decorator. This allows for easy access and management of various functionalities, including adding or removing recipes, reviewing contact messages, setting the approval status of recipes and comments, as well as managing user accounts for cases of inappropriate behavior on the site. Additionally, the admin panel facilitates the addition of descriptions found on the About page.
+
+- ### Footer
+The footer contains the copyright information and the icons for facebook, twitter and instagram pages.
+
+<details>
+<summary>Search Recipes Screenshot</summary>
+
+![](/docs_readme/features/footer.png)
+
+</details>
+
+- ### Future Features
+
+    - Registration option with google and facebooks accounts.
 
 ## 6. Technologies used
 ### Languages
@@ -140,7 +245,6 @@ The pancake palace website employs the Django Allauth package to manage user aut
 - [django-dynamic-formset](https://github.com/elo80ka/django-dynamic-formset)
 - [django-autoslug](https://django-autoslug.readthedocs.io/en/stable/)
 - [django-taggit](https://django-taggit.readthedocs.io/en/stable/)
-- [coverage](https://coverage.readthedocs.io/en/7.2.7/)
 
 ### Tools
 
@@ -157,4 +261,4 @@ The pancake palace website employs the Django Allauth package to manage user aut
 - [The W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
 - [Code Institute Python Linter](https://pep8ci.herokuapp.com/)
 - [JSHint](https://jshint.com/)
-- [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
+- [Firefox DevTools](https://developer.chrome.com/docs/devtools/)
