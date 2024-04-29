@@ -49,7 +49,7 @@ The Recipe Book app boasts a straightforward layout, prioritizing user-friendlin
 
 - ### Colour Scheme
 
-The color Light Purple (rgb(171, 196, 255)) was chosen as the background color for the website header and footer, as well as for the listing of ingredients, preparation steps, and borders of card containers.
+The color Light Purple (rgb(171, 196, 255)) was chosen as the background color for the website header and footer, as well as for the listing of ingredients, preparation steps, and borders of card containers. A lighter purple color was used for the background of the text containing the decription of the page in the home page.
 
 The color white was chosen as the background color of the website.
 
@@ -67,6 +67,9 @@ In crafting the typography for our website, deliberate consideration was given t
 - [About](docs_readme/wireframes/about.png)
 - [Share Recipe](docs_readme/wireframes/share_recipe.png)
 
+### Additional
+The logo of the website was taken from fontawsome page and converted in a logo using a [favicon generator webapp](https://favicon.io/)
+
 
 ## 4. Database Design
 LibreOffice spreadsheet was used for designing the models, followed by integrating them into a single cohesive image using Lucidchart. In this project, the Django User model was used and is incorporated into the image to illustrate its connection with the other project models.
@@ -75,6 +78,33 @@ LibreOffice spreadsheet was used for designing the models, followed by integrati
 
 ## 5. Features
 
+- ### Home Page
+The homepage features a concise overview of the website's purpose alongside the top-rated recipes, enticing visitors with a glimpse of the culinary delights awaiting them. A prominent navigation bar grants seamless access to every corner of the site, ensuring users can easily explore and discover a plethora of delectable dishes and culinary inspirations.
+
+<details>
+<summary>Home Page Screenshot</summary>
+
+![](/docs_readme/features/homepage.png_)
+
+</details>
+
+- ### Navbar
+The navbar is designed to adapt to different screen sizes and contains essential features for user navigation. It prominently displays the website logo and incorporates a search box, enabling users to find recipes based on specific keywords. Additionally, there are distinct buttons for user registration and login, facilitating access to enhanced functionality within the site.
+
+Once users register or log in, the register button transforms into a personalized button displaying the user's name. This button offers a dropdown menu with convenient links to saved recipes, submitted recipes, and a page for sharing recipes. Below the aforementioned navbar options, there are five additional options available:
+
+- Three distinct categories of recipes—Popular Pancakes, Pancakes for Kids, and Vegan Pancakes—each leading to dedicated pages containing relevant recipes.
+- Links to the 'About' and 'Contact Me' pages, providing users with additional information about the website and a means to get in touch.
+
+This layout ensures that users can easily navigate through the website, explore recipe options, and access essential pages for further engagement or inquiries.
+
+<details>
+<summary>Nav Bar Screenshots</summary>
+
+![](/docs_readme/features/nav-bar.png_)
+![](/docs_readme/features/nav-bar_user.png)
+
+</details>
 
 ## 6. Technologies used
 ### Languages

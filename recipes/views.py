@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.exceptions import SuspiciousOperation, PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.urls import reverse_lazy
@@ -128,7 +129,7 @@ def recipe_detail(request, slug):
         # Uncomment next line to raise a 403 error
         # raise PermissionDenied
         # Uncomment next line to raise a 500 error
-        #raise Exception("This is a deliberate exception to trigger a 500 error")
+        # raise Exception("This is a deliberate exception to trigger a 500 error")
     
 
     return render(
@@ -152,7 +153,7 @@ def comment_edit(request, slug, comment_id):
     """
     Function to edit comments
     """
-    if request.preparation == "POST":
+    if request.method == "POST":
 
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
