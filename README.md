@@ -84,7 +84,7 @@ The homepage features a concise overview of the website's purpose alongside the 
 <details>
 <summary>Home Page Screenshot</summary>
 
-![](/docs_readme/features/homepage.png_)
+![](/docs_readme/features/homepage.png)
 
 </details>
 
@@ -101,10 +101,23 @@ This layout ensures that users can easily navigate through the website, explore 
 <details>
 <summary>Nav Bar Screenshots</summary>
 
-![](/docs_readme/features/nav-bar.png_)
+![](/docs_readme/features/nav-bar.png)
 ![](/docs_readme/features/nav-bar_user.png)
 
 </details>
+
+- ### User Authentication
+The pancake palace website employs the Django Allauth package to manage user authentication and grant authenticated users access to CRUD functionalities. This package furnishes a suite of views and templates dedicated to user registration, login, and logout processes. Throughout the website, defensive programming techniques have been implemented to safeguard against unauthorized access to pages lacking appropriate permissions. Django's LoginRequired mixin is utilized to restrict access to anonymous users, redirecting them to the login page when attempting to view restricted content, for example only the original author of a recipe can make edits of comments or submitted recipes. Unauthorized attempts trigger redirection to a 403 error page, notifying users of their lack of permission to execute the action. Furthermore, for access to the admin panel, users must hold either 'superuser' or 'staff status' permissions.
+
+<details>
+<summary>User Authentication Screenshots</summary>
+
+![](/docs_readme/features/login.png)
+![](/docs_readme/features/logout.png)
+![](/docs_readme/features/register.png)
+</details>
+
+
 
 ## 6. Technologies used
 ### Languages
