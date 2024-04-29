@@ -59,22 +59,22 @@ INSTALLED_APPS = [
     "crispy_bootstrap5"
 ]
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'APP': {
-            'client_id': os.environ.get("CLIENT_ID"),
-            'secret': os.environ.get("CLIENT_SECRET"),
-            'key': ''
-        },
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'APP': {
+#             'client_id': os.environ.get("CLIENT_ID"),
+#             'secret': os.environ.get("CLIENT_SECRET"),
+#             'key': ''
+#         },
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         }
+#     }
+# }
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
