@@ -127,10 +127,10 @@
                         <ul class="navbar-nav me-2 text-end">
                             <!-- Second Group: About, Contact Me -->
                             <li class="nav-item">
-                                <a class="marg nav-link {% if request.path == about_url %}active{%endif%}" aria-current="page" href="{% url 'about' %}">About</a>
+                                <a class="marg nav-link {% if request.path == about_url %}active{%endif%}" aria-current="page" href="{% url 'about' %} about-nav">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="contact-me nav-link {% if request.path == contact_url %}active{%endif%}" aria-current="page" href="{% url 'contact' %}">Contact Me</a>
+                                <a class="contact-me nav-link {% if request.path == contact_url %}active{%endif%}" aria-current="page" href="{% url 'contact' %}">Contact</a>
                             </li>
                         </ul>
                     </div>

@@ -19,6 +19,19 @@
                 Discover fresh flavors and culinary creativity by browsing through our Popular Kids and Vegan pancakes categories!
             </p>
         </div>
+        <div class="d-md-none d-flex justify-content-center">
+            <ul>
+                <li>
+                    <a href="{% url 'popular_pancakes' %}" class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular Pancakes</a>  
+                </li>
+                <li>
+                    <a href="{% url 'pancakes_kids' %}" class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Pancakes for Kids</a>   
+                </li>
+               <li>
+                    <a href="{% url 'vegan_pancakes' %}" class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Vegan Pancakes</a>  
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="col-md-6 my-auto order-0 order-md-1">
         <img class="img-fluid px-md-auto" src="{% static 'images/home/home_pancakes.webp' %}" alt="Cooking time apron and oven glove.">

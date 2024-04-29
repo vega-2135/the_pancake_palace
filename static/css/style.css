@@ -31,17 +31,11 @@ nav {
     margin-right: -10px;
 }
 
-.popular {
-    margin-left: 155px;
+.about-nav {
+    margin-top: -19px;
+    margin-right: 24px;
 }
 
-.marg {
-    margin-right: 50px;
-}
-
-.contact-me {
-    margin-right: 145px;
-}
 
 .subtitle {
     width: 1000px;
@@ -368,3 +362,25 @@ i {
     font-weight: bold;
 }
 
+@media screen and (min-width: 992px) {
+    .popular {
+        margin-left: 155px;
+    }
+    
+    .marg {
+        margin-right: 50px;
+    }
+
+    .text-alignment {
+        text-align: right;
+    }
+
+    .contact-me {
+        margin-right: 145px;
+    }
+
+    .about-nav {
+        margin-top: 0;
+        margin-right: 0;
+    }
+}
