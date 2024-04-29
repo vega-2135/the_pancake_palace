@@ -60,14 +60,18 @@ The color black was chosen as the font color for all text on the website, as it 
 In crafting the typography for our website, deliberate consideration was given to ensure optimal readability and aesthetic appeal. To achieve this balance, we've selected the versatile and modern Roboto font as the primary typeface throughout the entire site. Renowned for its clean lines, readability, and versatility across various screen sizes and resolutions, Roboto offers a seamless reading experience. Its uniformity and clarity elevate the presentation of content, ensuring that users can effortlessly engage with our platform's offerings. By employing Roboto consistently across all text elements, from headers to paragraphs, I aim to deliver a cohesive and visually pleasing browsing experience to users.
 
 - ### Wireframes
-- [Home Page](docs/wireframes/index.png)
-- [Category Pages](docs/wireframes/browse.png)
-- [Saved Recipes.html](docs/wireframes/my_recipe_book.png)
-- [Share Recipe](docs/wireframes/create_edit.png)
-- [About](docs/wireframes/recipe_detail.png)
+- [Home Page](docs_readme/wireframes/home_page.png)
+- [Popular Pancakes](docs_readme/wireframes/popular_pancakes.png)
+- [Pancakes for Kids](docs_readme/wireframes/pancakes_for_kids.png)
+- [Vegan Pancakes](docs_readme/wireframes/vegan_pancakes.png)
+- [About](docs_readme/wireframes/about.png)
+- [Share Recipe](docs_readme/wireframes/share_recipe.png)
 
 
 ## 4. Database Design
+LibreOffice spreadsheet was used for designing the models, followed by integrating them into a single cohesive image using Lucidchart. In this project, the Django User model was used and is incorporated into the image to illustrate its connection with the other project models.
+
+![Models](docs_readme/db_design/models.png)
 
 ## 5. Features
 
