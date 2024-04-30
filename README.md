@@ -785,3 +785,33 @@ os.environ['CLOUDINARY_URL'] = '<API ENVIRONEMENT VARIABLE>'
 - On manual deploy click "Deploy Branch"
 - After a few seconds this message appears: "Your app was successfully deployed."
 - Click on "view" to open the website containing the command line application.
+
+## 9. Credits
+
+### Code
+
+- I used the Python Essentials template from Code Institute as the foundation and personalized both the HTML and CSS components.
+
+- Code from Code Institute's CodeStar blog walkthrough project was used and modified accordingly.
+
+- For writting the code for the rating functionality I used the rsources mentioned in the following pages:
+    - https://freefrontend.com/bootstrap-star-ratings/
+    - https://bbbootstrap.com/snippets/bootstrap-rate-your-experience-template-star-ratings-30972576
+    
+### Images 
+
+- For most of the recipe images, phtoleap mobile app was used for creating the images. 
+
+- Pexels was used for the image in the description section of the homepage
+[Image](https://www.pexels.com/photo/pancakes-on-plate-2105104/)
+
+- Error pages:
+[400 and 404 Error Pages Image](https://www.freepik.com/free-vector/404-error-background-flat-style_1825302.htm#query=404%20background&position=25&from_view=keyword&track=ais&uuid=a5621bc7-ebb8-4dab-b635-d6a2928c04fa)
+
+[403 Error Page Image](https://www.freepik.com/free-vector/403-error-forbidden-with-police-concept-illustration_7938324.htm#fromView=search&page=1&position=1&uuid=e30b37c7-600d-46ca-8b16-4f27f3ccc261)
+
+[500 Error Page Image](https://www.freepik.com/free-vector/data-scientist-data-analytics-manager-database-developer-administrator-working-big-data-job-database-developers-careers-big-data-concept_11667700.htm#fromView=image_search_similar&page=1&position=52&uuid=8390b579-7d08-4305-8972-36e5c14ddec5)
+
+##  Acknowledgement
+
+I'd like to thank my mentor Brian Macharia, for his invaluable guidance, feedback, tips, and the shared resources. 
