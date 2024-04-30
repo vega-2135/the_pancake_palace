@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
+
 from .forms import CommentForm
 from .models import Recipe
 
@@ -138,7 +139,7 @@ class TestShareRecipeView(TestCase, Client):
             status=1,
             approved=True
         )
-        self.recipe.save()  
+        self.recipe.save()
 
     def test_no_access_to_create_recipe_if_not_logged_in(self):
         response = self.client.get(reverse('share_recipe'))
@@ -164,16 +165,13 @@ class TestShareRecipeView(TestCase, Client):
             'cooking_time': 10,
             'serves': 1,
             'ingredients': '1 cup flour, 1cup milk',
-            'preparation':'Step 1: Mix all together.',
+            'preparation': 'Step 1: Mix all together.',
             'category': 1,
             'make_publik': 'True'
         }
         response = self.client.post('/share/', post_data)
         self.assertEqual(response.status_code, 200)
 
-
-
-        
 
 class TestEditRecipeView(TestCase, Client):
 
@@ -182,7 +180,7 @@ class TestEditRecipeView(TestCase, Client):
             username="myUsername", password="myPassword", email="test@test.com"
         )
         self.user1 = User.objects.create_superuser(
-            username="myUsername2", password="myPassword2", 
+            username="myUsername2", password="myPassword2",
             email="test@test2.com"
         )
         self.recipe = Recipe(
@@ -205,9 +203,9 @@ class TestEditRecipeView(TestCase, Client):
             'edit_recipe',
             kwargs={'slug': 'recipe-title'}
         ))
-        self.assertRedirects(response, 
+        self.assertRedirects(response,
                              '/accounts/login/?next=/edit/recipe-title/')
-        
+
     def test_user_is_not_author_redirect(self):
         user = User.objects.get(pk=2)
         self.client.force_login(user=user)

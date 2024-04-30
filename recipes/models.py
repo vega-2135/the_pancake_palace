@@ -1,7 +1,7 @@
-from django.contrib.auth.models import User
-from django.db import models
 from autoslug import AutoSlugField
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
+from django.db import models
 
 # Recipe post status for admin users
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -15,7 +15,7 @@ CATEGORY = (
 
 # Recipe Model
 class Recipe(models.Model):
- 
+
     title = models.CharField(max_length=200, unique=True)
     slug = AutoSlugField(populate_from='title', unique=True)
     author = models.ForeignKey(

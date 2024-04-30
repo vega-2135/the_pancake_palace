@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponseBadRequest
 
 
 def error_400(request, exception):

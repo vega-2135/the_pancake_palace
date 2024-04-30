@@ -1,4 +1,7 @@
 
+import logging
+
+from bs4 import BeautifulSoup
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -7,13 +10,11 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
-from bs4 import BeautifulSoup
-import logging
+
 from .forms import CommentForm, RatingForm, RecipeForm
 from .models import Comment, Recipe
 
 LOGGER = logging.getLogger('django')
-
 
 
 class Index(ListView):
@@ -30,7 +31,6 @@ class Index(ListView):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Home'
         return context
-
 
 
 def recipe_detail(request, slug):
@@ -53,7 +53,7 @@ def recipe_detail(request, slug):
     recipe = get_object_or_404(queryset, slug=slug, status='1')
     recipe_title = recipe.title
 
-    # Modify ingredients and preparation steps type for their display 
+    # Modify ingredients and preparation steps type for their display
     # in the recipe_detail template
     ingredients = recipe.ingredients
     if ingredients[0] == '<':
@@ -70,19 +70,18 @@ def recipe_detail(request, slug):
         preparation = [p.text for p in soup2.find_all('p')]
     else:
         preparation = preparation.split('.,')
-   
 
     saved_recipe = False
 
     if recipe.saved.filter(id=request.user.id).exists():
         saved_recipe = True
-  
+
     # Set liked to false by default
     recipe_liked = False
-    
+
     if recipe.likes.filter(id=request.user.id).exists():
         recipe_liked = True
-    
+
     # Display only approved comments
     comments = recipe.comments.all().order_by("-created_on")
     comment_count = recipe.comments.filter(approved=True).count()
@@ -91,7 +90,7 @@ def recipe_detail(request, slug):
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         rating_form = RatingForm(data=request.POST)
-        
+
         if comment_form.is_valid() and rating_form.is_valid():
             # Process comment
             comment = comment_form.save(commit=False)
@@ -102,9 +101,9 @@ def recipe_detail(request, slug):
             # Process rating
             rating = rating_form.cleaned_data['rating']
             current_rating = recipe.rating if recipe.rating else 0
-            num_of_ratings = (recipe.number_of_ratings 
+            num_of_ratings = (recipe.number_of_ratings
                               if recipe.number_of_ratings else 0)
-            new_average_rating = ((current_rating * num_of_ratings) + 
+            new_average_rating = ((current_rating * num_of_ratings) +
                                   int(rating)) / (num_of_ratings + 1)
             recipe.rating = round(new_average_rating, 2)
             print("HELLO")
@@ -118,7 +117,7 @@ def recipe_detail(request, slug):
         else:
             messages.warning(
                         request,
-                        ("You must rate the recipe if you want to leave" 
+                        ("You must rate the recipe if you want to leave"
                          "a comment")
                     )
 
@@ -130,24 +129,25 @@ def recipe_detail(request, slug):
         # Uncomment next line to raise a 403 error
         # raise PermissionDenied
         # Uncomment next line to raise a 500 error
-        # raise Exception("This is a deliberate exception to trigger 500 error")
-    
+        # raise Exception("A deliberate exception to trigger 500 error")
 
     return render(
         request,
         "recipe_detail.html",
-        {"recipe": recipe,
-        "recipe_title": recipe_title,
-        "ingredients": ingredients,
-        "preparation": preparation,
-        "saved_recipe": saved_recipe,
-        "recipe_liked": recipe_liked,
-        "comments": comments,
-        "comment_count": comment_count,
-        "comment_form": comment_form,
-        "rating_form": rating_form, 
+        {
+            "recipe": recipe,
+            "recipe_title": recipe_title,
+            "ingredients": ingredients,
+            "preparation": preparation,
+            "saved_recipe": saved_recipe,
+            "recipe_liked": recipe_liked,
+            "comments": comments,
+            "comment_count": comment_count,
+            "comment_form": comment_form,
+            "rating_form": rating_form,
         },
     )
+
 
 @login_required
 def comment_edit(request, slug, comment_id):
@@ -168,10 +168,11 @@ def comment_edit(request, slug, comment_id):
             comment.save()
             messages.add_message(request, messages.SUCCESS, "Comment Updated!")
         else:
-            messages.add_message(request, messages.ERROR, 
+            messages.add_message(request, messages.ERROR,
                                  "Error updating comment!")
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
 
 @login_required
 def comment_delete(request, slug, comment_id):
@@ -186,8 +187,8 @@ def comment_delete(request, slug, comment_id):
         comment.delete()
         messages.add_message(request, messages.SUCCESS, "Comment deleted!")
     else:
-        messages.add_message(request, messages.ERROR, "You can only delete" 
-                             "your own comments!")
+        messages.add_message(request, messages.ERROR,
+                             "You can only delete your own comments!")
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
@@ -205,7 +206,7 @@ class ShareRecipe(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super().form_valid(form) 
+        return super().form_valid(form)
 
 
 class RecipeOwnership(UserPassesTestMixin):
@@ -218,7 +219,7 @@ class RecipeOwnership(UserPassesTestMixin):
     def test_func(self):
         recipe = self.get_object()
         return recipe.author == self.request.user
-    
+
 
 class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
     '''
@@ -265,8 +266,9 @@ class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
             else:
                 form.instance.status = 0
                 messages.success(self.request, 'Recipe successfully edited')
-            return super().form_valid(form) 
-        
+            return super().form_valid(form)
+
+
 @login_required
 def delete_submitted_recipe(request, slug):
     """
@@ -279,8 +281,8 @@ def delete_submitted_recipe(request, slug):
         recipe.delete()
         messages.add_message(request, messages.SUCCESS, 'Recipe deleted!')
     else:
-        messages.add_message(request, messages.ERROR, "You can only" 
-                                "delete your own recipes!")
+        messages.add_message(request, messages.ERROR,
+                             "You can only delete your own recipes!")
 
     return HttpResponseRedirect(reverse('submitted_recipes'))
 
@@ -304,12 +306,13 @@ class SubmittedRecipes(LoginRequiredMixin, ListView):
             author=self.request.user
         ).order_by('-created_on')
         return shared_recipes
-    
+
+
 @login_required
 def saved_recipes(request):
     queryset = Recipe.objects.filter(status=1)
     new_added_recipe = queryset.filter(saved=request.user)
-    return render(request, "saved_recipes.html", 
+    return render(request, "saved_recipes.html",
                   {"new_added_recipe": new_added_recipe})
 
 
@@ -331,10 +334,11 @@ def remove_recipe(request, slug):
         recipe.saved.remove(request.user)
     recipe.saved_boolean = False
     recipe.save()
-    # Redirect the user back to the referring page, or to a default page if the 
+    # Redirect the user back to the referring page, or to a default page if the
     # referring page is not available
     redirect_url = request.META.get('HTTP_REFERER', reverse('saved_recipes'))
     return HttpResponseRedirect(redirect_url)
+
 
 @login_required
 def like_recipe(request, slug):
@@ -345,7 +349,8 @@ def like_recipe(request, slug):
         recipe.likes.add(request.user)
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
-#### Search recipes ####
+
+# Search recipes ####
 class RecipeSearch(ListView):
     model = Recipe
     context_object_name = 'recipes'
@@ -366,7 +371,7 @@ class RecipeSearch(ListView):
         return context
 
 
-#### Recipes categories ####
+# Recipes categories ####
 class PopularPancakes(ListView):
     '''
     Return recipes with the category: Popular Pancakes.
