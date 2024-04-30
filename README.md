@@ -2,10 +2,10 @@
 
 Welcome to The Pancake Palace, your go-to destination for an array of mouthwatering pancake recipes! Dive into our selection featuring popular classics, delightful options for kids, and delectable vegan alternatives. As a registered user, unleash your culinary creativity by submitting, liking, and rating recipes, alongside leaving comments and contacting the page owner for queries or suggestions. Your contributions await approval by our diligent admin before sharing with fellow pancake enthusiasts. Easily submit your own recipes via a user-friendly form, with the flexibility to edit or delete them as desired. Keep track of your favorite finds with our handy saved recipe feature, and revisit your culinary creations on your personal submissions page. Experience pancake perfection, one recipe at a time, at The Pancake Palace!
 
-![Mockup Screenshots]()
+![Mockup Screenshots](docs_readme/multi_device_website_mockup.png)
 
 
-[The deployed website can be found here](https://vjp-recipe-book-821f4ac9817f.herokuapp.com/)
+[The deployed website can be found here](https://the-pancake-palace-f89eed44eef7.herokuapp.com/)
 
 ## Contents
 
@@ -679,6 +679,9 @@ The Code Institute Python Linter was used to validate and format the python file
 ![Alt text](docs_readme/images/validation/python_testing.png)
 
 - ### Challenges Faced
+During the development phase, encountering bugs was inevitable. However, through active problem-solving strategies including consulting various resources, participating in forums, and revisiting bootcamp relevant materials, I successfully identified and resolved the issues that arose.
+
+There is a known bug with the rating system, users can rate any recipe but when a coment gets deleted the rating chosen for that recipe is not getting remove, thus is counted in the average rating for that recipe. For time constrais I wasn't able to fix this bug on time before submitting the project but I'm working on it and this bug will be fixed.
 
 ## 8. Deployment
 ### 1. Forking the Repository
@@ -797,7 +800,7 @@ os.environ['CLOUDINARY_URL'] = '<API ENVIRONEMENT VARIABLE>'
 - For writting the code for the rating functionality I used the rsources mentioned in the following pages:
     - https://freefrontend.com/bootstrap-star-ratings/
     - https://bbbootstrap.com/snippets/bootstrap-rate-your-experience-template-star-ratings-30972576
-    
+
 ### Images 
 
 - For most of the recipe images, phtoleap mobile app was used for creating the images. 
