@@ -11,13 +11,15 @@ class CommentForm(forms.ModelForm):
             'content': 'Your comment:'
         }
 
+
 class RatingForm(forms.Form):
     RATING_STARS = [(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')]
     rating = forms.ChoiceField(choices=RATING_STARS, widget=forms.RadioSelect)
 
+
 class RecipeForm(ModelForm):
     '''
-    Form class to create a recipe form without excluding ingredients 
+    Form class to create a recipe form without excluding ingredients
     or preparation.
     '''
     class Meta:

@@ -10,6 +10,7 @@ class ContactAdmin(SummernoteModelAdmin):
     """
     summernote_fields = ('content',)
 
+
 @admin.register(ReachOut)
 class ReachOutAdmin(admin.ModelAdmin):
     list_display = ('message', 'read',)

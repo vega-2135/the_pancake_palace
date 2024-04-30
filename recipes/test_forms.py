@@ -10,7 +10,7 @@ class TestCommentForm(TestCase):
         self.assertTrue(comment_form.is_valid(), msg='Form is not valid')
 
     def test_form_is_invalid(self):
-        comment_form = CommentForm({'content': '' })
+        comment_form = CommentForm({'content': ''})
         self.assertFalse(comment_form.is_valid(), msg='Form is valid')
 
 
@@ -29,35 +29,30 @@ class TestRecipeForm(TestCase):
 
     def test_title_is_required(self):
         recipe_form = RecipeForm({
-            'title':''
+            'title': ''
         })
         self.assertFalse(recipe_form.is_valid(), msg='Form is not valid')
 
     def test_category_is_required(self):
         recipe_form = RecipeForm({
-            'category':''
+            'category': ''
         })
         self.assertFalse(recipe_form.is_valid(), msg='Form is not valid')
-    
+
     def test_cooking_time_is_required(self):
         recipe_form = RecipeForm({
-            'cooking_time':''
+            'cooking_time': ''
         })
         self.assertFalse(recipe_form.is_valid(), msg='Form is not valid')
 
     def test_servings_is_required(self):
         recipe_form = RecipeForm({
-            'servings':''
+            'servings': ''
         })
         self.assertFalse(recipe_form.is_valid(), msg='Form is not valid')
 
     def test_make_public_is_required(self):
         recipe_form = RecipeForm({
-            'make_public':''
+            'make_public': ''
         })
         self.assertFalse(recipe_form.is_valid(), msg='Form is not valid')
-        
-
-
-
-  

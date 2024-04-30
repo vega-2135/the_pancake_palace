@@ -7,7 +7,7 @@ class TestAboutView(TestCase):
     def setUp(self):
         """Creates about me content"""
         self.about_content = About(
-            title="About The Pancake Palace", 
+            title="About The Pancake Palace",
             content="Welcome to The Pancake Palace,"
         )
         self.about_content.save()

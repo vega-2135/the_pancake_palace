@@ -20,8 +20,8 @@ class TestReachOutForm(TestCase):
             'email': 'test@test.com',
             'message': 'Hello!'
         })
-        self.assertFalse(form.is_valid(), msg="Name field is empty but the form" 
-                         "is valid")
+        self.assertFalse(form.is_valid(), msg="Name field is empty but the"
+                         "form is valid")
 
     def test_email_is_required(self):
         """ Test for all fields"""
@@ -30,7 +30,7 @@ class TestReachOutForm(TestCase):
             'email': '',
             'message': 'Hello!'
         })
-        self.assertFalse(form.is_valid(), msg="Email field is empty but the" 
+        self.assertFalse(form.is_valid(), msg="Email field is empty but the"
                          "form is valid")
 
     def test_message_is_required(self):
@@ -40,5 +40,5 @@ class TestReachOutForm(TestCase):
             'email': 'test@test.com',
             'message': ''
         })
-        self.assertFalse(form.is_valid(), msg="Message field is empty" 
+        self.assertFalse(form.is_valid(), msg="Message field is empty"
                          "but the form is valid")

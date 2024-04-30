@@ -662,5 +662,18 @@ Additionally, I enlisted the help of friends to rigorously test various features
 Automates tests where performed using Django's built-in testing framework which use Python's unittest module. The tests can be found in each app directory.
 
 - ### Code Validation
+- #### Html code validation
+The W3C Markup Validation Service was used to validate all HTML files, ensuring adherence to web standards. The majority of pages passed validation with no errors. However, pages containing forms and dynamically generated content, such as the About page edited via the admin panel, exhibited occasional deprecated tags, prompting suggestions to use CSS alternatives instead.
+
+![Alt text](docs_readme/images/validation/no_errors.png)
+
+- #### CSS code validation
+![Alt text](docs_readme/images/validation/css_validation.png)
+
+- #### JavaScript code validation
+![Alt text](docs_readme/images/validation/script.js.png)
+![Alt text](docs_readme/images/validation/comments_js.png)
+
+- #### Python code validation
 
 - ### Challenges Faced

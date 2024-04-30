@@ -12,11 +12,10 @@ def contact_me(request):
         reachout_form = ReachOutForm(data=request.POST)
         if reachout_form.is_valid():
             reachout_form.save()
-            messages.add_message(request, messages.SUCCESS, 
+            messages.add_message(
+                request, messages.SUCCESS,
                 "Thank you for reaching out, I endeavour to respond within"
                 "2-3 working days.")
-            
-    
 
     queryset = Contact.objects.all()
     contact = get_object_or_404(queryset)

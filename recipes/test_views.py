@@ -36,7 +36,6 @@ class TestRecipeDetailView(TestCase):
         self.assertIn(b"Recipe title", response.content)
         self.assertIsInstance(
             response.context['comment_form'], CommentForm)
-        
 
     def test_successful_comment_submission(self):
         """Test for posting a comment on a post"""
@@ -49,7 +48,8 @@ class TestRecipeDetailView(TestCase):
             'recipe_detail', args=['recipe-title']), post_data)
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"This is a test comment.", response.content)
-        
+
+
 class TestRecipeListView(TestCase, Client):
 
     def setUp(self):
@@ -71,7 +71,7 @@ class TestRecipeListView(TestCase, Client):
             approved=True
         )
         self.recipe1.save()
-        
+
         self.recipe2 = Recipe(
             title="Recipe2 title",
             author=self.user,
@@ -87,7 +87,7 @@ class TestRecipeListView(TestCase, Client):
             approved=True
         )
         self.recipe2.save()
-        
+
         self.recipe3 = Recipe(
             title="Recipe3 title",
             author=self.user,
@@ -103,7 +103,7 @@ class TestRecipeListView(TestCase, Client):
             approved=False
         )
         self.recipe3.save()
-   
+
     def test_get_home_page(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
@@ -116,6 +116,7 @@ class TestRecipeListView(TestCase, Client):
             approved=True
         ).order_by('-created_on')
         self.assertQuerysetEqual(test_qs, expected_qs)
+
 
 class TestShareRecipeView(TestCase, Client):
 
@@ -137,13 +138,12 @@ class TestShareRecipeView(TestCase, Client):
             status=1,
             approved=True
         )
-        self.recipe.save()
-        
+        self.recipe.save()  
 
     def test_no_access_to_create_recipe_if_not_logged_in(self):
         response = self.client.get(reverse('share_recipe'))
         self.assertRedirects(response, '/accounts/login/?next=/share/')
-      
+
     def test_authenticated_user_can_access_share_recipe_page(self):
         user = User.objects.get(pk=1)
         self.client.force_login(user=user)
@@ -154,7 +154,7 @@ class TestShareRecipeView(TestCase, Client):
         self.assertContains(response, 'category')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'share_recipe.html')
-      
+
     def test_create_recipe(self):
         """Test for a user requesting a collaboration"""
         self.client.login(

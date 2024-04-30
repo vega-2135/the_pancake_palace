@@ -19,7 +19,7 @@ class TestContactView(TestCase):
         self.assertIn(b'Welcome', response.content)
         self.assertIsInstance(
             response.context['reachout_form'], ReachOutForm)
-        
+ 
     def test_successful_reachout_submission(self):
         """Test for a user reaching out"""
         post_data = {
