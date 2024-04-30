@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
-
 from .forms import CommentForm
 from .models import Recipe
 
@@ -183,7 +182,8 @@ class TestEditRecipeView(TestCase, Client):
             username="myUsername", password="myPassword", email="test@test.com"
         )
         self.user1 = User.objects.create_superuser(
-            username="myUsername2", password="myPassword2", email="test@test2.com"
+            username="myUsername2", password="myPassword2", 
+            email="test@test2.com"
         )
         self.recipe = Recipe(
             title="Recipe title",
@@ -205,7 +205,8 @@ class TestEditRecipeView(TestCase, Client):
             'edit_recipe',
             kwargs={'slug': 'recipe-title'}
         ))
-        self.assertRedirects(response, '/accounts/login/?next=/edit/recipe-title/')
+        self.assertRedirects(response, 
+                             '/accounts/login/?next=/edit/recipe-title/')
         
     def test_user_is_not_author_redirect(self):
         user = User.objects.get(pk=2)

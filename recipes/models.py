@@ -1,7 +1,7 @@
-from autoslug import AutoSlugField
-from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from django.db import models
+from autoslug import AutoSlugField
+from cloudinary.models import CloudinaryField
 
 # Recipe post status for admin users
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -21,10 +21,12 @@ class Recipe(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="resources_added")
     servings = models.IntegerField(
-        help_text='Please enter the number of portions that result from your recipe.'
+        help_text="Please enter the number of portions that result" 
+        "from your recipe."
     )
     cooking_duration = models.IntegerField(
-        help_text = 'Please enter how many minutes is required for the preparation of your recipe')
+        help_text = "Please enter how many minutes is required for" 
+        "the preparation of your recipe")
     ingredients = models.TextField()
     preparation = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -51,7 +53,7 @@ class Recipe(models.Model):
 
     
     def __str__(self):
-        return f"title: {self.title}, rating: {self.rating}, likes: {self.likes}, #ratings: {self.number_of_ratings}"
+        return self.title
     
     def likes_count(self):
         return self.likes.count()
@@ -62,8 +64,10 @@ class Comment(models.Model):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name='comments'
     )
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='commenter')
-    content = models.TextField(help_text="Remember to also rate the recipe before submitting a comment.")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, 
+                               related_name='commenter')
+    content = models.TextField(help_text="Remember to also rate the recipe" 
+                               "before submitting a comment.")
     likes = models.ManyToManyField(
         User, related_name='comment_likes', blank=True)
     created_on = models.DateTimeField(auto_now_add=True)

@@ -11,7 +11,6 @@
                 <h2>Welcome!</h2>
                 {% endif %}
                 {{contact.content | safe}}
-
                 <form method="post">
                     {{ reachout_form | crispy }}
                     {% csrf_token %}

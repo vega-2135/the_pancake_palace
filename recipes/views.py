@@ -1,6 +1,4 @@
-import logging
 
-from bs4 import BeautifulSoup
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -9,7 +7,8 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
-
+from bs4 import BeautifulSoup
+import logging
 from .forms import CommentForm, RatingForm, RecipeForm
 from .models import Comment, Recipe
 
@@ -103,8 +102,10 @@ def recipe_detail(request, slug):
             # Process rating
             rating = rating_form.cleaned_data['rating']
             current_rating = recipe.rating if recipe.rating else 0
-            num_of_ratings = recipe.number_of_ratings if recipe.number_of_ratings else 0
-            new_average_rating = ((current_rating * num_of_ratings) + int(rating)) / (num_of_ratings + 1)
+            num_of_ratings = (recipe.number_of_ratings 
+                              if recipe.number_of_ratings else 0)
+            new_average_rating = ((current_rating * num_of_ratings) + 
+                                  int(rating)) / (num_of_ratings + 1)
             recipe.rating = round(new_average_rating, 2)
             print("HELLO")
             recipe.number_of_ratings = num_of_ratings + 1
@@ -117,7 +118,8 @@ def recipe_detail(request, slug):
         else:
             messages.warning(
                         request,
-                        ('You must rate the recipe if you want to leave a comment')
+                        ("You must rate the recipe if you want to leave" 
+                         "a comment")
                     )
 
     else:
@@ -128,7 +130,7 @@ def recipe_detail(request, slug):
         # Uncomment next line to raise a 403 error
         # raise PermissionDenied
         # Uncomment next line to raise a 500 error
-        # raise Exception("This is a deliberate exception to trigger a 500 error")
+        # raise Exception("This is a deliberate exception to trigger 500 error")
     
 
     return render(
@@ -164,9 +166,10 @@ def comment_edit(request, slug, comment_id):
             comment.recipe = recipe
             comment.approved = False
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+            messages.add_message(request, messages.SUCCESS, "Comment Updated!")
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(request, messages.ERROR, 
+                                 "Error updating comment!")
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
@@ -181,9 +184,10 @@ def comment_delete(request, slug, comment_id):
 
     if comment.author == request.user:
         comment.delete()
-        messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
+        messages.add_message(request, messages.SUCCESS, "Comment deleted!")
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(request, messages.ERROR, "You can only delete" 
+                             "your own comments!")
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
@@ -305,7 +309,8 @@ class SubmittedRecipes(LoginRequiredMixin, ListView):
 def saved_recipes(request):
     queryset = Recipe.objects.filter(status=1)
     new_added_recipe = queryset.filter(saved=request.user)
-    return render(request, "saved_recipes.html", {"new_added_recipe": new_added_recipe})
+    return render(request, "saved_recipes.html", 
+                  {"new_added_recipe": new_added_recipe})
 
 
 @login_required

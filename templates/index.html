@@ -7,34 +7,45 @@
     <div class="col-md-6 d-flex flex-column justify-content-evenly order-1 order-md-0">
         <div class="py-4 py-md-0 w-100">
             <h1 class="pb-0 pb-lg-1 text-center mb-5">The Pancake Palace</h1>
-            <p class="lead text-center description-text">Welcome to The Pancake Palace your ultimate destination for all things pancakes!
-                Whether you're a seasoned pro or a beginner flipping your first flapjacks, our site is your go-to hub 
-                for pancake perfection. Explore a treasure trove of mouthwatering recipes ranging from classic buttermilk 
-                to exotic fruit-infused delights. Join our passionate community of pancake enthusiasts, share your culinary 
-                creations and connect with fellow flapjack aficionados. Get ready to elevate your pancake game to 
+            <p class="lead text-center description-text">Welcome to The Pancake Palace your ultimate destination for all
+                things pancakes!
+                Whether you're a seasoned pro or a beginner flipping your first flapjacks, our site is your go-to hub
+                for pancake perfection. Explore a treasure trove of mouthwatering recipes ranging from classic
+                buttermilk
+                to exotic fruit-infused delights. Join our passionate community of pancake enthusiasts, share your
+                culinary
+                creations and connect with fellow flapjack aficionados. Get ready to elevate your pancake game to
                 new heights with The Pancake Palace where every bite is a celebration of fluffy, golden goodness!</p>
         </div>
         <div class="py-4 py-md-0 w-100">
             <p class="lead text-center">
-                Discover fresh flavors and culinary creativity by browsing through our Popular Kids and Vegan pancakes categories!
+                Discover fresh flavors and culinary creativity by browsing through our Popular Kids and Vegan pancakes
+                categories!
             </p>
         </div>
         <div class="d-md-none d-flex justify-content-center">
             <ul>
                 <li>
-                    <a href="{% url 'popular_pancakes' %}" class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular Pancakes</a>  
+                    <a href="{% url 'popular_pancakes' %}"
+                        class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular
+                        Pancakes</a>
                 </li>
                 <li>
-                    <a href="{% url 'pancakes_kids' %}" class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Pancakes for Kids</a>   
+                    <a href="{% url 'pancakes_kids' %}"
+                        class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Pancakes
+                        for Kids</a>
                 </li>
-               <li>
-                    <a href="{% url 'vegan_pancakes' %}" class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Vegan Pancakes</a>  
+                <li>
+                    <a href="{% url 'vegan_pancakes' %}"
+                        class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Vegan
+                        Pancakes</a>
                 </li>
             </ul>
         </div>
     </div>
     <div class="col-md-6 my-auto order-0 order-md-1">
-        <img class="img-fluid px-md-auto" src="{% static 'images/home/home_pancakes.webp' %}" alt="Cooking time apron and oven glove.">
+        <img class="img-fluid px-md-auto" src="{% static 'images/home/home_pancakes.webp' %}"
+            alt="Cooking time apron and oven glove.">
     </div>
 </section>
 
@@ -47,6 +58,5 @@
         {% endfor %}
     </div>
 </section>
-
 
 {% endblock %}

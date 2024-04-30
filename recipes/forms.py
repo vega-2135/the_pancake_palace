@@ -1,11 +1,6 @@
 from django import forms
-from django.forms import (
-    Form,
-    ModelForm,
-)
-from .models import Recipe, Comment
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Field
+from django.forms import (ModelForm,)
+from .models import Comment, Recipe
 
 
 class CommentForm(forms.ModelForm):
@@ -22,7 +17,8 @@ class RatingForm(forms.Form):
 
 class RecipeForm(ModelForm):
     '''
-    Form class to create a recipe form without excluding ingredients or preparation.
+    Form class to create a recipe form without excluding ingredients 
+    or preparation.
     '''
     class Meta:
         model = Recipe

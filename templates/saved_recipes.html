@@ -28,7 +28,8 @@
                                     <!-- Save Button -->
                                     <div class="col-md-2">
                                         <div class="button-group">
-                                            <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
+                                            <a href="{% url 'remove_recipe' recipe.slug %}"
+                                                class="btn btn-outline-primary">Remove</a>
                                         </div>
                                     </div>
                                     <!-- Rating and Rating Number -->
@@ -43,7 +44,8 @@
                                             {% endfor %}
                                         </div>
                                         <div>
-                                            <p class="num-ratings">{{ recipe.number_of_ratings|default_if_none:"0" }}</p>
+                                            <p class="num-ratings">{{ recipe.number_of_ratings|default_if_none:"0" }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +56,7 @@
                 {% if forloop.counter|divisibleby:3 %}
                 {% endif %}
                 {% empty %}
-                    <p>You haven't saved any recipes yet</p>
+                <p>You haven't saved any recipes yet</p>
                 {% endfor %}
             </div>
         </div>
@@ -64,8 +66,7 @@
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
             <li>
-                <a href="?page={{ page_obj.previous_page_number }}"
-                class="page-link">&laquo; PREV</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
             </li>
             {% endif %}
             {% if page_obj.has_next %}

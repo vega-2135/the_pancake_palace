@@ -19,9 +19,6 @@
 <div class="container-fluid subtitle mt-5">
   <div class="row">
     {% if request.user.is_authenticated %}
-
-
-
     {% if saved_recipe %}
     <div class="col-md-4">
       <div class="button-group">
@@ -50,9 +47,6 @@
       </div>
     </div>
     {% else %}
-
-
-
     <div class="col-md-4">
       <div class="button-group">
         <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary sav-btn">Save</a>
@@ -80,11 +74,6 @@
       </div>
     </div>
     {% endif %}
-
-
-
-
-
     {% else %}
     <div class="col-md-4">
       <a href="{% url 'account_login' %}" class="btn btn-outline-primary sav-btn">Save</a>
@@ -111,9 +100,6 @@
       </div>
     </div>
     {% endif %}
-
-
-
   </div>
 </div>
 <div class="mt-3">

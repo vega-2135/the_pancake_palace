@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Recipe, Comment
 from django_summernote.admin import SummernoteModelAdmin
+from .models import Comment, Recipe
 
 
 @admin.register(Recipe)
@@ -27,7 +27,8 @@ class CommentAdmin(admin.ModelAdmin):
     '''
     Register comment model.
     '''
-    list_display = ('author', 'recipe_title', 'recipe_rating', 'created_on', 'approved')
+    list_display = ('author', 'recipe_title', 'recipe_rating', 'created_on', 
+                    'approved')
     search_fields = ['author', 'content']
     list_filter = ('created_on', 'approved')
     actions = ['approve_comments']

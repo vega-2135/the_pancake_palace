@@ -661,4 +661,6 @@ Additionally, I enlisted the help of friends to rigorously test various features
 - ### Automated Testing
 Automates tests where performed using Django's built-in testing framework which use Python's unittest module. The tests can be found in each app directory.
 
+- ### Code Validation
 
+- ### Challenges Faced

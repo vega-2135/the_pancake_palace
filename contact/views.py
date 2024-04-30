@@ -1,8 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, render
-
 from contact.models import Contact
-
 from .forms import ReachOutForm
 
 

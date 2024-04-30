@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Contact, ReachOut
 from django_summernote.admin import SummernoteModelAdmin
+from .models import Contact, ReachOut
 
 
 @admin.register(Contact)
