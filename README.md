@@ -675,5 +675,113 @@ The W3C Markup Validation Service was used to validate all HTML files, ensuring 
 ![Alt text](docs_readme/images/validation/comments_js.png)
 
 - #### Python code validation
+The Code Institute Python Linter was used to validate and format the python files correctly. All errors were fixed and no errors were found in the final tests.
+![Alt text](docs_readme/images/validation/python_testing.png)
 
 - ### Challenges Faced
+
+## 8. Deployment
+### 1. Forking the Repository
+
+- Log in to GitHub.
+- Go to the repository for this project (<https://github.com/VictoriaParkes/recipe-book>).
+- In the top-right corner of the page, click "Fork".
+- Under "Owner", select an owner for the repository from the dropdown menu.
+- Optionally, in the "Description" field, type a description of your fork.
+- To copy the main branch only, select the "Copy the main branch only" check box. If you do not select this option, all branches will be copied into the new fork.
+- Click "Create fork"
+
+### 2. Cloning Your Forked Repository
+
+- Log-in to GitHub.com, navigate to your fork of the repository.
+- Above the list of files, click Code.
+- Copy the URL for the repository.
+  - To clone the repository using HTTPS, under "Clone with HTTPS", click the "Copy" icon.
+  - To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, click SSH, then click the "Copy" icon.
+  - To clone a repository using GitHub CLI, click Use GitHub CLI, then click the "Copy" icon.
+- Open Git Bash
+- Change the current working directory to the location where you want the cloned directory.
+- Type git clone, and then paste the URL you copied earlier.
+- Press Enter. Your local clone will be created.
+
+For more details about forking and cloning a repository, please refer to [GitHub documentation](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
+
+### 3. Install Dependencies
+
+Use the `pip install -r requirements.txt` command to install all of the Python modules and packages listed in your requirements.txt file.
+
+### 4. List of Requirements:
+- Open your terminal and run the command pip3 freeze > requirements.txt to generate a list of dependencies.
+- Commit the changes and push them to your GitHub repository.
+
+### 5. Create your env.py
+
+- In your project workspace, create a file called env.py and make sure this file is included in the .gitignore file.
+- Add the following code:
+
+```python
+import os
+
+os.environ["DATABASE_URL"]='<copiedURL>'
+os.environ['SECRET_KEY'] = '<ADD YOUR SECRET KEY HERE>'
+os.environ['CLOUDINARY_URL'] = '<API ENVIRONEMENT VARIABLE>'
+
+```
+
+- Replace `<ADD YOUR SECRET KEY HERE>` in the SECRET_KEY environment variable with your own secret key.
+- Save the file.
+
+### 6. Create a Database
+
+- Create an account and log in with ElephantSQL.com.
+- From the dashboard click “Create New Instance”.
+- Set up your plan
+  - Give your plan a Name
+  - Select a plan tier
+  - You can leave the Tags field blank
+- Select “Select Region”
+- Select a data center near you
+- Then click “Review”
+- Check your details are correct and then click “Create instance”
+- Return to the ElephantSQL dashboard and click on the database instance name for this project
+- In the URL section, click the copy icon to copy the database URL
+- In your env.py file replace `<copiedURL>` in the DATABASE_URL environment variable with the copied URL.
+- Save the file.
+
+#### 7. Set Up Cloudinary
+
+- Create an account and log in with Cloudinary.com.
+- In the dashboard copy your API Environment variable.
+- In your env.py file replace `<API ENVIRONEMENT VARIABLE>` in the CLOUDINARY_URL environment variable with the copied API Environment variable.
+- Save the file.
+
+
+### 8. Heroku Account Setup:
+- Create an account in Heroku (if you don't have one).
+- Navigate to the Heroku dashboard and click on the "Create new app" button.
+- Choose a unique name for your app, select the region, and then click "Create app".
+
+### 9. Configuring Environment Variables:
+- Open the app settings and click on the "Reveal Config Vars" button.
+- Add a key-value pair:
+    - Key: PORTCLOUDINARY_URL
+    - Value:  	paste your API Environment variable copied from the Cloudinary dashboard
+- Click "Add".
+- Add another key-value pair:
+    - Key: DATABASE_URL
+    - Value: paste the URL copied from ElephantSQL dashboard
+- Click "Add".
+- Add another key-value pair:
+    - Key: SECRET_KEY
+    - Value: paste your secret key
+- Click "Add".
+
+### 10. Deployment Configuration:
+- Go to the "Deploy" tab in settings.
+- Choose the deployment method as GitHub.
+- Connect your Heroku app to your GitHub repository.
+- Search for the GitHub repository name and click "connect".
+- You can select the option automatic deploys, which enables any change in the chosen branch to be automatically deployed to the app.
+- On manual deploy click "Deploy Branch"
+- After a few seconds this message appears: "Your app was successfully deployed."
+- Click on "view" to open the website containing the command line application.
