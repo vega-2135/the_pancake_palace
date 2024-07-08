@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 default="placeholder",
                 max_length=255,
                 validators=[
-                    recipes.models.CustomFileExtensionValidator(
+                    recipes.models.FileExtensionValidator(
                         ["jpg", "jpeg", "png", "gif"]
                     )
                 ],

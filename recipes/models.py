@@ -14,10 +14,6 @@ CATEGORY = (
 )
 
 
-class CustomFileExtensionValidator(FileExtensionValidator):
-    message = "The file extension must be either .jpg, .jpeg, .png, or .gif."
-
-
 # Recipe Model
 class Recipe(models.Model):
     title = models.CharField(max_length=200, unique=True)

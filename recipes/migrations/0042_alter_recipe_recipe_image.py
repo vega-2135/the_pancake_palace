@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 default="https://res.cloudinary.com/dpxwugk91/image/upload/v1714425166/ufutddsehjdq8vjbtefx.webp",
                 max_length=255,
                 validators=[
-                    recipes.models.CustomFileExtensionValidator(
+                    recipes.models.FileExtensionValidator(
                         ["jpg", "jpeg", "png", "webp"]
                     )
                 ],
