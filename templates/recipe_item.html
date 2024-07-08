@@ -5,7 +5,7 @@
         <div class="card-body card-style">
             <div class="image-container">
                 <div class="image-flash">
-                    {% if 'placeholder' in recipe.recipe_image.url %}
+                    {% if not recipe.recipe_image.url %}
                     <a href="{% url 'recipe_detail' recipe.slug %}"><img class="card-img"
                         src="{% static 'images/raspberry_passionfruit.webp' %}"
                         alt="Raspberry-Passion fruit pancakes"></a>
