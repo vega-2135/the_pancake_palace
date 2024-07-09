@@ -10,7 +10,7 @@
   <div class="d-flex gap-3">
      {% if user == recipe.author %}
      <a class="btn btn-warning btn-edit" href="{% url 'edit_recipe' recipe.slug %}" role="button">Edit</a>
-     <a class="btn btn-danger btn-delete" href="{% url 'delete_submitted_recipe' recipe.slug %}" role="button">Delete</a>
+     <button class="btn btn-danger delete-recipe" recipe_id="{{ recipe.id }}">Delete</button>
      {% endif %}
   </div>
  </div>
@@ -217,7 +217,7 @@
       {% endif %}
       {% if user.is_authenticated and comment.author == user %}
       <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
-      <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+      <button class="btn btn-delete delete-comment" comment_id="{{ comment.id }}">Delete</button>
       {% endif %}
     </div>
     {% empty %}
@@ -248,8 +248,30 @@
   </div>
 </div>
 
+<!-- Delete recipe confirmation modal -->
+<div class="modal fade" id="deleteRecipeModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete recipe?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your recipe?
+        This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a id="deleteRecipeConfirm" href="#" class="btn
+                btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock content %}
 
 {% block extras %}
 <script src="{% static 'js/comments.js' %}"></script>
+<script src="{% static 'js/recipes.js' %}"></script>
 {% endblock %}

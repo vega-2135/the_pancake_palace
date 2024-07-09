@@ -270,12 +270,12 @@ class EditRecipe(LoginRequiredMixin, RecipeOwnership, UpdateView):
 
 
 @login_required
-def delete_submitted_recipe(request, slug):
+def delete_submitted_recipe(request, slug, recipe_id):
     """
     view to delete submitted recipe
     """
     queryset = Recipe.objects.all()
-    recipe = get_object_or_404(queryset, slug=slug)
+    recipe = get_object_or_404(queryset, pk=recipe_id)
 
     if recipe.author == request.user:
         recipe.delete()
