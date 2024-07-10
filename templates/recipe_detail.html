@@ -9,7 +9,7 @@
   <h1 class="recipe-title text-center">{{ recipe.title }}</h1>
   <div class="d-flex gap-3">
      {% if user == recipe.author %}
-     <a class="btn btn-warning btn-edit" href="{% url 'edit_recipe' recipe.slug %}" role="button">Edit</a>
+     <a class="btn btn-warning btn-edit edit-recipe" href="{% url 'edit_recipe' recipe.slug %}" role="button">Edit</a>
      <button class="btn btn-danger delete-recipe" recipe_id="{{ recipe.id }}">Delete</button>
      {% endif %}
   </div>

@@ -254,6 +254,18 @@ li::marker {
     padding-left: 150px;
 }
 
+.delete-recipe {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.edit-recipe {
+    width: 84px !important;
+    font-weight: bold;
+}
+
 /* Comments */
 .comment-login {
     font-size: 20px;
