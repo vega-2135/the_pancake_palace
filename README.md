@@ -286,6 +286,14 @@ I conducted ongoing manual testing throughout the development stages of the proj
 
 Additionally, I enlisted the help of friends to rigorously test various features such as account registration, submitting, editing, and deleting comments and recipes. Their feedback was instrumental in identifying and addressing any potential issues or bugs within the system.
 
+![Alt text](docs_readme/manual_testing/manual-testing1.png)
+![Alt text](docs_readme/manual_testing/manual-testing2.png)
+![Alt text](docs_readme/manual_testing/manual-testing3.png)
+![Alt text](docs_readme/manual_testing/manual-testing4.png)
+![Alt text](docs_readme/manual_testing/manual-testing5.png)
+![Alt text](docs_readme/manual_testing/manual-testing6.png)
+![Alt text](docs_readme/manual_testing/manual-testing7.png)
+
 - ### User Story Testing
 
 <details>
