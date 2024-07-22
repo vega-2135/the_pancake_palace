@@ -150,6 +150,7 @@ def recipe_detail(request, slug):
         },
     )
 
+
 @login_required
 def comment_edit(request, slug, comment_id):
     """
@@ -336,15 +337,6 @@ def saved_recipes(request):
     return render(
         request, "saved_recipes.html", {"saved_recipes": saved_recipes}
     )
-
-# @login_required
-# def save_recipe():
-#     recipes = Recipe.objects.filter(status=1)
-#     saved_recipes = []
-#     for recipe in recipes:
-#         if recipe.saved.filter(id=request.user.id).exists():
-#             saved_recipes.append(recipe.id)
-#     return render(template, {..., "saved_recipes": saved_recipes})
 
 
 @login_required
