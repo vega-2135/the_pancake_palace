@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.urls import reverse_lazy
 from django.views.generic import ListView
@@ -47,11 +47,17 @@ def recipe_detail(request, slug):
     :template:`recipes/recipe_detail.html`
     """
     # Return all objects of the class Recipe
-    queryset = Recipe.objects.filter(status=1)
+    #queryset = Recipe.objects.filter(status=1)
 
     # Return recipe with the correct slug
-    recipe = get_object_or_404(queryset, slug=slug, status="1")
+    recipe = get_object_or_404(Recipe, slug=slug)
     recipe_title = recipe.title
+
+    if recipe.status != 1:
+        if not request.user.is_authenticated or (
+            recipe.author != request.user
+        ):
+            raise Http404
 
     # Modify ingredients and preparation steps type for their display
     # in the recipe_detail template
