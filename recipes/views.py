@@ -150,7 +150,6 @@ def recipe_detail(request, slug):
         },
     )
 
-
 @login_required
 def comment_edit(request, slug, comment_id):
     """
@@ -329,11 +328,23 @@ class SubmittedRecipes(LoginRequiredMixin, ListView):
 
 @login_required
 def saved_recipes(request):
-    queryset = Recipe.objects.filter(status=1)
-    new_added_recipe = queryset.filter(saved=request.user)
+    recipes = Recipe.objects.filter(status=1)
+    saved_recipes = []
+    for recipe in recipes:
+        if recipe.saved.filter(id=request.user.id).exists():
+            saved_recipes.append(recipe)
     return render(
-        request, "saved_recipes.html", {"new_added_recipe": new_added_recipe}
+        request, "saved_recipes.html", {"saved_recipes": saved_recipes}
     )
+
+# @login_required
+# def save_recipe():
+#     recipes = Recipe.objects.filter(status=1)
+#     saved_recipes = []
+#     for recipe in recipes:
+#         if recipe.saved.filter(id=request.user.id).exists():
+#             saved_recipes.append(recipe.id)
+#     return render(template, {..., "saved_recipes": saved_recipes})
 
 
 @login_required
@@ -341,7 +352,6 @@ def save_recipe(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
     if not recipe.saved.filter(id=request.user.id).exists():
         recipe.saved.add(request.user)
-    recipe.saved_boolean = True
     recipe.save()
     redirect_url = request.META.get("HTTP_REFERER", reverse("saved_recipes"))
     return HttpResponseRedirect(redirect_url)

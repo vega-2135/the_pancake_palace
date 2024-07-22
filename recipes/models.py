@@ -102,7 +102,6 @@ class Recipe(models.Model):
     likes = models.ManyToManyField(
         User, related_name="recipe_likes", blank=True
     )
-    saved_boolean = models.BooleanField(default=False)
     rating = models.IntegerField(default=0)
     number_of_ratings = models.IntegerField(default=0)
     approved = models.BooleanField(default=False)
