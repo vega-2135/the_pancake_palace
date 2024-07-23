@@ -40,40 +40,35 @@
     </head>
 
     <body class="d-flex flex-column main-bg">
-
-        <!-- Navigation Menu -->
-        <div class="nav-section">
-            <nav class="navbar navbar-expand-md navbar-light">
-                <div class="container-fluid">
-
+        <header class="container-fluid fixed-top">
+            <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                     <a class="page-title navbar-brand" href="{% url 'home' %}">
                         <img src="{% static 'images/site_logo.webp' %}" alt="Site Logo" width="65" height="65"
                             class="d-inline-block align-text-middle">
                         The Pancake Palace
                     </a>
+                </div>
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                    <form method="GET" action="{% url 'search_recipe' %}">
+                        <div class="input-group w-100">
+                            <label for="q" class="sr-only">Search</label>
+                            <input class="form-control border border-black rounded-0" type="text" name="q" id="q" placeholder="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-success" aria-label="search" type="submit">
+                                    <span class="icon">
+                                        <i class="fas fa-search mr-0"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
-                    <!-- Button for toggling collapsed menu on smaller screens -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <!--  -->
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <!-- Search box-->
-                    <div class="input-group justify-content-center" style="margin-right: 200px;margin-left: 200px;">
-                        <form class="d-flex" role="search" method="GET" action="{% url 'search_recipe' %}">
-                            {% csrf_token %}
-                            <input class="form-control me-2" type="search" placeholder="Search" name="search_query" required
-                                aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto">
-                            {% if user.is_authenticated %}
-                            <li class="nav-item dropdown">
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                    <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                        {% if user.is_authenticated %}
+                            <li class="list-inline-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false"><i class="fa-regular fa-user"></i>
                                     {{ user.username }}
@@ -92,66 +87,33 @@
                                     <li><a class="dropdown-item" href="{% url 'share_recipe' %}">Share a Recipe</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
+                            <li class="list-inline-item">
                                 <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
-                                    href="{% url 'account_logout' %}">Logout</a>
+                                    href="{% url 'account_logout' %}"><div class="text-center">Logout</a>
                             </li>
                             {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                                    href="{% url 'account_signup' %}">Register</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                                    href="{% url 'account_login' %}">Login</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                                        href="{% url 'account_signup' %}">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                                        href="{% url 'account_login' %}">Login</a>
+                                </li>
                             {% endif %}
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
-            </nav>
-            <nav class="navbar navbar-expand-md navbar-light">
-                <div class="container-fluid">
-                    <!-- Categories -->
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div class="navbar-nav-group d-none d-sm-block">
-                            <ul class="navbar-nav me-2 text-end">
-                                <!-- First Group: Popular Pancakes, Pancakes for Kids, Vegan Pancakes -->
-                                <li class="nav-item">
-                                    <a href="{% url 'popular_pancakes' %}"
-                                        class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular
-                                        Pancakes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{% url 'pancakes_kids' %}"
-                                        class="marg  nav-link {% if request.path == pancakes_for_kids_url %}active{% endif %}">Pancakes
-                                        for Kids</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{% url 'vegan_pancakes' %}"
-                                        class="marg  nav-link {% if request.path == vegan_pancakes_url %}active{% endif %}">Vegan
-                                        Pancakes</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="navbar-nav-group">
-                            <ul class="navbar-nav me-2 text-end">
-                                <!-- Second Group: About, Contact Me -->
-                                <li class="nav-item">
-                                    <a class="marg nav-link {% if request.path == about_url %}active{%endif%}"
-                                        aria-current="page" href="{% url 'about' %}">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="contact-me nav-link {% if request.path == contact_url %}active{%endif%}"
-                                        aria-current="page" href="{% url 'contact' %}">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
+            </div>
+            <div class="row bg-white">
+                <nav class="navbar navbar-expand-lg navbar-light w-100">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    {% include 'mobile-top-header.html' %}
+                    {% include 'main-nav.html' %}
+                </nav>
+            </div>
+        </header>
 
         <!-- Notifications -->
         <div class="container">
