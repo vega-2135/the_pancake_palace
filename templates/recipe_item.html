@@ -20,13 +20,14 @@
                 <h2 class="card-title item-title mt-3">{{ recipe.title }}</h2>
             </a>
             <hr>
+            <h2>{{ recipe.saved }}</h2>
             {% if request.user.is_authenticated %}
             <div class="container-fluid">
                 <div class="row mb-3">
                     <!-- Save Button -->
                     <div class="col-md-2">
                         <div class="button-group">
-                            {% if recipe.saved_boolean %}
+                            {% if user_id in recipes_saved_user_ids %}
                             <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
                             {% else %}
                             <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary save-btn">Save</a>

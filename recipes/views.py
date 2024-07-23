@@ -47,7 +47,7 @@ def recipe_detail(request, slug):
     :template:`recipes/recipe_detail.html`
     """
     # Return all objects of the class Recipe
-    #queryset = Recipe.objects.filter(status=1)
+    # queryset = Recipe.objects.filter(status=1)
 
     # Return recipe with the correct slug
     recipe = get_object_or_404(Recipe, slug=slug)
@@ -335,13 +335,29 @@ class SubmittedRecipes(LoginRequiredMixin, ListView):
 
 @login_required
 def saved_recipes(request):
-    recipes = Recipe.objects.filter(status=1)
-    saved_recipes = []
-    for recipe in recipes:
-        if recipe.saved.filter(id=request.user.id).exists():
-            saved_recipes.append(recipe)
+    published_recipes = Recipe.objects.filter(status=1)
+    saved_recipes = request.user.saved_recipes.all()
+    for recipe in saved_recipe:
+        recipe.saved
+    published_recipes_ids = list(published_recipes.values_list("id", flat=True))
+    print(f"published_recipes: {published_recipes}")
+    print(f"saved_recipes by the request's user: {saved_recipes}")
+    print(f"id of user: {request.user.id}")
+    print(f"published_recipes_ids: {published_recipes_ids}")
+
+
+    # print(f"saved_recipes: {saved_recipes}")
+    # for re in saved_recipes:
+    #     print(f"{re.title}: saved: {re.saved}")
+    # print(f"id of user: {request.user.id}")
     return render(
-        request, "saved_recipes.html", {"saved_recipes": saved_recipes}
+        request,
+        "saved_recipes.html",
+        {
+            "saved_recipes": saved_recipes,
+            "saved_recipes_user_ids": saved_recipes_user_ids,
+            "user_id": request.user.id,
+        },
     )
 
 
@@ -360,7 +376,6 @@ def remove_recipe(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
     if recipe.saved.filter(id=request.user.id).exists():
         recipe.saved.remove(request.user)
-    recipe.saved_boolean = False
     recipe.save()
     # Redirect the user back to the referring page, or to a default page if the
     # referring page is not available
