@@ -2,7 +2,7 @@
 
 <div class="col-md-4">
     <div class="card mb-4">
-        <div class="card-body card-style">
+        <div class="card-body card-style card-height">
             <div class="image-container">
                 <div class="image-flash">
                     {% if not recipe.recipe_image.url %}
@@ -19,12 +19,12 @@
             <a href="{% url 'recipe_detail' recipe.slug %}">
                 <h2 class="card-title item-title mt-3">{{ recipe.title }}</h2>
             </a>
-            <hr>
+            <hr class="d-sm-none">
             {% if request.user.is_authenticated %}
             <div class="container-fluid">
                 <div class="row mb-3">
                     <!-- Save Button -->
-                    <div class="col-md-2">
+                    <div class="col-md-2 save-button-mb">
                         <div class="button-group">
                             {% if recipe.saved_boolean %}
                             <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <!-- Rating and Rating Number -->
-                    <div class="col-md-10 d-flex align-items-center justify-content-end">
+                    <div class="col-md-10 d-flex align-items-center justify-content-end rating-mg">
                         <div class="rating-stars">
                             {% for i in "xxxxx" %}
                             {% if forloop.counter <= recipe.rating %}
