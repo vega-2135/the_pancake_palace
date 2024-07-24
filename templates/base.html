@@ -50,21 +50,13 @@
                     </a>
                 </div>
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                    <form method="GET" action="{% url 'search_recipe' %}">
-                        <div class="input-group w-100">
-                            <label for="q" class="sr-only">Search</label>
-                            <input class="form-control border border-black rounded-0" type="text" name="q" id="q" placeholder="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-success" aria-label="search" type="submit">
-                                    <span class="icon">
-                                        <i class="fas fa-search mr-0"></i>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
+                    <form class="d-flex" role="search" method="GET" action="{% url 'search_recipe' %}">
+                        {% csrf_token %}
+                        <input class="form-control me-2" type="search" placeholder="Search" name="search_query" required
+                            aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
-
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                     <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                         {% if user.is_authenticated %}
@@ -92,11 +84,11 @@
                                     href="{% url 'account_logout' %}"><div class="text-center">Logout</a>
                             </li>
                             {% else %}
-                                <li class="nav-item">
+                                <li class="list-inline-item dropdown">
                                     <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
                                         href="{% url 'account_signup' %}">Register</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="list-inline-item dropdown">
                                     <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
                                         href="{% url 'account_login' %}">Login</a>
                                 </li>
