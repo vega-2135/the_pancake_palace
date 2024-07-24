@@ -48,28 +48,28 @@
 
     <body class="d-flex flex-column main-bg">
         <header class="container-fluid fixed-top">
-            <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+            <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex nav-bg">
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                    <a class="page-title navbar-brand" href="{% url 'home' %}">
+                    <a class="page-title navbar-brand page-title" href="{% url 'home' %}">
                         <img src="{% static 'images/site_logo.webp' %}" alt="Site Logo" width="65" height="65"
-                            class="d-inline-block align-text-middle">
+                            class="d-inline-block align-text-middle page-logo">
                         The Pancake Palace
                     </a>
                 </div>
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                     <form class="d-flex" role="search" method="GET" action="{% url 'search_recipe' %}">
                         {% csrf_token %}
-                        <input class="form-control me-2" type="search" placeholder="Search" name="search_query" required
+                        <input class="form-control me-2 search-box" type="search" placeholder="Search" name="search_query" required
                             aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-outline-success mobile-search search-button" type="submit">Search</button>
                     </form>
                 </div>
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                     <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                         {% if user.is_authenticated %}
                             <li class="list-inline-item dropdown">
-                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false"><i class="fa-regular fa-user"></i>
+                                <a class="nav-link dropdown-toggle top-nav-it" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false"><i class="fa-regular fa-user nav-color"></i>
                                     {{ user.username }}
                                 </a>
                                 <ul class="dropdown-menu text-end">
@@ -87,16 +87,16 @@
                                 </ul>
                             </li>
                             <li class="list-inline-item">
-                                <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                                <a class="top-nav-it nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
                                     href="{% url 'account_logout' %}"><div class="text-center">Logout</a>
                             </li>
                             {% else %}
                                 <li class="list-inline-item dropdown">
-                                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                                    <a class="top-nav-it nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
                                         href="{% url 'account_signup' %}">Register</a>
                                 </li>
                                 <li class="list-inline-item dropdown">
-                                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                                    <a class="top-nav-it nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
                                         href="{% url 'account_login' %}">Login</a>
                                 </li>
                             {% endif %}

@@ -6,24 +6,24 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{% url 'popular_pancakes' %}" class="popular marg nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular Pancakes</a>
+            <a href="{% url 'popular_pancakes' %}" class="popular marg top-nav-it nav-link {% if request.path == popular_pancakes_url %}active{% endif %}">Popular Pancakes</a>
         </li>
         <li class="nav-item">
             <a href="{% url 'pancakes_kids' %}"
-                class="marg  nav-link {% if request.path == pancakes_for_kids_url %}active{% endif %}">Pancakes
+                class="marg  top-nav-it nav-link {% if request.path == pancakes_for_kids_url %}active{% endif %}">Pancakes
                 for Kids</a>
         </li>
         <li class="nav-item">
             <a href="{% url 'vegan_pancakes' %}"
-                class="marg  nav-link {% if request.path == vegan_pancakes_url %}active{% endif %}">Vegan
+                class="marg  top-nav-it nav-link {% if request.path == vegan_pancakes_url %}active{% endif %}">Vegan
                 Pancakes</a>
         </li>
         <li class="nav-item">
-            <a class="marg nav-link {% if request.path == about_url %}active{%endif%}"
+            <a class="marg top-nav-it nav-link {% if request.path == about_url %}active{%endif%}"
                 aria-current="page" href="{% url 'about' %}">About</a>
         </li>
         <li class="nav-item">
-            <a class="contact-me nav-link {% if request.path == contact_url %}active{%endif%}"
+            <a class="contact-me top-nav-it nav-link {% if request.path == contact_url %}active{%endif%}"
                 aria-current="page" href="{% url 'contact' %}">Contact</a>
         </li>
     </ul>

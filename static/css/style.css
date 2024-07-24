@@ -7,6 +7,25 @@ main {
 } 
 
 /* Nav bar */
+.page-title {
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+}
+
+.page-logo {
+    margin-bottom: 10px;
+}
+
+.top-nav-it {
+    font-size: 25px;
+    font-weight: bold;
+    color: black !important;
+}
+
+.nav-bg {
+    background-color: rgb(171, 196, 255) !important;
+}
 
 nav {
     font-size: 20px;
@@ -36,8 +55,8 @@ nav {
     margin-right: 24px;
 }
 
-.mobile-color {
-    color: black;
+.nav-color {
+    color: black !important;
 }
 
 .mobile-margin {
@@ -409,5 +428,13 @@ i {
     .about-nav {
         margin-top: 0;
         margin-right: 0;
+    }
+
+    .search-box {
+        margin-left: 95px;
+    }
+
+    .search-button {
+        margin-right: 35px;
     }
 }
