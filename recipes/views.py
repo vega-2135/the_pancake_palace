@@ -29,6 +29,7 @@ class Index(ListView):
     def get_context_data(self, **kwargs):
         # Add extra context of page title.
         context = super().get_context_data(**kwargs)
+        context = creates_recipe_status(self.request, self.queryset, context)
         context["page_title"] = "Home"
         return context
 
@@ -321,6 +322,7 @@ class SubmittedRecipes(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context = creates_recipe_status(self.request, self.queryset, context)
         context["page_title"] = "My Submitted Recipes"
         return context
 
@@ -335,14 +337,16 @@ class SubmittedRecipes(LoginRequiredMixin, ListView):
 
 @login_required
 def saved_recipes(request):
-    recipes = Recipe.objects.filter(status=1)
-    saved_recipes = []
-    for recipe in recipes:
-        if recipe.saved.filter(id=request.user.id).exists():
-            saved_recipes.append(recipe)
-    return render(
-        request, "saved_recipes.html", {"saved_recipes": saved_recipes}
-    )
+    context = {}
+    context = creates_recipe_status(request,
+                                    request.user.saved_recipes.all(),
+                                    context)
+    context["saved_recipes"] = request.user.saved_recipes.all()
+
+    ids = list(request.user.saved_recipes.all().values_list('id', flat=True))
+    print(f"from saved_recipes/, {context}")
+    print(f"ids: {ids}")
+    return render(request, "saved_recipes.html", context)
 
 
 @login_required
@@ -395,6 +399,14 @@ class RecipeSearch(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        if self.request.method == "GET":
+            search_query = self.request.GET.get("search_query")
+            recipes = Recipe.objects.filter(title__icontains=search_query)
+            context = creates_recipe_status(self.request, recipes, context)
+        else:
+            # This is done to avoid the exception while rendering the page
+            # when a method != GET is done
+            context["recipe_status"] = {}
         context["query"] = self.request.GET.get("search_query")
         return context
 
@@ -410,6 +422,11 @@ class PopularPancakes(ListView):
     template_name = "popular_pancakes.html"
     paginate_by = 6
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = creates_recipe_status(self.request, self.queryset, context)
+        return context
+
 
 class PancakesKids(ListView):
     """
@@ -421,6 +438,11 @@ class PancakesKids(ListView):
     template_name = "pancakes_kids.html"
     paginate_by = 6
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = creates_recipe_status(self.request, self.queryset, context)
+        return context
+
 
 class VeganPancakes(ListView):
     """
@@ -431,3 +453,17 @@ class VeganPancakes(ListView):
     queryset = Recipe.objects.filter(status=1, category=2)
     template_name = "vegan_pancakes.html"
     paginate_by = 6
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = creates_recipe_status(self.request, self.queryset, context)
+        return context
+
+
+def creates_recipe_status(request, recipes, context):
+    recipes_status = {}
+    for recipe in recipes:
+        recipes_status[recipe.id] = \
+        recipe.saved.filter(id=request.user.id).exists()
+    context["recipes_status"] = recipes_status
+    return context

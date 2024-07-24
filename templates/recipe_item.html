@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_filters %}
 
 <div class="col-md-4">
     <div class="card mb-4">
@@ -26,7 +27,7 @@
                     <!-- Save Button -->
                     <div class="col-md-2 save-button-mb">
                         <div class="button-group">
-                            {% if recipe.saved_boolean %}
+                            {% if recipes_status|get_value_from_dict:recipe.id %}
                             <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>
                             {% else %}
                             <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary save-btn">Save</a>
