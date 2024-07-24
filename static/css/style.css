@@ -1,5 +1,6 @@
 main {
     min-height: 100vh;
+    margin-top: 200px;
 }
 
 .page-title {
@@ -360,12 +361,27 @@ footer {
 }
 
 .footer-font{
-    font-size: 20px;
+    font-size: 30px;
     margin-left: 15px;
+    color: black;
+}
+
+.footer-social {
+    width: 25%;
+    align-content: center;
+    justify-content: space-evenly;
+    display: flex;
+    margin-top: 10px;
+    margin-right: -100px;
 }
 
 i {
     font-size: 20px;
+}
+
+.i-footer {
+    font-size: 30px;
+    color: black;
 }
 
 .home-link {
