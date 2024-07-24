@@ -36,6 +36,19 @@ nav {
     margin-right: 24px;
 }
 
+.mobile-color {
+    color: black;
+}
+
+.mobile-margin {
+    margin-left: -50px;
+}
+
+.mobile-search {
+    color: #605dc1;
+    border: solid 1px #605dc1;
+    font-weight: bold;
+}
 
 .subtitle {
     width: 1000px;
@@ -111,7 +124,7 @@ a {
 }
 
 .hide {
-    display: none; /* Hide the alert */
+    display: none !important; /* Hide the alert */
   }
 
 /* Categories */
