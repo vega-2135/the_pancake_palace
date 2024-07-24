@@ -1,5 +1,6 @@
 main {
     min-height: 100vh;
+    margin-top: 200px;
 }
 
 .page-title {
@@ -7,6 +8,25 @@ main {
 } 
 
 /* Nav bar */
+.page-title {
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+}
+
+.page-logo {
+    margin-bottom: 10px;
+}
+
+.top-nav-it {
+    font-size: 25px;
+    font-weight: bold;
+    color: black !important;
+}
+
+.nav-bg {
+    background-color: rgb(171, 196, 255) !important;
+}
 
 nav {
     font-size: 20px;
@@ -36,6 +56,19 @@ nav {
     margin-right: 24px;
 }
 
+.nav-color {
+    color: black !important;
+}
+
+.mobile-margin {
+    margin-left: -50px;
+}
+
+.mobile-search {
+    color: #605dc1;
+    border: solid 1px #605dc1;
+    font-weight: bold;
+}
 
 .subtitle {
     width: 1000px;
@@ -111,7 +144,7 @@ a {
 }
 
 .hide {
-    display: none; /* Hide the alert */
+    display: none !important; /* Hide the alert */
   }
 
 /* Categories */
@@ -254,6 +287,18 @@ li::marker {
     padding-left: 150px;
 }
 
+.delete-recipe {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.edit-recipe {
+    width: 84px !important;
+    font-weight: bold;
+}
+
 /* Comments */
 .comment-login {
     font-size: 20px;
@@ -279,6 +324,8 @@ li::marker {
 /* About page */
 .about_img{
     border: solid rgb(171, 196, 255);
+    width: 80%;
+    height: auto;
 }
 
 /* Error pages */
@@ -314,12 +361,27 @@ footer {
 }
 
 .footer-font{
-    font-size: 20px;
+    font-size: 30px;
     margin-left: 15px;
+    color: black;
+}
+
+.footer-social {
+    width: 25%;
+    align-content: center;
+    justify-content: space-evenly;
+    display: flex;
+    margin-top: 10px;
+    margin-right: -100px;
 }
 
 i {
     font-size: 20px;
+}
+
+.i-footer {
+    font-size: 30px;
+    color: black;
 }
 
 .home-link {
@@ -382,5 +444,13 @@ i {
     .about-nav {
         margin-top: 0;
         margin-right: 0;
+    }
+
+    .search-box {
+        margin-left: 95px;
+    }
+
+    .search-button {
+        margin-right: 35px;
     }
 }

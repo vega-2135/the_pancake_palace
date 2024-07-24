@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */ 
 // Get the alert element
 const alertElement = document.getElementById("msg");
 
