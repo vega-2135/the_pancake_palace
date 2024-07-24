@@ -16,12 +16,12 @@ from pathlib import Path
 
 import dj_database_url
 
-if os.path.isfile('env.py'):
-    import env
+if os.path.isfile("env.py"):
+    import env  # noqa
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,7 +33,12 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = True if os.environ.get("DEBUG_DJANGO") else False
 
 
-ALLOWED_HOSTS = ["http://0.0.0.0:8000/", "127.0.0.1", ".herokuapp.com", "localhost"]
+ALLOWED_HOSTS = [
+    "http://0.0.0.0:8000/",
+    "127.0.0.1",
+    ".herokuapp.com",
+    "localhost",
+]
 
 
 # Application definition
@@ -56,15 +61,15 @@ INSTALLED_APPS = [
     "about",
     "contact",
     "crispy_forms",
-    "crispy_bootstrap5"
+    "crispy_bootstrap5",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -99,19 +104,14 @@ TEMPLATES = [
 WSGI_APPLICATION = "the_pancake_palace.wsgi.application"
 
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 
-if 'test' in sys.argv:
-    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+if "test" in sys.argv:
+    DATABASES["default"]["ENGINE"] = "django.db.backends.sqlite3"
 
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://*.codeanyapp.com",
-    "https://*.herokuapp.com"
-]
+CSRF_TRUSTED_ORIGINS = ["https://*.codeanyapp.com", "https://*.herokuapp.com"]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -136,15 +136,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'allauth.account.auth_backends.AuthenticationBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    "allauth.account.auth_backends.AuthenticationBackend",
+    "django.contrib.auth.backends.ModelBackend",
 )
 
 ACCOUNT_USERNAME_REQUIRED = True
-#ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-LOGIN_REDIRECT_URL = '/'
+# ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_EMAIL_VERIFICATION = "none"
+LOGIN_REDIRECT_URL = "/"
 
 
 LANGUAGE_CODE = "en-us"
@@ -158,14 +158,15 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-STATICFILES_STORAGE = 'cloudinary_storage.storage'\
-                       '.StaticHashedCloudinaryStorage'
+STATICFILES_STORAGE = (
+    "cloudinary_storage.storage" ".StaticHashedCloudinaryStorage"
+)
 
 
-MEDIA_URL = '/media/'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+MEDIA_URL = "/media/"
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -174,9 +175,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "filters" : {
-        "debug_only" : {
-            "()" : "django.utils.log.RequireDebugTrue",
+    "filters": {
+        "debug_only": {
+            "()": "django.utils.log.RequireDebugTrue",
         },
     },
     "handlers": {
@@ -192,13 +193,18 @@ LOGGING = {
             "handlers": ["console", "file"],
             "level": "INFO",
         },
-    }
+    },
 }
 
 SUMMERNOTE_CONFIG = {
     # You can put custom Summernote settings
-    'summernote': {
-        'fontNames': ['Roboto', 'Comic Neue', 'Noto San', 'Open Sans'],
-        'fontNamesIgnoreCheck': ['Roboto', 'Comic Neue', 'Noto San', 'Open Sans'],
+    "summernote": {
+        "fontNames": ["Roboto", "Comic Neue", "Noto San", "Open Sans"],
+        "fontNamesIgnoreCheck": [
+            "Roboto",
+            "Comic Neue",
+            "Noto San",
+            "Open Sans",
+        ],
     },
 }
