@@ -208,6 +208,10 @@ btn-saved {
     border-radius: 10px;
 }
 
+.save-button-lg {
+    margin-bottom: 0 !important;
+}
+
 btn-shadow {
     box-shadow: 6px 5px 0px 0px black;
 }
@@ -231,6 +235,9 @@ btn-shadow {
 
 .card-style {
     height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-width, .comments-count {
@@ -269,7 +276,7 @@ li::marker {
 }
 
 .save-btn {
-    margin-left: -20px;
+    margin-left: 3px;
 }
 
 
@@ -452,5 +459,91 @@ i {
 
     .search-button {
         margin-right: 35px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    main {
+        margin-top: 110px;
+    }
+
+    .card-style {
+        height: 550px;
+    }
+
+    .mb-3 {
+        flex-direction: column;
+    }
+
+    .rating-stars {
+        display: flex;
+    }
+
+    .rating-mg {
+        justify-content: center !important;
+        margin-left: 25px;
+    }
+
+    .button-group {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .footer-social {
+        width: 100%;
+    }
+
+    .footer-medium {
+        justify-content: unset !important;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    main {
+        margin-top: 80px;
+    }
+
+    .h2-mb {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .smalld-nav {
+        display: flex;
+        align-content: start;
+        margin-bottom: 10px;
+        margin-top: -45px;
+        font-size: 15px;
+        margin-left: 50px;
+
+    }
+
+    .save-button-mb {
+        display: flex;
+        justify-content: center !important;
+        margin-top: -20px;
+        margin-bottom: 15px !important;
+    }
+
+    .card-style {
+        height: auto;
+    }
+
+    .card-title {
+        height: auto;
+    }
+
+    .rating-mg {
+        justify-content: center !important;
+    }
+
+    .footer-mb {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-right: 0px;
+
     }
 }
