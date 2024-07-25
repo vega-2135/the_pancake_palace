@@ -320,12 +320,6 @@ class SubmittedRecipes(LoginRequiredMixin, ListView):
     template_name = "submitted_recipes.html"
     paginate_by = 6
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context = creates_recipe_status(self.request, self.queryset, context)
-        context["page_title"] = "My Submitted Recipes"
-        return context
-
     def get_queryset(self):
         # Return all recipes that user has written,
         # in reverse order of created date.
@@ -333,6 +327,15 @@ class SubmittedRecipes(LoginRequiredMixin, ListView):
             author=self.request.user
         ).order_by("-created_on")
         return shared_recipes
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        shared_recipes = Recipe.objects.filter(
+            author=self.request.user
+        ).order_by("-created_on")
+        context = creates_recipe_status(self.request, shared_recipes, context)
+        context["page_title"] = "My Submitted Recipes"
+        return context
 
 
 @login_required
