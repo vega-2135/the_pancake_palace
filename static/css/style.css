@@ -462,7 +462,7 @@ i {
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (width: 768px) {
     main {
         margin-top: 110px;
     }
