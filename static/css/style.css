@@ -482,6 +482,7 @@ i {
 
     .card-style {
         height: auto;
+        min-height: 581px;
     }
 
     .card-title {
