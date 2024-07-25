@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="row mb-3">
                     <!-- Save Button -->
-                    <div class="col-md-4 save-button-mb d-flex align-items-center justify-content-start">
+                    <div class="col-md-4 save-button-mb save-button-lg d-flex align-items-center justify-content-start">
                         <div class="button-group">
                             {% if recipes_status|get_value_from_dict:recipe.id %}
                             <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary">Remove</a>

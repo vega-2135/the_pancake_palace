@@ -208,6 +208,10 @@ btn-saved {
     border-radius: 10px;
 }
 
+.save-button-lg {
+    margin-bottom: 0 !important;
+}
+
 btn-shadow {
     box-shadow: 6px 5px 0px 0px black;
 }
@@ -231,6 +235,9 @@ btn-shadow {
 
 .card-style {
     height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-width, .comments-count {
@@ -269,7 +276,7 @@ li::marker {
 }
 
 .save-btn {
-    margin-left: -20px;
+    margin-left: 3px;
 }
 
 
@@ -465,7 +472,7 @@ i {
     }
 }
 
-@media screen and (min-width: 280px) {
+@media screen and (max-width: 280px) {
     .smalld-nav {
         display: flex;
         align-content: start;
