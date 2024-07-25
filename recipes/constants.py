@@ -1,0 +1,4 @@
+UNAPPROVED = 0
+APPROVED = 1
+
+
