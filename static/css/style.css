@@ -463,6 +463,18 @@ i {
     .h2-mb {
         text-align: center;
     }
+}
+
+@media screen and (min-width: 280px) {
+    .smalld-nav {
+        display: flex;
+        align-content: start;
+        margin-bottom: 10px;
+        margin-top: -45px;
+        font-size: 15px;
+        margin-left: 50px;
+
+    }
 
     .save-button-mb {
         display: flex;
@@ -488,18 +500,6 @@ i {
         justify-content: space-around;
         width: 100%;
         margin-right: 0px;
-
-    }
-}
-
-@media screen and (width: 280px) {
-    .smalld-nav {
-        display: flex;
-        align-content: start;
-        margin-bottom: 10px;
-        margin-top: -45px;
-        font-size: 15px;
-        margin-left: 50px;
 
     }
 }
