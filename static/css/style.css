@@ -466,6 +466,37 @@ i {
     main {
         margin-top: 110px;
     }
+
+    .card-style {
+        height: 550px;
+    }
+
+    .mb-3 {
+        flex-direction: column;
+    }
+
+    .rating-stars {
+        display: flex;
+    }
+
+    .rating-mg {
+        justify-content: center !important;
+        margin-left: 25px;
+    }
+
+    .button-group {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .footer-social {
+        width: 100%;
+    }
+
+    .footer-medium {
+        justify-content: unset !important;
+    }
+
 }
 
 @media screen and (max-width: 450px) {
