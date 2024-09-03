@@ -1,7 +1,7 @@
 const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteRecipeModal"));
 const deleteRecipeButton = document.getElementsByClassName("delete-recipe");
 const deleteRecipeConfirm = document.getElementById("deleteRecipeConfirm");
-
+const closeModalButtons = document.getElementsByClassName("modal-close-btn");
 
 
 /**
@@ -20,5 +20,11 @@ for (let button of deleteRecipeButton) {
       let recipeId = e.target.getAttribute("recipe_id");
       deleteRecipeConfirm.href = `delete_submitted_recipe/${recipeId}`;
       deleteRecipeModal.show();
+    });
+  }
+
+  for (let button of closeModalButtons) {
+    button.addEventListener("click", (e) => {
+      deleteRecipeModal.hide();
     });
   }
