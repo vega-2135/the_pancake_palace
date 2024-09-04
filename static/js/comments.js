@@ -3,10 +3,6 @@ const commentText = document.getElementById("id_content");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
 
-const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
-const deleteButtons = document.getElementsByClassName("delete-comment");
-const deleteConfirm = document.getElementById("deleteConfirm");
-
 /**
 * Initializes edit functionality for the provided edit buttons.
 * 
@@ -28,6 +24,11 @@ for (let button of editButtons) {
   console.log("Edited");
 }
 
+
+const deleteCommentModal = new bootstrap.Modal(document.getElementById("deleteCommentModal"));
+const deleteButtons = document.getElementsByClassName("delete-comment");
+const deleteConfirm = document.getElementById("deleteConfirm");
+
 /**
 * Initializes deletion functionality for the provided delete buttons.
 * 
@@ -40,8 +41,42 @@ for (let button of editButtons) {
 */
 for (let button of deleteButtons) {
   button.addEventListener("click", (e) => {
+    deleteCommentModal.show();
     let commentId = e.target.getAttribute("comment_id");
-    deleteConfirm.href = `delete_comment/${commentId}`;
-    deleteModal.show();
+    deleteConfir.href = `delete_comment/${commentId}`;
   });
 }
+
+
+const closeModalButtons = document.getElementsByClassName("modal-close-btn");
+const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteRecipeModal"));
+
+
+for (let button of closeModalButtons) {
+  button.addEventListener("click", (e) => {
+    deleteRecipeModal.hide();
+    deleteCommentModal.hide();
+  });
+}
+
+
+const deleteRecipeButton = document.getElementsByClassName("delete-recipe");
+const deleteRecipeConfirm = document.getElementById("deleteRecipeConfirm");
+
+// /**
+// * Initializes deletion functionality for the provided delete buttons.
+// * 
+// * For each button in the `deleteButtons` collection:
+// * - Retrieves the associated comment's ID upon click.
+// * - Updates the `deleteConfirm` link's href to point to the 
+// * deletion endpoint for the specific comment.
+// * - Displays a confirmation modal (`deleteModal`) to prompt 
+// * the user for confirmation before deletion.
+// */
+for (let button of deleteRecipeButton) {
+    button.addEventListener("click", (e) => {
+      deleteRecipeModal.show();
+      let recipeId = e.target.getAttribute("recipe_id");
+      deleteRecipeConfirm.href = `delete_submitted_recipe/${recipeId}`;
+    });
+  }
