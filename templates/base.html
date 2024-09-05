@@ -116,9 +116,9 @@
         <!-- Notifications -->
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-8 offset-md-2 message-cont">
                     {% for message in messages %}
-                    <div class="message alert {{ message.tags }} alert.dismissable fade show text-center" id="msg"
+                    <div class="message message-not {{ message.tags }} alert.dismissable fade show text-center" data-autohide="true" id="msg"
                         role="alert">
                         {{ message | safe }}
                     </div>
@@ -126,6 +126,14 @@
                 </div>
             </div>
         </div>
+
+        <!-- {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                {include 'includes/toasts/toast_success.html' %}
+            {% endfor %}
+        </div>
+        {% endif %} -->
 
         <main class="container">
 
@@ -162,8 +170,14 @@
         </footer>
 
         <!-- JavaScript-->
-        <script src="{% static 'js/script.js' %}"></script>
+        <!--<script src="{% static 'js/script.js' %}"></script>-->
         <script src="{% static 'js/comments.js' %}"></script>
+
+        {% block postloadjs %}
+        <script type="text/javascript">
+            $('.toast').toast('show');
+        </script>
+        {% endblock %}
 
     </body>
 
