@@ -1,8 +1,4 @@
-const editButtons = document.getElementsByClassName("btn-edit");
-const commentText = document.getElementById("id_content");
-const commentForm = document.getElementById("commentForm");
-const submitButton = document.getElementById("submitButton");
-
+/*jshint esversion: 6 */ 
 /**
 * Initializes edit functionality for the provided edit buttons.
 * 
@@ -13,6 +9,11 @@ const submitButton = document.getElementById("submitButton");
 * - Updates the submit button's text to "Update".
 * - Sets the form's action attribute to the `edit_comment/{commentId}` endpoint.
 */
+const editButtons = document.getElementsByClassName("btn-edit");
+const commentText = document.getElementById("id_content");
+const commentForm = document.getElementById("commentForm");
+const submitButton = document.getElementById("submitButton");
+
 for (let button of editButtons) {
   button.addEventListener("click", (e) => {
     let commentId = e.target.getAttribute("comment_id");
@@ -25,12 +26,8 @@ for (let button of editButtons) {
 }
 
 
-const deleteCommentModal = new bootstrap.Modal(document.getElementById("deleteCommentModal"));
-const deleteButtons = document.getElementsByClassName("delete-comment");
-const deleteConfirm = document.getElementById("deleteConfirm");
-
 /**
-* Initializes deletion functionality for the provided delete buttons.
+* Initializes deletion functionality for comments.
 * 
 * For each button in the `deleteButtons` collection:
 * - Retrieves the associated comment's ID upon click.
@@ -39,18 +36,22 @@ const deleteConfirm = document.getElementById("deleteConfirm");
 * - Displays a confirmation modal (`deleteModal`) to prompt 
 * the user for confirmation before deletion.
 */
+const deleteCommentModal = new bootstrap.Modal(document.getElementById("deleteCommentModal"));
+const deleteButtons = document.getElementsByClassName("delete-comment");
+const deleteConfirm = document.getElementById("deleteConfirm");
+
 for (let button of deleteButtons) {
   button.addEventListener("click", (e) => {
     deleteCommentModal.show();
     let commentId = e.target.getAttribute("comment_id");
-    deleteConfir.href = `delete_comment/${commentId}`;
+    deleteConfirm.href = `delete_comment/${commentId}`;
   });
 }
 
 
+/* Close modal functionality.*/
 const closeModalButtons = document.getElementsByClassName("modal-close-btn");
 const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteRecipeModal"));
-
 
 for (let button of closeModalButtons) {
   button.addEventListener("click", (e) => {
@@ -60,19 +61,10 @@ for (let button of closeModalButtons) {
 }
 
 
+/* Initializes deletion functionality for recipe posts.*/
 const deleteRecipeButton = document.getElementsByClassName("delete-recipe");
 const deleteRecipeConfirm = document.getElementById("deleteRecipeConfirm");
 
-// /**
-// * Initializes deletion functionality for the provided delete buttons.
-// * 
-// * For each button in the `deleteButtons` collection:
-// * - Retrieves the associated comment's ID upon click.
-// * - Updates the `deleteConfirm` link's href to point to the 
-// * deletion endpoint for the specific comment.
-// * - Displays a confirmation modal (`deleteModal`) to prompt 
-// * the user for confirmation before deletion.
-// */
 for (let button of deleteRecipeButton) {
     button.addEventListener("click", (e) => {
       deleteRecipeModal.show();
