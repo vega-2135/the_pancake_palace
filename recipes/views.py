@@ -188,8 +188,6 @@ def comment_delete(request, slug, comment_id):
     """
     view to delete comment
     """
-    queryset = Recipe.objects.filter(status=1)
-    recipe = get_object_or_404(queryset, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.author == request.user:
