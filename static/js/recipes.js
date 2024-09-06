@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteRecipeModal"));
 const deleteRecipeButton = document.getElementsByClassName("delete-recipe");
 const deleteRecipeConfirm = document.getElementById("deleteRecipeConfirm");

@@ -1,4 +1,4 @@
-
+/*jshint esversion: 6 */
 document.getElementById("img-ext").addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (file.size > 1258291) { 

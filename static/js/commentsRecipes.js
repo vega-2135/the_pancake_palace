@@ -1,4 +1,4 @@
-/*jshint esversion: 6 */ 
+/*jshint esversion: 6 */
 /**
 * Initializes edit functionality for the provided edit buttons.
 * 
