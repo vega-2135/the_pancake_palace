@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 document.addEventListener('DOMContentLoaded', function() {
     const saveButton = document.getElementById('save-button');
     const removeButton = document.getElementById('remove-button');

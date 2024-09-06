@@ -1,4 +1,4 @@
-/*jshint esversion: 6 */ 
+/*jshint esversion: 6 */
 // Get the alert element
 const alertElement = document.getElementById("msg");
 
@@ -6,4 +6,5 @@ const alertElement = document.getElementById("msg");
 setTimeout(function() {
   alertElement.classList.remove('show');
   alertElement.classList.add('hide');
-}, 2000); 
+}, 3000); 
+
