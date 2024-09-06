@@ -3,6 +3,7 @@ from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
 from django.db import models
+from django.core.validators import MinValueValidator
 
 # Recipe post status for admin users
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -80,11 +81,13 @@ class Recipe(models.Model):
     )
     servings = models.IntegerField(
         help_text="Please enter the number of portions that result"
-        "from your recipe."
+        "from your recipe.",
+        validators=[MinValueValidator(1)],
     )
     cooking_duration = models.IntegerField(
         help_text="Please enter how many minutes is required for"
-        "the preparation of your recipe"
+        "the preparation of your recipe",
+        validators=[MinValueValidator(1)],
     )
     ingredients = models.TextField()
     preparation = models.TextField()
