@@ -127,7 +127,7 @@ def recipe_detail(request, slug):
         else:
             messages.warning(
                 request,
-                ("You must rate the recipe if you want to leave" "a comment"),
+                ("You must rate the recipe if you want to leave a comment"),
             )
 
     else:
