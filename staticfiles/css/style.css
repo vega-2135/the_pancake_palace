@@ -110,6 +110,7 @@ nav {
     margin-top: 50px;
 }
 
+
 .google-icon {
     border: 2px solid rgb(177, 169, 169);
     border-radius: 10px;
@@ -118,6 +119,10 @@ nav {
 
 a {
     text-decoration: none;
+}
+
+.logout-cont {
+    justify-content: center;
 }
 
 .logout {
@@ -344,6 +349,20 @@ li::marker {
     align-items: center;
 } 
 
+/* Share recipe page */
+.elements-dir {
+    flex-direction: column;
+}
+
+.make-public {
+    margin-left: 8px;
+}
+
+.submit-cancel {
+    margin-bottom: 20px;
+    margin-left: -15px;
+}
+
 /* About page */
 .about_img{
     border: solid rgb(171, 196, 255);
@@ -478,6 +497,16 @@ i {
     }
 }
 
+@media screen and (min-width: 864px) {
+    .footer-social {
+        margin-right: 0;
+    }
+
+    .i-footer {
+        margin:0 80px 0 80px;
+    }
+}
+
 @media screen and (width: 768px) {
     main {
         margin-top: 110px;
@@ -522,6 +551,16 @@ i {
 
     .h2-mb {
         text-align: center;
+    }
+}
+
+@media screen and (min-width: 300px) {
+    .footer-social {
+        margin-right: 0;
+    }
+
+    .i-footer {
+        margin:0 50px 0 50px;
     }
 }
 
