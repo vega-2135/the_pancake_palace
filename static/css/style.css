@@ -349,6 +349,20 @@ li::marker {
     align-items: center;
 } 
 
+/* Share recipe page */
+.elements-dir {
+    flex-direction: column;
+}
+
+.make-public {
+    margin-left: 8px;
+}
+
+.submit-cancel {
+    margin-bottom: 20px;
+    margin-left: -15px;
+}
+
 /* About page */
 .about_img{
     border: solid rgb(171, 196, 255);
