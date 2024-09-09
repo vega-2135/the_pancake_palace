@@ -483,6 +483,16 @@ i {
     }
 }
 
+@media screen and (min-width: 864px) {
+    .footer-social {
+        margin-right: 0;
+    }
+
+    .i-footer {
+        margin:0 80px 0 80px;
+    }
+}
+
 @media screen and (width: 768px) {
     main {
         margin-top: 110px;
@@ -527,6 +537,16 @@ i {
 
     .h2-mb {
         text-align: center;
+    }
+}
+
+@media screen and (min-width: 300px) {
+    .footer-social {
+        margin-right: 0;
+    }
+
+    .i-footer {
+        margin:0 50px 0 50px;
     }
 }
 
