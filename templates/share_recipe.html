@@ -5,9 +5,9 @@
 {% load crispy_forms_tags %}
 
 <section>
-    <h1 class="text-center mb-3">Share Recipe</h1>
+    <h1 class="text-center mb-3 share">Share Recipe</h1>
     <div class="container-fluid d-flex align-items-center recipe-form">
-        <form method="POST" enctype="multipart/form-data">
+        <form class="share-form" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="elements-dir row mt-3">
                 <div class="mb-2">
