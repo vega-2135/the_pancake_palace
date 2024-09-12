@@ -631,4 +631,13 @@ i {
         margin-right: 0px;
 
     }
+
+    .about-txt {
+        max-width: 100%;
+        hyphens: auto;
+    }
+
+    .about_img {
+        margin-top: -20px;
+    }
 }
