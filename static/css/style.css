@@ -359,7 +359,19 @@ li::marker {
     display: flex;
     justify-content: center;
     align-items: center;
-} 
+}
+
+.approved-msg {
+    display: flex;
+    margin-left: auto;
+    justify-content: right;
+    width: 80%;
+    align-items: end;
+}
+
+.approval {
+    margin-bottom: 0;
+}
 
 /* Share recipe page */
 .recipe-form {

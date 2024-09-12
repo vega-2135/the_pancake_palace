@@ -210,16 +210,23 @@
       <div id="comment{{ comment.id }}">
         {{ comment.content | linebreaks }}
       </div>
-      {% if not comment.approved and comment.author == user %}
-      <p class="approval">
-        This comment is awaiting approval
-      </p>
-      {% endif %}
-      {% if user.is_authenticated and comment.author == user %}
-      <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
-      <button class="btn btn-delete delete-comment" comment_id="{{ comment.id }}">Delete</button>
-      {% endif %}
-    </div>
+      <div class="d-flex">
+        <div class="buttons-container">
+          {% if user.is_authenticated and comment.author == user %}
+          <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+          <button class="btn btn-delete delete-comment" comment_id="{{ comment.id }}">Delete</button>
+          {% endif %}
+        </div>
+        <div class="approved-msg">
+          {% if not comment.approved and comment.author == user %}
+          <p class="approval">
+            This comment is awaiting approval
+          </p>
+          {% endif %}
+        </div>
+      </div>
+      <hr>
+      </div>
     {% empty %}
       <p>No comments yet, be the first to leave a comment.</p>
     {% endfor %}
