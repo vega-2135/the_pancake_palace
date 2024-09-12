@@ -175,8 +175,7 @@ class Comment(models.Model):
         User, on_delete=models.CASCADE, related_name="commenter"
     )
     content = models.TextField(
-        help_text="Remember to also rate the recipe"
-        "before submitting a comment."
+        help_text="Remember to rate the recipe before submitting a comment."
     )
     likes = models.ManyToManyField(
         User, related_name="comment_likes", blank=True
