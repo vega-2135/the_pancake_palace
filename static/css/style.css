@@ -93,7 +93,7 @@ nav {
 
 .recipe-img {
     display: block;
-    width: 1000px;
+    width: 996px;
     height: auto;
     margin-bottom: 100px;
     margin-left: auto;
@@ -325,6 +325,11 @@ li::marker {
 .edit-recipe {
     width: 84px !important;
     font-weight: bold;
+}
+
+.card-img {
+    width: 298px;
+    height: 372.3px;
 }
 
 /* Comments */
