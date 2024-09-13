@@ -1,9 +1,8 @@
 from autoslug import AutoSlugField
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
-from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator, MinValueValidator
 from django.db import models
-from django.core.validators import MinValueValidator
 
 # Recipe post status for admin users
 STATUS = ((0, "Draft"), (1, "Published"))
