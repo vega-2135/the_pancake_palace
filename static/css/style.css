@@ -148,10 +148,6 @@ a {
     background-color: red;
 }
 
-.show {
-    display: block;
-}
-
 .hide {
     display: none !important; /* Hide the alert */
 }
