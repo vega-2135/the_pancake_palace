@@ -72,3 +72,22 @@ for (let button of deleteRecipeButton) {
       deleteRecipeConfirm.href = `delete_submitted_recipe/${recipeId}`;
     });
   }
+
+
+/* Show alert if rating is missing */
+document.getElementById('commentForm').addEventListener('submit', function(event) {
+    const ratingInputs = document.querySelectorAll('input[name="rating"]');
+    let ratingSelected = false;
+
+    for (let input of ratingInputs) {
+        if (input.checked) {
+            ratingSelected = true;
+            break;
+        }
+    }
+
+    if (!ratingSelected) {
+        event.preventDefault(); // Prevent the form from submitting
+        alert("You must rate the recipe if you want to leave a comment.");
+    }
+});
