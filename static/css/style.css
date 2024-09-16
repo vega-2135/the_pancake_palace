@@ -182,11 +182,25 @@ a {
   color: rgb(172, 175, 175);
 }
 
+.btn-secondary {
+    background-color: grey;
+    color: white;
+}
+
+#ratingReminder {
+    font-weight: 500;
+}
+
+.rating-reminder-msg {
+    color: red;
+}
+
   /* Rating stars */
 .rating {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center
+    justify-content: center;
+    border: 2px solid transparent;
 }
 
 .rating>input {
@@ -221,9 +235,13 @@ a {
     opacity: 0.4
 }
 
+.rating.highlight {
+    border: 2px solid red;
+}
+
 /* Buttons */
 
-btn-saved {
+.btn-saved {
     margin-right: 1rem;
     border: 1px solid black;
     border-radius: 10px;

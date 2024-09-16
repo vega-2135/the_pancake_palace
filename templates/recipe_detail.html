@@ -178,6 +178,7 @@
         <p>Posting as: {{ user.username }}</p>
         {{ comment_form | crispy }}
         {% csrf_token %}
+        <p id="ratingReminder">You must rate the recipe if you want to leave a comment.</p>
         <button id="submitButton" type="submit" class="btn btn-success">Submit</button>
       </form>
     </div>
