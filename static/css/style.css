@@ -121,6 +121,10 @@ a {
     text-decoration: none;
 }
 
+#div_id_remember {
+    margin-left: 20px !important;
+}
+
 .logout-cont {
     justify-content: center;
 }
