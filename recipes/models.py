@@ -94,10 +94,7 @@ class Recipe(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
     category = models.IntegerField(choices=CATEGORY, default=0)
-    recipe_image = CloudinaryField(
-        "image",
-        validators=[FileExtensionValidator(["jpg", "jpeg", "png", "webp"])],
-    )
+    recipe_image = CloudinaryField("image")
     saved = models.ManyToManyField(
         User, related_name="saved_recipes", default=None, blank=True
     )
