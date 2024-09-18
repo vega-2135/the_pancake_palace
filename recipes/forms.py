@@ -1,5 +1,6 @@
 from cloudinary.forms import CloudinaryFileField
 from django import forms
+from django.core.exceptions import ValidationError
 from django.forms import (
     ModelForm,
 )
@@ -65,3 +66,19 @@ class RecipeForm(ModelForm):
                 }
             ),
         }
+
+    def clean_recipe_image(self):
+        image = self.cleaned_data.get("recipe_image")
+
+        if image:
+            # Get the file URL and check the extension
+            file_url = image.build_url()
+            valid_extensions = ["png", "jpg", "jpeg", "webp"]
+            file_extension = file_url.split(".")[-1].lower()
+
+            if file_extension not in valid_extensions:
+                raise ValidationError(
+                    "Only PNG, JPG and WEBP files are allowed."
+                )
+
+        return image
