@@ -7,9 +7,9 @@
 <!-- Recipe title  -->
 <div class="recipe-header mt-5">
   <h1 class="recipe-title text-center">{{ recipe.title }}</h1>
-  <div class="d-flex gap-3">
+  <div class="d-flex gap-3 edit-delete-btns">
      {% if user == recipe.author %}
-     <a class="btn btn-warning btn-edit edit-recipe" href="{% url 'edit_recipe' recipe.slug %}" role="button">Edit</a>
+     <a class="btn edit-recipe" href="{% url 'edit_recipe' recipe.slug %}" role="button">Edit</a>
      <button class="btn btn-danger delete-recipe" recipe_id="{{ recipe.id }}">Delete</button>
      {% endif %}
   </div>
@@ -29,8 +29,8 @@
       <a href="{% url 'like_recipe' recipe.slug %}" class="btn like-btn "><i class="fa-solid fa-heart"></i></a>
       <span id="likes">{{ recipe.likes_count }}</span>
     </div>
-    <div class="col-md-4">
-      <!-- Rating and Rating Number -->
+    <!-- Rating and Rating Number -->
+    <div class="col-md-4 rating-cont">
       <div class="col-md-10 rtn rating_class">
         <div class="rating-stars">
           {% for i in "xxxxx" %}

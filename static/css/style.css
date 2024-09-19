@@ -334,15 +334,28 @@ li::marker {
 }
 
 .delete-recipe {
-    color: black;
+    color: white;
     font-size: 1.2rem;
     font-weight: bold;
     padding-bottom: 10px;
 }
 
 .edit-recipe {
+    background-color: green;
+    color: white;
     width: 84px !important;
     font-weight: bold;
+    font-size: 1.2rem !important;
+    margin-right: 25px;
+}
+
+.edit-recipe:hover {
+    color: white;
+    background-color: rgb(3, 112, 3);
+}
+
+.edit-delete-btns {
+    width: 20%;
 }
 
 .card-img {
@@ -554,6 +567,30 @@ i {
 @media screen and (min-width: 992px) {
     main {
         margin-top: 220px;
+    }
+
+    .recipe-title {
+        width: 75%;
+        padding-left: 0px;
+    }
+
+    .rating-cont {
+        padding: 0;
+        display: flex;
+        justify-content: end;
+
+    .edit-delete-btns {
+        width: 20%;
+    }
+
+    .edit-recipe {
+        height: 48px !important;
+        align-content: center;
+    }
+
+    .delete-recipe {
+        align-content: center;
+        padding: 0 12px 0 12px;
     }
 }
 
