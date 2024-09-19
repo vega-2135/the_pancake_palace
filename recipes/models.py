@@ -1,8 +1,13 @@
 from autoslug import AutoSlugField
-from django.contrib.auth.models import User
+from cloudinary import CloudinaryImage
 from cloudinary.models import CloudinaryField
-from django.core.validators import FileExtensionValidator, MinValueValidator
+from django.contrib.auth.models import User
+from django.core.validators import (  # noqa: F401
+    FileExtensionValidator,
+    MinValueValidator,
+)
 from django.db import models
+from django.forms import ValidationError
 
 # Recipe post status for admin users
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -12,6 +17,19 @@ CATEGORY = (
     (1, "Pancakes for Kids"),
     (2, "Vegan Pancakes"),
 )
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1.2 * 1024 * 1024
+VALID_FILE_EXTENSIONS = {"jpg", "jpeg", "png", "webp"}
+
+
+def file_validation(file):
+    if isinstance(file, CloudinaryImage):
+        if file.metadata["bytes"] > FILE_UPLOAD_MAX_MEMORY_SIZE:
+            raise ValidationError("File shouldn't be larger than 1.2MB.")
+        if file.format.lower() not in VALID_FILE_EXTENSIONS:
+            raise ValidationError(
+                f"File should be of type: {VALID_FILE_EXTENSIONS}"
+            )
 
 
 # Recipe Model
@@ -96,7 +114,7 @@ class Recipe(models.Model):
     category = models.IntegerField(choices=CATEGORY, default=0)
     recipe_image = CloudinaryField(
         null=True,
-        validators=[FileExtensionValidator(["jpg", "jpeg", "png", "webp"])],
+        validators=[file_validation],
     )
     saved = models.ManyToManyField(
         User, related_name="saved_recipes", default=None, blank=True
