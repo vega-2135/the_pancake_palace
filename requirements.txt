@@ -5,7 +5,7 @@ bs4==0.0.2
 certifi==2024.2.2
 cffi==1.16.0
 charset-normalizer==3.3.2
-cloudinary==1.36.0
+cloudinary==1.41.0
 crispy-bootstrap5==0.6
 cryptography==42.0.5
 defusedxml==0.7.1
@@ -14,7 +14,6 @@ Django==4.2.1
 django-allauth==0.57.2
 django-autoslug==1.9.9
 django-crispy-forms==1.14.0
-django-cloudinary-storage==0.3.0
 django-summernote==0.8.20.0
 django-taggit==4.0.0
 gunicorn==20.1.0

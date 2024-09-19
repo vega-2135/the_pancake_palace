@@ -1,6 +1,6 @@
 from autoslug import AutoSlugField
-from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 from django.core.validators import FileExtensionValidator, MinValueValidator
 from django.db import models
 
@@ -95,7 +95,7 @@ class Recipe(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     category = models.IntegerField(choices=CATEGORY, default=0)
     recipe_image = CloudinaryField(
-        name="image",
+        null=True,
         validators=[FileExtensionValidator(["jpg", "jpeg", "png", "webp"])],
     )
     saved = models.ManyToManyField(

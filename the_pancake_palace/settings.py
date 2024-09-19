@@ -33,6 +33,9 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = True if os.environ.get("DEBUG_DJANGO") else False
 
 
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+
+
 ALLOWED_HOSTS = [
     "http://0.0.0.0:8000/",
     "127.0.0.1",
@@ -49,7 +52,6 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "cloudinary_storage",
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "allauth",
@@ -166,7 +168,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
 # MEDIA_URL = "/media/"
-DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+# DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

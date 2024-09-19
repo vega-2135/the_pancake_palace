@@ -24,9 +24,7 @@ class RecipeForm(ModelForm):
     Form class to create a recipe form without excluding ingredients
     or preparation.
     """
-
     recipe_image = CloudinaryFileField(required=False)
-
     class Meta:
         model = Recipe
         fields = [
@@ -71,6 +69,7 @@ class RecipeForm(ModelForm):
 
     #     if image:
     #         # Get the file URL and check the extension
+    #         print(f"image: {image}")
     #         file_url = image.build_url()
     #         valid_extensions = ["png", "jpg", "jpeg", "webp"]
     #         file_extension = file_url.split(".")[-1].lower()
