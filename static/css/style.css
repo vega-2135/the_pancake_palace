@@ -358,11 +358,6 @@ li::marker {
     width: 20%;
 }
 
-.card-img {
-    width: 298px;
-    height: 372.3px;
-}
-
 /* Comments */
 
 .rate-comment {
@@ -649,6 +644,13 @@ i {
     }
 }
 
+@media screen and (min-width: 400px) {
+    .rating-mg {
+        width: 250px;
+        padding:0 !important;
+    }
+}
+
 @media screen and (min-width: 300px) {
     .footer-social {
         margin-right: 0;
@@ -656,6 +658,17 @@ i {
 
     .i-footer {
         margin:0 50px 0 50px;
+    }
+
+    .save-button-mb {
+        width: 90px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .rating-mg {
+        width: 198px;
+        padding:0 !important;
     }
 }
 
