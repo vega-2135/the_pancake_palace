@@ -5,7 +5,7 @@ main {
 
 .page-title {
     font-size: 25px;
-}
+} 
 
 /* Nav bar */
 .page-title {
@@ -44,7 +44,7 @@ nav {
 }
 
 .navbar-nav-group:first-child {
-    margin-left: -10px;
+    margin-left: -10px; 
 }
 
 .navbar-nav-group:last-child {
@@ -121,6 +121,10 @@ a {
     text-decoration: none;
 }
 
+#div_id_remember {
+    margin-left: 20px !important;
+}
+
 .logout-cont {
     justify-content: center;
 }
@@ -146,10 +150,6 @@ a {
 
 .error {
     background-color: red;
-}
-
-.show {
-    display: block;
 }
 
 .hide {
@@ -182,11 +182,25 @@ a {
   color: rgb(172, 175, 175);
 }
 
+.btn-secondary {
+    background-color: grey;
+    color: white;
+}
+
+#ratingReminder {
+    font-weight: 500;
+}
+
+.rating-reminder-msg {
+    color: red;
+}
+
   /* Rating stars */
 .rating {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center
+    justify-content: center;
+    border: 2px solid transparent;
 }
 
 .rating>input {
@@ -221,9 +235,13 @@ a {
     opacity: 0.4
 }
 
+.rating.highlight {
+    border: 2px solid red;
+}
+
 /* Buttons */
 
-btn-saved {
+.btn-saved {
     margin-right: 1rem;
     border: 1px solid black;
     border-radius: 10px;
@@ -316,15 +334,28 @@ li::marker {
 }
 
 .delete-recipe {
-    color: black;
+    color: white;
     font-size: 1.2rem;
     font-weight: bold;
     padding-bottom: 10px;
 }
 
 .edit-recipe {
+    background-color: green;
+    color: white;
     width: 84px !important;
     font-weight: bold;
+    font-size: 1.2rem !important;
+    margin-right: 25px;
+}
+
+.edit-recipe:hover {
+    color: white;
+    background-color: rgb(3, 112, 3);
+}
+
+.edit-delete-btns {
+    width: 20%;
 }
 
 .card-img {
@@ -333,6 +364,12 @@ li::marker {
 }
 
 /* Comments */
+
+.rate-comment {
+    display: flex;
+    align-items: center;
+}
+
 .comment-login {
     font-size: 20px;
     color: white;
@@ -414,7 +451,7 @@ li::marker {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh;
+    height: 80vh; 
 }
 
 .color-back {
@@ -469,7 +506,7 @@ i {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh;
+    height: 80vh; 
 }
 
 .page-403 {
@@ -477,7 +514,7 @@ i {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh;
+    height: 80vh; 
 }
 
 .forbidden-font {
@@ -536,6 +573,31 @@ i {
 @media screen and (min-width: 992px) {
     main {
         margin-top: 220px;
+    }
+
+    .recipe-title {
+        width: 75%;
+        padding-left: 0px;
+    }
+
+    .rating-cont {
+        padding: 0;
+        display: flex;
+        justify-content: end;
+    }
+
+    .edit-delete-btns {
+        width: 20%;
+    }
+
+    .edit-recipe {
+        height: 48px !important;
+        align-content: center;
+    }
+
+    .delete-recipe {
+        align-content: center;
+        padding: 0 12px 0 12px;
     }
 }
 
@@ -648,5 +710,114 @@ i {
 
     .about_img {
         margin-top: -20px;
+    }
+
+    .rating-cont {
+        display: flex;
+        justify-content: left;
+        width: 100%;
+        margin-top: 20px;
+        padding-left: 0;
+    }
+
+    .rating_class {
+        padding: 0 !important;
+        justify-content: start;
+    }
+
+    .likes_class {
+        display: flex;
+        justify-content: right;
+        width: 50%;
+        margin-top: 2px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .remove-btn-cont {
+       width: 0;
+       padding: 0;
+    }
+
+    .recipe-opts {
+        width: 255px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 0 !important;
+        padding: 0 10px;
+    }
+
+    .recipe-subtitle {
+        margin-top: 16px;
+        text-align: left !important;
+        margin-left: 10px;
+    }
+
+    .delete-recipe {
+        color: white;
+        height: 42px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding-bottom: 10px;
+    }
+
+    .edit-recipe {
+        background-color: green;
+        color: white;
+        width: 81px !important;
+        font-weight: bold;
+        font-size: 1.2rem !important;
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+    }
+
+    .edit-delete-btns {
+        width: 40%;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .recipe-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-left: -15px;
+        padding-left: 0 !important;
+    }
+
+    .subtitle {
+        padding: 0 !important;
+        width: 255px;
+    }
+
+    .recipe-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 255px;
+    }
+
+    .recipe-img {
+        width: 255px;
+    }
+
+    .card {
+        width: 255px !important;
+    }
+
+    .card-width, .comments-count {
+        width: 250px !important;
+    }
+
+    .rate-comment {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+
+    .rating {
+        margin-top: 10px;
+        margin: 10px 0 0 0 !important;
     }
 }

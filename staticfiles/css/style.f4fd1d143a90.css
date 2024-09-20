@@ -447,7 +447,7 @@ li::marker {
 
 /* Error pages */
 .page-404 {
-    background-image: url(../images/404_3.webp);
+    background-image: url("../images/404_3.347f1d572ba6.webp");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -502,7 +502,7 @@ i {
 }
 
 .page-400 {
-    background-image: url(../images/400.webp);
+    background-image: url("../images/400.d8f08037006f.webp");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -510,7 +510,7 @@ i {
 }
 
 .page-403 {
-    background-image: url(../images/403.webp);
+    background-image: url("../images/403.cbeb22e4fe43.webp");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -523,7 +523,7 @@ i {
 }
 
 .page-500 {
-    background-image: url(../images/500.webp);
+    background-image: url("../images/500.a089325086bd.webp");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

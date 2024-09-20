@@ -17,10 +17,10 @@
 <!-- Recipe author  -->
 <p class="recipe-subtitle text-center">{{ recipe.created_on|date:"F j, Y" }} by @{{ recipe.author }}</p>
 <div class="container-fluid subtitle mt-5">
-  <div class="row">
+  <div class="row recipe-opts">
     {% if request.user.is_authenticated %}
     {% if saved_recipe %}
-    <div class="col-md-4">
+    <div class="col-md-4 remove-btn-cont">
       <div class="button-group">
         <a href="{% url 'remove_recipe' recipe.slug %}" class="btn btn-outline-primary sav-btn">Remove</a>
       </div>
@@ -47,7 +47,7 @@
       </div>
     </div>
     {% else %}
-    <div class="col-md-4">
+    <div class="col-md-4 remove-btn-cont">
       <div class="button-group">
         <a href="{% url 'save_recipe' recipe.slug %}" class="btn btn-outline-primary sav-btn">Save</a>
       </div>
@@ -56,7 +56,7 @@
       <a href="{% url 'like_recipe' recipe.slug %}" class="btn like-btn"><i class="fa-solid fa-heart"></i></a>
       <span id="likes">{{ recipe.likes_count }}</span>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 rating-cont">
       <!-- Rating and Rating Number -->
       <div class="col-md-10 d-flex align-items-center rating_class">
         <div class="rating-stars">
@@ -166,7 +166,7 @@
 <div class="card mb-4 mt-3 card-width card-border">
     <div class="card-body">
       <form id="commentForm" method="POST" style="margin-top: 1.3em;">
-        <h3 style="display: flex; align-items: center;">Rate and comment
+        <h3 class="rate-comment">Rate and comment
           <div class="rating" style="margin-left: auto;">
             <input type="radio" name="rating" value="5" id="5"><label for="5">&#x2606;</label>
             <input type="radio" name="rating" value="4" id="4"><label for="4">&#x2606;</label>
