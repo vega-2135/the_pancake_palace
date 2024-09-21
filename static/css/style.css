@@ -622,12 +622,22 @@ i {
         width: 100% !important;
     }
 
+    .card-second {
+        width: 210px !important;
+        height: 500px;
+    }
+
     .card-style {
         height: 550px;
+        width: 210px !important;
     }
 
     .mb-3 {
         flex-direction: column;
+    }
+
+    .save-rating-item {
+        margin-top: 70px;
     }
 
     .rating-stars {
@@ -692,8 +702,8 @@ i {
         padding: 0;
     }
 
-    .card {
-        width: 300px !important;
+    .card-second {
+        width: 300px;
     }
 
     .card-style {

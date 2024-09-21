@@ -2,7 +2,7 @@
 {% load custom_filters %}
 
 <div class="col-md-4 recipe-item-card">
-    <div class="card mb-4">
+    <div class="card mb-4 card-second">
         <div class="card-body card-style card-height">
             <div class="image-container">
                 <div class="image-flash">
@@ -22,7 +22,7 @@
             </a>
             <hr class="d-sm-none">
             {% if request.user.is_authenticated %}
-            <div class="container-fluid">
+            <div class="container-fluid save-rating-item">
                 <div class="row mb-3 save-rating">
                     <!-- Save Button -->
                     <div class="col-md-4 save-button-mb save-button-lg d-flex align-items-center justify-content-start save-btn-cont">
