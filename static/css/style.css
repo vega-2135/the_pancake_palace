@@ -828,11 +828,15 @@ i {
     }
 
     .card {
-        width: 255px !important;
+        width: 250px !important;
     }
 
     .card-width, .comments-count {
         width: 250px !important;
+    }
+
+    .recipe-item-card {
+        padding: 0;
     }
 
     .rate-comment {
