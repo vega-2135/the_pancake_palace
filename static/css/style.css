@@ -606,7 +606,22 @@ i {
     }
 }
 
-@media screen and (width: 768px) {
+@media screen and (min-width: 768px) {
+    .homep {
+        max-width: 100%;
+    }
+
+    .home-img {
+        max-width: 100%;
+    }
+
+    .save-btn-cont {
+        justify-content: center !important;
+        padding:0;
+        max-width: 100%;
+        width: 100% !important;
+    }
+
     .card-style {
         height: 550px;
     }
@@ -625,8 +640,7 @@ i {
     }
 
     .button-group {
-        margin-left: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     .footer-social {
