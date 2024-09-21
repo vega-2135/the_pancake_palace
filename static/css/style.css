@@ -667,11 +667,8 @@ i {
 
 @media screen and (min-width: 300px) {
     .footer-social {
+        width: 100%;
         margin-right: 0;
-    }
-
-    .i-footer {
-        margin:0 50px 0 50px;
     }
 
     .save-button-mb {
@@ -683,6 +680,24 @@ i {
     .rating-mg {
         width: 198px;
         padding:0 !important;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .save-rating {
+        flex-wrap: nowrap;
+    }
+
+    .recipe-item-card {
+        padding: 0;
+    }
+
+    .card {
+        width: 300px !important;
+    }
+
+    .card-style {
+        height: auto;
     }
 }
 
