@@ -166,7 +166,8 @@
 <div class="card mb-4 mt-3 card-width card-border">
     <div class="card-body">
       <form id="commentForm" method="POST" style="margin-top: 1.3em;">
-        <h3 class="rate-comment">Rate and comment
+        <div class="flexbox">
+          <h3>Rate and comment</h3>
           <div class="rating" style="margin-left: auto;">
             <input type="radio" name="rating" value="5" id="5"><label for="5">&#x2606;</label>
             <input type="radio" name="rating" value="4" id="4"><label for="4">&#x2606;</label>
@@ -174,7 +175,7 @@
             <input type="radio" name="rating" value="2" id="2"><label for="2">&#x2606;</label>
             <input type="radio" name="rating" value="1" id="1"><label for="1">&#x2606;</label>
           </div>
-        </h3>
+        </div>
         <p>Posting as: {{ user.username }}</p>
         {{ comment_form | crispy }}
         {% csrf_token %}

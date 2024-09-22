@@ -369,7 +369,7 @@ li::marker {
 
 /* Comments */
 
-.rate-comment {
+.flexbox {
     display: flex;
     align-items: center;
 }
