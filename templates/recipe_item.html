@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <!-- Rating and Rating Number -->
-                    <div class="col-md-8 d-flex align-items-center justify-content-end rating-mg">
+                    <div class="col-md-8 d-flex rating-mg">
                         <div class="rating-stars">
                             {% for i in "xxxxx" %}
                             {% if forloop.counter <= recipe.rating %}
@@ -45,23 +45,23 @@
                             {% endif %}
                             {% endfor %}
                         </div>
-                        <div>
+                        <div class="rating-num">
                             <p class="num-ratings">{{ recipe.number_of_ratings|default_if_none:"0" }}</p>
                         </div>
                     </div>
                 </div>
             </div>
             {% else %}
-            <div class="container-fluid">
-                <div class="row">
+            <div class="container-fluid save-rating-item">
+                <div class="row mb-3 save-rating">
                     <!-- Save Button -->
-                    <div class="col-md-2">
+                    <div class="col-md-4 save-button-mb save-button-lg d-flex align-items-center justify-content-start save-btn-cont">
                         <div class="button-group">
                             <a href="{% url 'account_login' %}" class="btn btn-outline-primary save-btn">Save</a>
                         </div>
                     </div>
                     <!-- Rating and Rating Number -->
-                    <div class="col-md-10 d-flex align-items-center justify-content-end">
+                    <div class="col-md-10 d-flex rating-mg">
                         <div class="rating-stars">
                             {% for i in "xxxxx" %}
                             {% if forloop.counter <= recipe.rating %}
@@ -71,7 +71,7 @@
                             {% endif %}
                             {% endfor %}
                         </div>
-                        <div>
+                        <div class="rating-num">
                             <p class="num-ratings">{{ recipe.number_of_ratings|default_if_none:"0" }}</p>
                         </div>
                     </div>

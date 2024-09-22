@@ -759,6 +759,10 @@ i {
     .card-style {
         height: auto;
     }
+
+    .rating-stars, .rating-num {
+        align-content: center;
+    }
 }
 
 @media screen and (min-width: 280px) and (max-width: 300px) {
@@ -925,5 +929,9 @@ i {
     .rating {
         margin-top: 10px;
         margin: 10px 0 0 0 !important;
+    }
+
+    .rating-mg {
+        justify-content: center;
     }
 }
