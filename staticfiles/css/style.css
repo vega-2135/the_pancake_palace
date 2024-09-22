@@ -23,10 +23,6 @@ main {
     align-items: center;
 }
 
-#user-options {
-    padding-top: 25px;
-}
-
 .top-nav-it {
     font-size: 25px;
     font-weight: bold;
@@ -838,6 +834,10 @@ i {
         padding: 0;
         display: flex;
         justify-content: end;
+    }
+
+    .rating-mg {
+        width: 100%;
     }
 
     .edit-delete-btns {

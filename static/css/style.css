@@ -23,10 +23,6 @@ main {
     align-items: center;
 }
 
-#user-options {
-    padding-top: 25px;
-}
-
 .top-nav-it {
     font-size: 25px;
     font-weight: bold;
@@ -187,6 +183,10 @@ a {
 }
 
 /* Comments section */
+.log-comment {
+    margin-bottom: 0;
+}
+
 .faded {
   color: rgb(172, 175, 175);
 }

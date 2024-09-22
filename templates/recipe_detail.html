@@ -185,11 +185,9 @@
 </div>
 {% else %}
 <div class="leave-comment">
-  <button class="btn btn-success btn-com-log">
-    <a class="comment-login" href="{% url 'account_login' %}">
-      <p>Log in to leave a comment</p>
-    </a>
-  </button>
+  <a class="btn btn-success btn-com-logcomment-login" href="{% url 'account_login' %}">
+    <p class="log-comment">Log in to leave a comment</p>
+  </a>
 </div>
 {% endif %}
 <!-- Displaying Comments -->
@@ -236,11 +234,11 @@
 
 
 <!-- Delete confirmation modal -->
-<div class="modal fade" id="deleteCommentModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteCommentModal" tabindex="-1" aria-labelledby="deleteCommentModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+        <h5 class="modal-title" id="deleteModalLabelComment">Delete comment?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -259,11 +257,11 @@
 </div>
 
 <!-- Delete recipe confirmation modal -->
-<div class="modal fade" id="deleteRecipeModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteRecipeModal" tabindex="-1" aria-labelledby="deleteRecipeModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete recipe?</h5>
+        <h5 class="modal-title" id="deleteModalLabelRecipe">Delete recipe?</h5>
         <button type="button" class="btn-close modal-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
