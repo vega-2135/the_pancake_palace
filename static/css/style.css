@@ -578,6 +578,26 @@ i {
         margin-right: 35px;
     }
 
+    #description {
+        width: 100%;
+        flex-direction: row;
+        margin: 0 !important;
+    }
+
+    .top-recipes {
+        margin: 50px 0 20px 0;
+    }
+
+
+    .card-second {
+        width: 95% !important;
+        height: auto !important;
+    }
+
+    .card-style {
+        width: 100% !important;
+    }
+
     .img-cont{
         margin-bottom: 62px;
     }
@@ -657,13 +677,13 @@ i {
     }
 
     .card-second {
-        width: 210px !important;
+        width: 210px;
         height: 500px;
     }
 
     .card-style {
         height: 550px;
-        width: 210px !important;
+        width: 210px;
     }
 
     .mb-3 {
