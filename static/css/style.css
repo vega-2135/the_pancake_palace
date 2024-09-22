@@ -542,6 +542,10 @@ i {
     .contact-content {
         font-size: 1.3rem;
     }
+
+    .footer-social, .text-reset {
+        width: 10% !important;
+    }
 }
 
 @media screen and (min-width: 992px) {
@@ -576,6 +580,22 @@ i {
 
     .img-cont{
         margin-bottom: 62px;
+    }
+
+    .footer-social, .text-reset {
+        width: 15% !important;
+    }
+
+    .footer-social {
+        justify-content: space-between;
+    }
+
+    .i-footer {
+        margin: 0 !important;
+    }
+
+    .footer-font {
+        margin: 0 !important;
     }
 }
 
@@ -669,10 +689,6 @@ i {
 
     .footer-social {
         width: 100%;
-    }
-
-    .footer-medium {
-        justify-content: unset !important;
     }
 }
 
