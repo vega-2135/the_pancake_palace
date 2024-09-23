@@ -337,7 +337,7 @@ li::marker {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1500px;
+    width: 100%;
    }
 
 .recipe-title {
@@ -737,6 +737,10 @@ i {
 }
 
 @media screen and (min-width: 300px) {
+    .item-title {
+        margin-bottom: 0 !important;
+    }
+
     .footer-social {
         width: 100%;
         margin-right: 0;
@@ -801,6 +805,7 @@ i {
     .rating-mg {
         width: 250px;
         padding:0 !important;
+        justify-content: end;
     }
 }
 
@@ -831,7 +836,7 @@ i {
     }
 
     .card-style {
-        height: 550px;
+        height: 500px;
         width: 210px;
     }
 
@@ -942,11 +947,21 @@ i {
 
     .card-second {
         width: 95% !important;
-        height: 600px;
+        height: 550px;
     }
 
     .card-style {
         width: 100% !important;
+    }
+
+    .save-rating-item {
+        margin-top: 30px;
+    }
+
+    .rating-mg {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
     }
 
     .img-cont{
@@ -973,7 +988,7 @@ i {
 @media screen and (min-width: 1500px) {
     .card-second {
         width: 95% !important;
-        height: 700px;
+        height: 625px;
     }
 
     .contact-welcome {
