@@ -337,7 +337,7 @@ li::marker {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1500px;
+    width: 100%;
    }
 
 .recipe-title {
@@ -737,6 +737,10 @@ i {
 }
 
 @media screen and (min-width: 300px) {
+    .item-title {
+        margin-bottom: 0 !important;
+    }
+
     .footer-social {
         width: 100%;
         margin-right: 0;
@@ -801,6 +805,7 @@ i {
     .rating-mg {
         width: 250px;
         padding:0 !important;
+        justify-content: end;
     }
 }
 
@@ -831,7 +836,7 @@ i {
     }
 
     .card-style {
-        height: 550px;
+        height: 500px;
         width: 210px;
     }
 
@@ -871,9 +876,22 @@ i {
     }
 }
 
-@media screen and (min-width: 992px) {
-    main {
-        margin-top: 220px;
+@media screen and (width: 992px) {
+    .user-auth {
+        font-size: 1.4rem;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .form-control {
+        margin: 0 !important;
+        width: 50rem;
+    }
+
+    .top-nav-it {
+        font-size: 1.4rem;
     }
 
     .recipe-title {
@@ -885,6 +903,30 @@ i {
         padding: 0;
         display: flex;
         justify-content: end;
+    }
+
+    .search-form {
+        margin-left: 12px;
+    }
+
+    .smalld-nav {
+        padding-left: 0;
+    }
+
+    .bottom-nav {
+        justify-content: space-evenly;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .nav-link {
+        margin: 0 !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    main {
+        margin-top: 220px;
     }
 
     .edit-delete-btns {
@@ -942,11 +984,21 @@ i {
 
     .card-second {
         width: 95% !important;
-        height: 600px;
+        height: 550px;
     }
 
     .card-style {
         width: 100% !important;
+    }
+
+    .save-rating-item {
+        margin-top: 30px;
+    }
+
+    .rating-mg {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
     }
 
     .img-cont{
@@ -973,7 +1025,7 @@ i {
 @media screen and (min-width: 1500px) {
     .card-second {
         width: 95% !important;
-        height: 700px;
+        height: 625px;
     }
 
     .contact-welcome {
