@@ -16,12 +16,21 @@
     </div>
 </li>
 <li class="list-inline-item dropdown">
-    <a class="text-black nav-link d-block d-lg-none" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {% if request.user.is_authenticated %}
+        <a class="text-black nav-link d-block d-lg-none" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-center">
+                <div><i class="fas fa-user fa-lg nav-color"></i></div>
+                <p class="my-0 nav-color">{{ user.username }}</p>
+            </div>
+        </a>
+    {% else %}
+    <a class="text-black nav-link d-block d-lg-none user-logo" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
             <div><i class="fas fa-user fa-lg nav-color"></i></div>
             <p class="my-0 nav-color">{{ user.username }}</p>
         </div>
     </a>
+    {% endif %}
     <div class="dropdown-menu border-0 mobile-margin" aria-labelledby="user-options">
         {% if request.user.is_authenticated %}
             <a href="{% url 'saved_recipes' %}" class="dropdown-item">Saved Recipes</a>

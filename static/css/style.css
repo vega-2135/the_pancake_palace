@@ -29,6 +29,10 @@ main {
     color: black !important;
 }
 
+.user-logo {
+    padding-top: 25px;
+}
+
 .nav-bg {
     background-color: rgb(171, 196, 255) !important;
 }
