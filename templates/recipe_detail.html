@@ -6,13 +6,15 @@
 
 <!-- Recipe title  -->
 <div class="recipe-header mt-5">
-  <h1 class="recipe-title text-center">{{ recipe.title }}</h1>
+  {% if user == recipe.author %}
+  <h1 class="recipe-title text-center title-nauthor">{{ recipe.title }}</h1>
   <div class="d-flex gap-3 edit-delete-btns">
-     {% if user == recipe.author %}
      <a class="btn edit-recipe" href="{% url 'edit_recipe' recipe.slug %}" role="button">Edit</a>
      <button class="btn btn-danger delete-recipe" recipe_id="{{ recipe.id }}">Delete</button>
-     {% endif %}
   </div>
+  {% else %}
+  <h1 class="recipe-title text-center">{{ recipe.title }}</h1>
+  {% endif %}
  </div>
 <!-- Recipe author  -->
 <p class="recipe-subtitle text-center">{{ recipe.created_on|date:"F j, Y" }} by @{{ recipe.author }}</p>
@@ -166,8 +168,8 @@
 <div class="card mb-4 mt-3 card-width card-border">
     <div class="card-body">
       <form id="commentForm" method="POST" style="margin-top: 1.3em;">
-        <div class="flexbox">
-          <h3>Rate and comment</h3>
+        <div class="flexbox comment-container">
+          <h3 class="rate-txt">Rate and comment</h3>
           <div class="rating" style="margin-left: auto;">
             <input type="radio" name="rating" value="5" id="5"><label for="5">&#x2606;</label>
             <input type="radio" name="rating" value="4" id="4"><label for="4">&#x2606;</label>
