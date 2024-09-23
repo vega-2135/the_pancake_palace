@@ -358,7 +358,7 @@ li::marker {
     color: white;
     width: 84px !important;
     font-weight: bold;
-    font-size: 1.2rem !important;
+    font-size: 1.2rem;
     margin-right: 25px;
 }
 
@@ -741,6 +741,42 @@ i {
         margin-bottom: 0 !important;
     }
 
+    .recipe-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-left: 15px;
+        padding-left: 0 !important;
+        width: 60%;
+    }
+
+    .edit-delete-btns {
+        width: 22%;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        margin-right: 15px;
+    }
+
+    .edit-recipe {
+        margin: 0 0 5px 0;
+    }
+
+    .edit-recipe, .delete-recipe {
+        font-size: 1rem;
+    }
+
+    .recipe-subtitle {
+        margin-top: 10px;
+    }
+
+    .subtitle {
+        padding: 0 !important;
+        width: 255px;
+    }
+
+    .recipe-header {
+        width: 100%;
+    }
+
     .footer-social {
         width: 100%;
         margin-right: 0;
@@ -759,27 +795,48 @@ i {
 }
 
 @media screen and (min-width: 360px) {
-    /* .recipe-header {
-        width: 350px;
-    }
-
-    .recipe-title {
+    /* .recipe-title {
         width: 100%;
         padding-left: 0;
         font-size: 2.5rem;
-        margin-bottom: 20px;
-    }
+    } */
 
     .recipe-subtitle {
         padding-right: 30px;
+        margin-left: 25px;
     }
 
     .subtitle {
         width:350px;
     }
+
     .recipe-img {
-        width: 350px;
-    } */
+        width: 300px;
+    }
+
+    .remove-btn-cont {
+        width: 50%;
+        justify-content: end;
+        display: flex;
+        padding: 0px;
+    }
+
+    .likes_class {
+        width: 50%;
+        padding-right: 0px;
+        padding-left: 12px;
+        justify-content: start;
+    }
+
+    .rating_class {
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .card-width, .comments-count {
+    width: 300px;
+    }
+
     .save-rating {
         flex-wrap: nowrap;
     }
@@ -802,10 +859,17 @@ i {
 }
 
 @media screen and (min-width: 400px) {
+    .edit-delete-btns {
+        width: 19%;
+    }
     .rating-mg {
         width: 250px;
         padding:0 !important;
         justify-content: end;
+    }
+
+    .recipe-img, .card-width, .comments-count {
+        width: 350px;
     }
 }
 
@@ -831,6 +895,15 @@ i {
         width: 100% !important;
     }
 
+    .recipe-title {
+        font-size: 3rem;
+        width: 78%;
+    }
+
+    .recipe-subtitle {
+        font-size: 1.5rem;
+    }
+
     .card-second {
         width: 210px;
     }
@@ -838,6 +911,68 @@ i {
     .card-style {
         height: 500px;
         width: 210px;
+    }
+
+    .recipe-header {
+        justify-content: center;
+    }
+
+    .recipe-opts {
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .edit-delete-btns {
+        width: 20%;
+        margin-right: 0;
+    }
+
+    .edit-recipe {
+        width: 73px !important;
+    }
+
+    .recipe-img, .card-width, .comments-count {
+        width: 700px;
+    }
+
+    .subtitle {
+        width: 700px;
+    }
+
+    .remove-btn-cont, .likes_class, .rating-cont {
+        width: 30.333%;
+    }
+
+    .remove-btn-cont {
+        justify-content: start;
+    }
+
+    .button-group {
+        margin-bottom: 0 !important;
+    }
+
+    .likes_class {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .like-btn, #likes {
+        display: flex;
+        align-items: center;
+    }
+
+    .rating-cont {
+        padding: 0;
+        align-content: center;
+        justify-content: end;
+        display: flex;
+    }
+
+    .rating_class {
+        justify-content: end;
+        margin: 0;
+        padding: 0;
     }
 
     .mb-3 {
@@ -887,7 +1022,6 @@ i {
 
     .form-control {
         margin: 0 !important;
-        width: 50rem;
     }
 
     .top-nav-it {
@@ -978,6 +1112,20 @@ i {
         margin: 0 !important;
     }
 
+    .recipe-header {
+        width: 790px;
+        margin-left: 40px;
+    }
+
+    .edit-delete-btns {
+        width: 19%;
+    }
+
+    .delete-recipe {
+        height: 48px;
+        margin-left: 5px;
+    }
+
     .top-recipes {
         margin: 50px 0 20px 0;
     }
@@ -1023,9 +1171,37 @@ i {
 }
 
 @media screen and (min-width: 1500px) {
+    main {
+        margin-bottom: 50px;
+    }
+
+    .save-button-lg {
+        margin-bottom: 20px !important;
+    }
+
+    .recipe-header {
+        width: 900px;
+    }
+
+    .recipe-title {
+        margin-left: 150px;
+    }
+
+    .edit-delete-btns {
+        width: 10%;
+    }
+
+    .recipe-img, .card-width, .comments-count, .subtitle {
+        width: 800px;
+    }
+
+    .recipe-img {
+        width: 800px;
+    }
+
     .card-second {
         width: 95% !important;
-        height: 625px;
+        height: 650px;
     }
 
     .contact-welcome {
