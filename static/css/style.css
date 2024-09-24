@@ -1029,6 +1029,12 @@ i {
     }
 }
 
+@media screen and (max-width: 768px) {
+    .message-not {
+        margin: -40px 0 100px 0;
+    }
+}
+
 @media screen and (min-width: 864px) {
     .footer-social {
         margin-right: 0;
