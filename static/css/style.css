@@ -449,7 +449,7 @@ li::marker {
 /* About page */
 .about_img{
     border: solid rgb(171, 196, 255);
-    width: 80%;
+    width: 50%;
     height: auto;
 }
 
@@ -546,6 +546,10 @@ i {
 @media screen and (min-width: 280px) and (max-width: 300px) {
     main {
         margin-top: 120px;
+    }
+
+    .card-img {
+        height: 259.883px;
     }
 }
 
@@ -753,10 +757,14 @@ i {
         margin-bottom: 0 !important;
     }
 
+    .card-img {
+        height: 322.367px;
+    }
+
     .recipe-title {
         font-size: 1.5rem;
         font-weight: bold;
-        margin-left: 15px;
+        /* margin-left: 15px; */
         padding-left: 0 !important;
         width: 75%;
     }
@@ -803,16 +811,11 @@ i {
     .rating-mg {
         width: 198px;
         padding:0 !important;
+        justify-content: end;
     }
 }
 
 @media screen and (min-width: 360px) {
-    /* .recipe-title {
-        width: 100%;
-        padding-left: 0;
-        font-size: 2.5rem;
-    } */
-
     .recipe-subtitle {
         padding-right: 30px;
         margin-left: 25px;
@@ -916,6 +919,10 @@ i {
         max-width: 100%;
     }
 
+    .card-img, .image-flash {
+        height: 212.4px;
+    }
+
     .save-btn-cont {
         justify-content: center !important;
         padding:0;
@@ -1017,7 +1024,7 @@ i {
 
     .rating-mg {
         justify-content: center !important;
-        margin-left: 25px;
+        margin: 20px 0 0 25px;
     }
 
     .button-group {
@@ -1069,6 +1076,7 @@ i {
     .recipe-title {
         width: 75%;
         padding-left: 0px;
+        margin-right: 15px;
     }
 
     .rating-cont {
@@ -1099,6 +1107,10 @@ i {
 @media screen and (min-width: 992px) {
     main {
         margin-top: 220px;
+    }
+
+    .card-img, .image-flash {
+        height: 315.483px;
     }
 
     .edit-delete-btns {
@@ -1211,6 +1223,10 @@ i {
 @media screen and (min-width: 1500px) {
     main {
         margin-bottom: 50px;
+    }
+
+    .card-img, .image-flash {
+        height: 398.583px;
     }
 
     .save-button-lg {
