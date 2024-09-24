@@ -160,9 +160,12 @@
             </div>
         </footer>
 
-        <!-- JavaScript-->
-        <script src="{% static 'js/script.js' %}"></script>
+        <!-- Conditionally load commentsRecipes.js only on recipe pages -->
+        {% if 'recipe_detail' in request.resolver_match.url_name %}
         <script src="{% static 'js/commentsRecipes.js' %}"></script>
+        {% endif %}
+
+        <script src="{% static 'js/script.js' %}"></script>
     </body>
 
 </html>

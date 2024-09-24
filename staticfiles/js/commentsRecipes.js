@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
       submitButton.innerText = "Update";
       commentForm.setAttribute("action", `edit_comment/${commentId}`);
     });
-    console.log("Edited");
   }
 
 
