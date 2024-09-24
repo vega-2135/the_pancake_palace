@@ -695,6 +695,14 @@ i {
         font-size: 1.4rem;
     }
 
+    .save-cont {
+        width: 48% !important;
+    }
+
+    .likes-cont {
+        justify-content: start !important;
+    }
+
     .recipe-img {
         width: 250px;
     }
