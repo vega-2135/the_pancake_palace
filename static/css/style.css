@@ -742,6 +742,10 @@ i {
     .rating-mg {
         justify-content: center;
     }
+
+    .login-btn {
+        margin-top: 20px;
+    }
 }
 
 @media screen and (min-width: 300px) {
