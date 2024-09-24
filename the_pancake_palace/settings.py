@@ -33,7 +33,9 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = True if os.environ.get("DEBUG_DJANGO") else False
 
 
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+STATICFILES_STORAGE = (
+    "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+)
 
 
 ALLOWED_HOSTS = [

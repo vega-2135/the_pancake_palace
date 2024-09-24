@@ -47,8 +47,6 @@ def recipe_detail(request, slug):
 
     :template:`recipes/recipe_detail.html`
     """
-    # Return all objects of the class Recipe
-    #queryset = Recipe.objects.filter(status=1)
 
     # Return recipe with the correct slug
     recipe = get_object_or_404(Recipe, slug=slug)
@@ -464,7 +462,8 @@ class VeganPancakes(ListView):
 def creates_recipe_status(request, recipes, context):
     recipes_status = {}
     for recipe in recipes:
-        recipes_status[recipe.id] = \
-        recipe.saved.filter(id=request.user.id).exists()
+        recipes_status[recipe.id] = recipe.saved.filter(
+            id=request.user.id
+        ).exists()
     context["recipes_status"] = recipes_status
     return context
