@@ -12,11 +12,12 @@ Welcome to The Pancake Palace, your go-to destination for an array of mouthwater
 1. [User Experience (UX)](#1-user-experience-ux)
 2. [Agile Development](#2-agile-development)
 3. [Design](#3-design)
-4. [Features](#4-features)
-5. [Technologies Used](#5-technologies-used)
-6. [Local Development and Deployment](#6-local-development-and-deployment)
+4. [Database Design](#4-database-design)
+5. [Features](#5-features)
+6. [Technologies Used](#6-technologies-used)
 7. [Testing](#7-testing)
-8. [Credits](#8-credits)
+8. [Deployment](#8-deployment)
+9. [Credits](#9-credits)
 
 ## 1. User Experience (UX)
 
@@ -24,7 +25,7 @@ Welcome to The Pancake Palace, your go-to destination for an array of mouthwater
 
 User stories were generated through [GitHub Issues](https://github.com/vega-2135/the_pancake_palace/issues), with story points assigned based on estimated task completion times. Milestones and appropriate tags were also applied for organization.
 
-Explore the user stories below in the section labeled [User Story Testing(), and delve deeper into comprehensive details, including screenshots, story points, milestones, and tags, by visiting [GitHub Issues](https://github.com/vega-2135/the_pancake_palace/issues).
+Explore the user stories below in the section labeled [User Story Testing](#user-story-testing), and delve deeper into comprehensive details, including screenshots, story points, milestones, and tags, by visiting [GitHub Issues](https://github.com/vega-2135/the_pancake_palace/issues).
 
 ## 2. Agile Development
 
@@ -280,7 +281,7 @@ The footer contains the copyright information and the icons for facebook, twitte
 
 - [Firefox DevTools](https://developer.chrome.com/docs/devtools/) used for debugging of css code.
 
-## .7 Testing
+## 7. Testing
 - ### Manual Testing
 I conducted ongoing manual testing throughout the development stages of the project to ensure its functionality and performance met the desired standards.
 
